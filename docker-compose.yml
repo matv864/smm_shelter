@@ -1,0 +1,33 @@
+version: "2.24"
+
+services:
+  joke-service:
+    container_name: joke-service
+    restart: always
+    build: jokes
+    environment:
+      - POSTGRES_HOST=postgres-joke-service
+      - POSTGRES_DB=joke-service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - postgres-joke-service
+    ports:
+      - 8002:8000
+
+
+  postgres-joke-service:
+    container_name: postgres-joke-service
+    # restart: always
+    image: postgres:16
+    volumes:
+      - ${PWD}/dump/main.sql:/docker-entrypoint-initdb.d/main.sql
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=joke-service
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    # ports:
+    #   - 5432:5433
+    # command: 
+    #   - -p 5433
