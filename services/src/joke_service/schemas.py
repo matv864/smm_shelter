@@ -12,7 +12,7 @@ class Joke_record(BaseModel):
     creating: Optional[datetime]
 
 
-class Joke_payload(BaseModel):
+class Joke_creating(BaseModel):
     title: Optional[str]
     theme: Optional[str]
     text_joke: str

@@ -18,5 +18,5 @@ class Joke(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     title: Mapped[str] = mapped_column()
     theme: Mapped[str] = mapped_column()
-    text_joke: Mapped[str] = mapped_column()   
+    text_joke: Mapped[str] = mapped_column()
     creating: Mapped[datetime] = mapped_column(DateTime(timezone=True))

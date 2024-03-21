@@ -3,7 +3,7 @@ from fastapi import FastAPI
 from src.api.v1.router import v1_router
 
 app = FastAPI(
-    title="event-service",
+    title="services",
 )
 
 # app.add_middleware(

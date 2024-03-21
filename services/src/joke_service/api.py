@@ -1,36 +1,35 @@
 from fastapi import APIRouter, status
 
-from src.service.joke import Joke_service
-from src.schemas.joke import Joke_record, Joke_payload
+from src.joke_service.service.joke import Joke_service
+from src.joke_service.schemas import Joke_record, Joke_creating
 
 
-events_router = APIRouter(
+joke_router = APIRouter(
     prefix="/jokes",
 )
 
 
-@events_router.get("/list", response_model=list[Joke_record])
+@joke_router.get("/list", response_model=list[Joke_record])
 async def get_list_of_jokes():
     return await Joke_service().get_list_jokes()
 
 
-@events_router.get("/{id}", response_model=Joke_record)
+@joke_router.get("/{id}", response_model=Joke_record)
 async def get_by_id(id: int):
     return await Joke_service().get_joke(id)
 
 
-@events_router.post("/", status_code=status.HTTP_201_CREATED)
-async def create_joke(payload: Joke_payload):
+@joke_router.post("/", status_code=status.HTTP_201_CREATED)
+async def create_joke(payload: Joke_creating):
     return await Joke_service().create_joke(payload)
 
 
-@events_router.put("/", status_code=status.HTTP_200_OK)
+@joke_router.put("/", status_code=status.HTTP_200_OK)
 async def update_joke(payload: Joke_record):
-    print(payload)
     return await Joke_service().update_joke(payload)
 
 
-@events_router.delete("/{id}", status_code=status.HTTP_200_OK)
+@joke_router.delete("/{id}", status_code=status.HTTP_200_OK)
 async def dalete_by_id(id: int):
     return await Joke_service().delete_joke(id)
 

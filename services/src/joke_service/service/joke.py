@@ -1,8 +1,9 @@
-from src.database.session import async_session_maker
+from src.joke_service.database.session import async_session_maker
 from sqlalchemy import select, insert, update, delete
 # from sqlalchemy.orm import selectinload
 from fastapi import HTTPException
-from src.database.models import Joke
+from src.joke_service.database.models import Joke
+from src.joke_service.schemas import Joke_record, Joke_creating
 
 
 class Joke_service:
@@ -27,7 +28,7 @@ class Joke_service:
         result = result.scalar_one_or_none()
         return result
 
-    async def create_joke(self, payload: Joke):
+    async def create_joke(self, payload: Joke_creating):
         session = async_session_maker()
         query = (
             insert(Joke)
@@ -39,7 +40,7 @@ class Joke_service:
         except Exception as e:
             return f"error: {type(e)} |*-*| {str(e)}"
 
-    async def update_joke(self, payload: Joke):
+    async def update_joke(self, payload: Joke_record):
         session = async_session_maker()
         query = (
             update(Joke)

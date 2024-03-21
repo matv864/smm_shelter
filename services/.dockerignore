@@ -9,3 +9,4 @@ bin/
 include/
 lib/
 lib64/
+python3.11/

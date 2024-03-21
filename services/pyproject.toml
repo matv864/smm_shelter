@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "jokes"
+name = "services"
 version = "0.1.0"
-description = "API with JOKES"
+description = ""
 authors = ["matv864 <matv864@gmail.com>"]
 readme = "README.md"
 package-mode = false
@@ -12,6 +12,8 @@ sqlalchemy = "^2.0.28"
 pydantic = "^2.6.4"
 pydantic-settings = "^2.2.1"
 asyncpg = "^0.29.0"
+pyjwt = "^2.8.0"
+passlib = "^1.7.4"
 
 [tool.poetry.group.dev.dependencies]
 fastapi = "^0.110.0"
