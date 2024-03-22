@@ -28,7 +28,7 @@ class Joke_service:
         result = result.scalar_one_or_none()
         return result
 
-    async def create_joke(self, payload: Joke_creating):
+    async def create_joke(self, payload: Joke_creating, token: str):
         session = async_session_maker()
         query = (
             insert(Joke)
@@ -40,7 +40,7 @@ class Joke_service:
         except Exception as e:
             return f"error: {type(e)} |*-*| {str(e)}"
 
-    async def update_joke(self, payload: Joke_record):
+    async def update_joke(self, payload: Joke_record, token: str):
         session = async_session_maker()
         query = (
             update(Joke)
@@ -60,7 +60,7 @@ class Joke_service:
         except Exception as e:
             return f"error: {type(e)} |*-*| {str(e)}"
 
-    async def delete_joke(self, id: int):
+    async def delete_joke(self, id: int, token: str):
         session = async_session_maker()
         query = (
             delete(Joke)

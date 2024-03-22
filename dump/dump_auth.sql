@@ -26,8 +26,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.auth (
     user_id integer NOT NULL,
-    mail character varying NOT NULL,
-    hashed_password character varying NOT NULL
+    username character varying NOT NULL,
+    password character varying NOT NULL
 );
 
 
@@ -67,7 +67,7 @@ ALTER TABLE ONLY public.auth ALTER COLUMN user_id SET DEFAULT nextval('public.au
 --
 
 
-INSERT INTO public.auth (user_id, mail, hashed_password) 
+INSERT INTO public.auth (user_id, username, password) 
 VALUES (1, '999', '83cf8b609de60036a8277bd0e96135751bbc07eb234256d4b65b893360651bf2');
 
 
@@ -91,7 +91,7 @@ ALTER TABLE ONLY public.auth
 --
 
 ALTER TABLE ONLY public.auth
-    ADD CONSTRAINT auth_unique UNIQUE (mail);
+    ADD CONSTRAINT auth_unique UNIQUE (username);
 
 
 --

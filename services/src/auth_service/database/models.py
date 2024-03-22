@@ -13,5 +13,5 @@ class Auth(Base):
     __tablename__ = "auth"
 
     user_id: Mapped[int] = mapped_column(primary_key=True)
-    mail: Mapped[str] = mapped_column()
-    hashed_password: Mapped[str] = mapped_column()
+    username: Mapped[str] = mapped_column()
+    password: Mapped[str] = mapped_column()

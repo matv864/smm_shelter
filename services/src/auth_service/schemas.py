@@ -24,5 +24,6 @@ class Refresh_token(BaseModel):
 
 
 class Pair_tokens(BaseModel):
+    token_type: str = "bearer"
     access_token: str
     refresh_token: str

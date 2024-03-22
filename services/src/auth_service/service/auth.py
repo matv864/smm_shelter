@@ -2,6 +2,7 @@ from src.auth_service.database.session import async_session_maker
 from sqlalchemy import select, insert
 # from sqlalchemy.orm import selectinload
 from fastapi import HTTPException
+from fastapi.security import OAuth2PasswordRequestForm
 
 from src.security_module.jwt import (
     create_pair_tokens,
@@ -20,8 +21,7 @@ from src.auth_service.schemas import (
     Auth_record,
     Access_token,
     Refresh_token,
-    Pair_tokens,
-    Its_me
+    Pair_tokens
 )
 
 
@@ -54,11 +54,11 @@ class Auth_service:
         finally:
             await session.close()
 
-    async def login_user(self, payload: User_form):
+    async def login_user(self, payload: OAuth2PasswordRequestForm):
         session = async_session_maker()
         query = (
             select(Auth)
-            .where(Auth.mail == payload.mail)
+            .where(Auth.username == payload.username)
         )
         user_data = await session.execute(query)
         user_data = user_data.scalar_one_or_none()
@@ -67,13 +67,13 @@ class Auth_service:
         if user_data is None or \
             not await match_password_with_hash(
                 payload.password,
-                user_data.hashed_password):
+                user_data.password):
 
             raise HTTPException(
                 status_code=403,
                 detail="Wrong login or password"
             )
-        pair_tokens: Pair_tokens = await create_pair_tokens(user_data.mail)
+        pair_tokens: Pair_tokens = await create_pair_tokens(user_data.username)
         return Pair_tokens(**pair_tokens)
 
     async def update_token(self, payload: Refresh_token):
@@ -86,8 +86,5 @@ class Auth_service:
         )
         return access_token
 
-    async def who_am_i(self, payload: Access_token):
-        data_from_refresh = await verify_jwt_token(payload.access_token)
-        if data_from_refresh is None:
-            raise HTTPException(status_code=403, detail="bad token")
-        return Its_me(mail=data_from_refresh)
+    async def who_is_it(self, token: str) -> str | None:
+        return await verify_jwt_token(token)
