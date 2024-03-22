@@ -31,15 +31,15 @@ class Auth_service:
         session = async_session_maker()
         query = (
             select(Auth)
-            .where(payload.mail == Auth.mail)
+            .where(payload.username == Auth.username)
         )
         users = await session.execute(query)
         if users.scalar_one_or_none():
             raise HTTPException(status_code=403, detail="user exists")
 
         record = Auth_record(
-            mail=payload.mail,
-            hashed_password=await get_hashing_password(payload.password)
+            username=payload.username,
+            password=await get_hashing_password(payload.password)
         )
 
         query = (

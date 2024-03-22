@@ -2,17 +2,17 @@ from pydantic import BaseModel
 
 
 class User_form(BaseModel):
-    mail: str
+    username: str
     password: str
 
 
 class Auth_record(BaseModel):
-    mail: str
-    hashed_password: str
+    username: str
+    password: str
 
 
 class Its_me(BaseModel):
-    mail: str
+    username: str
 
 
 class Access_token(BaseModel):

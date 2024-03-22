@@ -32,11 +32,8 @@ async def refresh(payload: Refresh_token):
 
 
 # ----
-
-
-# @auth_router.post("/who_is_it", response_model=Its_me)
 async def who_is_it(token: Annotated[str, Depends(oauth2_scheme)]):
-    return await Auth_service().who_is_it()
+    return await Auth_service().who_is_it(token)
 
 
 @auth_router.post("/who_am_i")

@@ -14,6 +14,7 @@ services:
       - POSTGRES_PASSWORD=postgres
     depends_on:
       - postgres-joke-service
+      - postgres-auth-service
     ports:
       - 8002:8000
 

@@ -7,9 +7,9 @@ EXPIRATION_TIME_ACCESS = timedelta(minutes=30)
 EXPIRATION_TIME_REFRESH = timedelta(days=3)
 
 
-async def create_jwt_token(mail: str, expiration_time):
+async def create_jwt_token(username: str, expiration_time):
     data = {
-        "mail": mail
+        "username": username
     }
     # expiration = datetime.utcnow() + EXPIRATION_TIME
     expiration = datetime.now() + expiration_time
@@ -18,18 +18,18 @@ async def create_jwt_token(mail: str, expiration_time):
     return token
 
 
-async def create_access_jwt_token(mail: str):
-    return await create_jwt_token(mail, EXPIRATION_TIME_ACCESS)
+async def create_access_jwt_token(username: str):
+    return await create_jwt_token(username, EXPIRATION_TIME_ACCESS)
 
 
-async def create_refresh_jwt_token(mail: str):
-    return await create_jwt_token(mail, EXPIRATION_TIME_REFRESH)
+async def create_refresh_jwt_token(username: str):
+    return await create_jwt_token(username, EXPIRATION_TIME_REFRESH)
 
 
-async def create_pair_tokens(mail: str):
+async def create_pair_tokens(username: str):
     pair = {
-        "access_token": await create_access_jwt_token(mail),
-        "refresh_token": await create_refresh_jwt_token(mail)
+        "access_token": await create_access_jwt_token(username),
+        "refresh_token": await create_refresh_jwt_token(username)
     }
     return pair
 
@@ -41,6 +41,6 @@ async def verify_jwt_token(token: str):
             SECRET_KEY,
             algorithms=[ALGORITHM]
         )
-        return decoded_data["mail"]
+        return decoded_data["username"]
     except jwt.PyJWTError:
         return None
