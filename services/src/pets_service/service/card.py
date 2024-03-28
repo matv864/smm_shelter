@@ -13,6 +13,8 @@ from src.pets_service.schemas import (
     Update_card_schema
 )
 
+from src.pets_service.service.article import Article_service
+
 
 class Card_service:
     async def get_list_cards(self, filter: Card_filter_schema):
@@ -99,13 +101,14 @@ class Card_service:
         finally:
             await session.close()
 
-    async def delete_card(self, id: int, token: str):
+    async def delete_card(self, id: int):
         session = async_session_maker()
         query = (
             delete(Card)
             .where(Card.id == id)
         )
         try:
+            Article_service().delete_article_by_card_id(id)
             await session.execute(query)
             await session.commit()
             return "success"

@@ -15,13 +15,13 @@ from fastapi.security import OAuth2PasswordBearer
 from src.security_module.jwt import verify_jwt_token
 
 
-card_router = APIRouter()
+card_router = APIRouter(tags=["card"])
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
-@card_router.post("/list", response_model=List[Card_schema])
+@card_router.post("/list_cards", response_model=List[Card_schema])
 async def get_list_of_cards(
     filter: Annotated[Card_filter_schema, Depends(Card_filter_schema)]
 ):
@@ -38,7 +38,7 @@ async def create_card(
     payload: Card_schema,
     token: Annotated[str, Depends(oauth2_scheme)]
 ):
-    verify_jwt_token(token)
+    await verify_jwt_token(token)
     return await Card_service().create_card(payload)
 
 
@@ -47,15 +47,14 @@ async def update_card(
     payload: Annotated[Update_card_schema, Depends(Update_card_schema)],
     token: Annotated[str, Depends(oauth2_scheme)]
 ):
-    print("---\n" * 10)
-    verify_jwt_token(token)
+    await verify_jwt_token(token)
     return await Card_service().update_card(payload)
 
 
-@card_router.delete("/delete/{id}", status_code=status.HTTP_200_OK)
+@card_router.delete("/delete_card/{id}", status_code=status.HTTP_200_OK)
 async def delete_card_by_id(
     id: int,
     token: Annotated[str, Depends(oauth2_scheme)]
 ):
-    verify_jwt_token(token)
+    await verify_jwt_token(token)
     return await Card_service().delete_card(id)

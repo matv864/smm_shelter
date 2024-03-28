@@ -39,15 +39,24 @@ class Card_schema(BaseModel):
 
 
 class Full_card_schema(Card_schema):
-    articles: Optional[List["Article_schema"]] = None
+    articles: Optional[List["Full_article_schema"]] = None
+
+
+class Update_article_schema(BaseModel):
+    id: int
+    title: Optional[str] = None
+    body: Optional[str] = None
 
 
 class Article_schema(BaseModel):
     id: Optional[int] = None
     title: str
     body: Optional[str] = None
-    date_publish: date
+    date_publish: Optional[date] = None
     card_id: int
+
+
+class Full_article_schema(Article_schema):
     images: Optional[List["Image_schema"]] = None
 
 

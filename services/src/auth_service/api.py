@@ -11,7 +11,7 @@ from src.auth_service.schemas import (
     Pair_tokens
 )
 
-auth_router = APIRouter()
+auth_router = APIRouter(tags=["auth"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
