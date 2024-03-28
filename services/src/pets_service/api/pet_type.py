@@ -18,7 +18,7 @@ pet_type_rounter = APIRouter(tags=["pet_type"])
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/login")
 
 
-@pet_type_rounter.post("/list_types", response_model=List[Pet_type_shema])
+@pet_type_rounter.get("/list_types", response_model=List[Pet_type_shema])
 async def get_list_pet_types():
     return await Pet_type_service().get_list_pet_types(filter)
 

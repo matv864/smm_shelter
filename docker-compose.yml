@@ -1,22 +1,22 @@
 version: "2.24"
 
 services:
-  # main-service:
-  #   container_name: main-service
-  #   restart: always
-  #   build: services
-  #   environment:
-  #     - POSTGRES_PETS_NAME_SERVICE=postgres-pets-service
-  #     - POSTGRES_PETS_DB=pets-service
-  #     - POSTGRES_AUTH_NAME_SERVICE=postgres-auth-service
-  #     - POSTGRES_AUTH_DB=auth-service
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #   depends_on:
-  #     - postgres-pets-service
-  #     - postgres-auth-service
-  #   ports:
-  #     - 8002:8000
+  main-service:
+    container_name: main-service
+    restart: always
+    build: services
+    environment:
+      - POSTGRES_PETS_NAME_SERVICE=postgres-pets-service
+      - POSTGRES_PETS_DB=pets-service
+      - POSTGRES_AUTH_NAME_SERVICE=postgres-auth-service
+      - POSTGRES_AUTH_DB=auth-service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - postgres-pets-service
+      - postgres-auth-service
+    ports:
+      - 8002:8000
 
 
   postgres-pets-service:

@@ -28,7 +28,7 @@ async def get_list_of_cards(
     return await Card_service().get_list_cards(filter)
 
 
-@card_router.get("/{id}", response_model=Full_card_schema)
+@card_router.get("/get_card/{id}", response_model=Full_card_schema)
 async def get_card_by_id(id: int):
     return await Card_service().get_card(id)
 
