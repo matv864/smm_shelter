@@ -6,14 +6,14 @@ services:
   #   restart: always
   #   build: services
   #   environment:
-  #     - POSTGRES_JOKE_NAME_SERVICE=postgres-joke-service
-  #     - POSTGRES_JOKE_DB=joke-service
+  #     - POSTGRES_PETS_NAME_SERVICE=postgres-pets-service
+  #     - POSTGRES_PETS_DB=pets-service
   #     - POSTGRES_AUTH_NAME_SERVICE=postgres-auth-service
   #     - POSTGRES_AUTH_DB=auth-service
   #     - POSTGRES_USER=postgres
   #     - POSTGRES_PASSWORD=postgres
   #   depends_on:
-  #     - postgres-joke-service
+  #     - postgres-pets-service
   #     - postgres-auth-service
   #   ports:
   #     - 8002:8000
@@ -33,16 +33,16 @@ services:
     command: 
       - -p 5433
 
-  # postgres-auth-service:
-  #   container_name: postgres-auth-service
-  #   # restart: always
-  #   image: postgres:16
-  #   volumes:
-  #     - ${PWD}/dump/dump_auth.sql:/docker-entrypoint-initdb.d/dump_auth.sql
-  #   environment:
-  #     - POSTGRES_DB=auth-service
-  #     - POSTGRES_HOST_AUTH_METHOD=trust
-  #   ports:
-  #     - 5435:5436
-  #   command: 
-  #     - -p 5436
+  postgres-auth-service:
+    container_name: postgres-auth-service
+    # restart: always
+    image: postgres:16
+    volumes:
+      - ${PWD}/dump/dump_auth.sql:/docker-entrypoint-initdb.d/dump_auth.sql
+    environment:
+      - POSTGRES_DB=auth-service
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5435:5436
+    command: 
+      - -p 5436

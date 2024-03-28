@@ -1,6 +1,8 @@
 import jwt
 from datetime import datetime, timedelta
 
+from fastapi import HTTPException
+
 SECRET_KEY = "my_secret_key"
 ALGORITHM = "HS256"
 EXPIRATION_TIME_ACCESS = timedelta(minutes=30)
@@ -43,4 +45,4 @@ async def verify_jwt_token(token: str):
         )
         return decoded_data["username"]
     except jwt.PyJWTError:
-        return None
+        raise HTTPException(status_code=403, detail="bad token")

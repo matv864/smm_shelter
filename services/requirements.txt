@@ -4,3 +4,5 @@ pydantic
 sqlalchemy
 pydantic_settings
 asyncpg
+pyjwt
+python-multipart

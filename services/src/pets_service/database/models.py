@@ -20,6 +20,7 @@ class Card(Base):
     pet_name: Mapped[str] = mapped_column()
     pet_type_id: Mapped[int] = mapped_column(ForeignKey("pet_type.id"))
     date_birth: Mapped[date] = mapped_column(DateTime(timezone=True))
+    main_image: Mapped[str] = mapped_column()
     castrated: Mapped[bool] = mapped_column()
     vaccinated: Mapped[bool] = mapped_column()
     cat_litter_box: Mapped[bool] = mapped_column()
