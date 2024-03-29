@@ -1,5 +1,7 @@
 version: "2.24"
 
+name: smm_shelter
+
 services:
   main-service:
     container_name: main-service
@@ -28,10 +30,10 @@ services:
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - 5432:5433
-    command: 
-      - -p 5433
+    # ports:
+    #   - 5432:5433
+    # command: 
+    #   - -p 5433
 
   postgres-auth-service:
     container_name: postgres-auth-service
@@ -42,7 +44,7 @@ services:
     environment:
       - POSTGRES_DB=auth-service
       - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - 5435:5436
-    command: 
-      - -p 5436
+    # ports:
+    #   - 5435:5436
+    # command: 
+    #   - -p 5436
