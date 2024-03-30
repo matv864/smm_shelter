@@ -1,4 +1,5 @@
 from fastapi import UploadFile
+from fastapi.responses import FileResponse
 
 import os
 from asyncio import sleep
@@ -35,3 +36,7 @@ async def delete_file(card_id: int, filename: str):
     full_path = f"{STORAGE_PATH}/pets_media/{card_id}/{filename}"
     if os.path.isfile(full_path):
         os.remove(full_path)
+
+
+async def get_file(card_id: int, filename: str):
+    return FileResponse(f"{STORAGE_PATH}/pets_media/{card_id}/{filename}")
