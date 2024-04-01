@@ -26,7 +26,7 @@ services:
     # restart: always
     image: postgres:16
     volumes:
-      - ${PWD}/dump/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
+      - ./dump/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
@@ -40,7 +40,7 @@ services:
     # restart: always
     image: postgres:16
     volumes:
-      - ${PWD}/dump/dump_auth.sql:/docker-entrypoint-initdb.d/dump_auth.sql
+      - ./dump/dump_auth.sql:/docker-entrypoint-initdb.d/dump_auth.sql
     environment:
       - POSTGRES_DB=auth-service
       - POSTGRES_HOST_AUTH_METHOD=trust
