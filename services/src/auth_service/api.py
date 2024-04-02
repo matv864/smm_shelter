@@ -36,6 +36,6 @@ async def who_is_it(token: Annotated[str, Depends(oauth2_scheme)]):
     return await Auth_service().who_is_it(token)
 
 
-@auth_router.get("/who_am_i")
+@auth_router.post("/who_am_i")
 async def who_am_i(current_user: str = Depends(who_is_it)):
     return current_user
