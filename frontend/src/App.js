@@ -1,10 +1,10 @@
 import './App.css';
-import ApiComponent from './api/api';
+import Test from './api/api';
 
 function App() {
   return (
     <div className="App">
-      <ApiComponent/>
+      <Test/>
     </div>
   );
 }
