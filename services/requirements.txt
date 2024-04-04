@@ -7,3 +7,5 @@ asyncpg
 pyjwt
 python-multipart
 aiofiles
+pytest
+httpx

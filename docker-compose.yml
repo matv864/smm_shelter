@@ -3,22 +3,22 @@ version: "2.24"
 name: smm_shelter
 
 services:
-  main-service:
-    container_name: main-service
-    restart: always
-    build: services
-    environment:
-      - POSTGRES_PETS_NAME_SERVICE=postgres-pets-service
-      - POSTGRES_PETS_DB=pets-service
-      - POSTGRES_AUTH_NAME_SERVICE=postgres-auth-service
-      - POSTGRES_AUTH_DB=auth-service
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-    depends_on:
-      - postgres-pets-service
-      - postgres-auth-service
-    ports:
-      - 8002:8000
+  # main-service:
+  #   container_name: main-service
+  #   restart: always
+  #   build: services
+  #   environment:
+  #     - POSTGRES_PETS_NAME_SERVICE=postgres-pets-service
+  #     - POSTGRES_PETS_DB=pets-service
+  #     - POSTGRES_AUTH_NAME_SERVICE=postgres-auth-service
+  #     - POSTGRES_AUTH_DB=auth-service
+  #     - POSTGRES_USER=postgres
+  #     - POSTGRES_PASSWORD=postgres
+  #   depends_on:
+  #     - postgres-pets-service
+  #     - postgres-auth-service
+  #   ports:
+  #     - 8002:8000
 
 
   postgres-pets-service:
@@ -30,10 +30,10 @@ services:
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
-    # ports:
-    #   - 5432:5433
-    # command: 
-    #   - -p 5433
+    ports:
+      - 5432:5433
+    command: 
+      - -p 5433
 
   postgres-auth-service:
     container_name: postgres-auth-service
@@ -44,7 +44,7 @@ services:
     environment:
       - POSTGRES_DB=auth-service
       - POSTGRES_HOST_AUTH_METHOD=trust
-    # ports:
-    #   - 5435:5436
-    # command: 
-    #   - -p 5436
+    ports:
+      - 5435:5436
+    command: 
+      - -p 5436

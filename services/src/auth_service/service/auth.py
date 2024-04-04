@@ -4,12 +4,10 @@ from sqlalchemy import select, insert
 from fastapi import HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 
-from src.security_module.jwt import (
+from src.security_module import (
     create_pair_tokens,
     create_access_jwt_token,
-    verify_jwt_token
-)
-from src.security_module.passwords import (
+    verify_jwt_token,
     get_hashing_password,
     match_password_with_hash
 )
