@@ -51,7 +51,7 @@ class Test_auth:
 
         response = httpx.post(url, json=user_credentials, headers=headers)
         return response
-    
+
     def _who_am_i_request(self, access_token: str):
         url = f"{HOST}/who_am_i"
         headers = {
