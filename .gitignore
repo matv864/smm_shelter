@@ -11,3 +11,4 @@ lib/
 lib64/
 python3.11/
 pets_media/
+.pytest_cache/

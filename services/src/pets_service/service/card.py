@@ -54,7 +54,7 @@ class Card_service:
 
         query_view = (
             update(Card)
-            .values(counter_views=Card.counter_views+1)
+            .values(counter_views=Card.counter_views + 1)
         )
 
         try:

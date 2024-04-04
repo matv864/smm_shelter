@@ -68,7 +68,7 @@ class Test_auth:
     def test_register(self):
         response = self._registration_request("111", "111")
         assert (
-            response.status_code == 200 or
+            response.status_code == 201 or
             response.json()["detail"] == "user exists"
         )
 
