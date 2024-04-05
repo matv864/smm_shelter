@@ -1,6 +1,6 @@
 from typing import Annotated, List
 
-from fastapi import APIRouter, status, Depends, UploadFile, Form
+from fastapi import APIRouter, status, Depends
 
 
 from src.pets_service.service.card import Card_service
@@ -58,16 +58,3 @@ async def delete_card_by_id(
 ):
     await verify_jwt_token(token)
     return await Card_service().delete_card(id)
-
-
-# ------ working with main image ------
-
-
-@card_router.post("/upload_main_image", status_code=status.HTTP_200_OK)
-async def upload_main_image(
-    id: Annotated[int, Form()],
-    file: UploadFile,
-    token: Annotated[str, Depends(oauth2_scheme)]
-):
-    await verify_jwt_token(token)
-    return await Card_service().upload_image(id, file)

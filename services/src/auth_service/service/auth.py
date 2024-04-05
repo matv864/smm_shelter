@@ -4,12 +4,10 @@ from sqlalchemy import select, insert
 from fastapi import HTTPException
 from fastapi.security import OAuth2PasswordRequestForm
 
-from src.security_module.jwt import (
+from src.security_module import (
     create_pair_tokens,
     create_access_jwt_token,
-    verify_jwt_token
-)
-from src.security_module.passwords import (
+    verify_jwt_token,
     get_hashing_password,
     match_password_with_hash
 )
@@ -80,7 +78,8 @@ class Auth_service:
         data_from_refresh = await verify_jwt_token(payload.refresh_token)
         if data_from_refresh is None:
             raise HTTPException(status_code=403, detail="bad token")
-        access_token = Access_token(access_token=await create_access_jwt_token(
+        access_token = Access_token(
+            access_token=await create_access_jwt_token(
                 data_from_refresh
             )
         )

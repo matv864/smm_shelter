@@ -1,10 +1,9 @@
-from fastapi import UploadFile, HTTPException
+from fastapi import HTTPException
 
 from src.pets_service.database.session import async_session_maker
 from sqlalchemy import select, insert, update, delete
 from sqlalchemy.orm import selectinload
 
-from src.file_module.file_worker import save_file, delete_file
 
 from src.pets_service.database.models import (
     Card,
@@ -55,7 +54,7 @@ class Card_service:
 
         query_view = (
             update(Card)
-            .values(counter_views=Card.counter_views+1)
+            .values(counter_views=Card.counter_views + 1)
         )
 
         try:
@@ -112,28 +111,6 @@ class Card_service:
         )
         try:
             Article_service().delete_article_by_card_id(id)
-            await session.execute(query)
-            await session.commit()
-            return "success"
-        except Exception as e:
-            return f"error: {type(e)} |*-*| {str(e)}"
-        finally:
-            await session.close()
-
-    async def upload_image(self, id: int, file: UploadFile):
-        last_image_path = (await self.get_card(id)).main_image
-        if last_image_path:
-            await delete_file(id, last_image_path)
-        pathfile = await save_file(id, file)
-
-        session = async_session_maker()
-        query = (
-            update(Card)
-            .where(Card.id == id)
-            .values(main_image=pathfile)
-        )
-
-        try:
             await session.execute(query)
             await session.commit()
             return "success"

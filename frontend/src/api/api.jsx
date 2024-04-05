@@ -1,81 +1,130 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkVnb3IiLCJleHAiOjE3MTIwNDEyMzR9.mjJ79mTNLYuy0NuE0LHAXTjBQmD2pWuQ51Z93DNSgkc"
+let tokenStr = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ijk5OSIsImV4cCI6MTcxMjI5MDM1N30.weYjRExSzVhK9K5RZDKDp_MWkkseqY6C1k1ZRhWG0aM"
+let api = axios.create(
+    {
+        withCredentials: false,
+        baseURL: `http://localhost:8002/`,
+        headers: {
+            'accept': 'application/json',
+            'Authorization': `Bearer ${tokenStr}`
+        }
+    }
+)
+
 export default function Test() {
   const [data, setData] = useState([]);
-  axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
-  useEffect(() => {
-    axios
-      .get("http://localhost:8002/who_am_i")
-      .then((response) => {
-        setData(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    useEffect(() => {
+        api.post('who_am_i')
+        .then((res) => {
+            setData(res);
+        })
+        .catch(err => {
+            console.log(err)
+        })
+  },[]);
   console.log(data)
   return (
     <div>
-      <h1>Data</h1>
+      data
     </div>
   );
 }
 
-// function Test() {
-//   const [data, setData] = useState({ name: "", passwd: "" });
-//   const [response, setResponse] = useState("");
 
-//   const handleChange = (event) => {
-//     setData({ ...data, [event.target.name]: event.target.value });
-//   };
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     axios
-//       .post("http://localhost:8002/login", data, {headers: {"Authorization" : `Bearer ${access_token}`}})
-//       .then((response) => {
-//         setResponse(response.data);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// get requests
+
+
+
+// export const UsersApi = {
+//     getCard(id = 1) {
+//         return api.get('api/v1/get_card/' + id)
+//         .then (response => response.data)
+//         .catch((error) => {
+//             console.log(error);
+//           });
+//     },
+//     getListTypes() {
+//         return api.get('/api/v1/list_types')
+//         .then (response => response.data)
+//         .catch((error) => {
+//             console.log(error);
+//           });
+//     },
+// }
+
+// export default function Test() {
+//   const [data, setData] = useState([]);
+//   useEffect(() => {
+//     api.post(`who_am_i`)
+//       .then((data) => {
+//         setData(data);
 //       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
-
+//   },[]);
+//   console.log(data)
 //   return (
 //     <div>
-//       <h1>Отправка данных на сервер</h1>
-//       <form onSubmit={handleSubmit}>
-//         <label>
-//           Имя:
-//           <input
-//             type="text"
-//             name="name"
-//             value={data.name}
-//             onChange={handleChange}
-//           />
-//         </label>
-//         <br />
-//         <label>
-//           passwd:
-//           <input
-//             type="text"
-//             name="passwd"
-//             value={data.passwd}
-//             onChange={handleChange}
-//           />
-//         </label>
-//         <br />
-//         <button type="submit">Отправить</button>
-//       </form>
-//       {response && (
-//         <p>
-//           Данные успешно отправлены: {response.name} ({response.passwd})
-//         </p>
-//       )}
+//       data
 //     </div>
 //   );
 // }
 
-// export default Test;
