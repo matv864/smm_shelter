@@ -1,0 +1,19 @@
+# web app 
+fastapi
+uvicorn
+python-multipart
+
+# validator
+pydantic
+pydantic_settings
+
+# SQL database
+sqlalchemy
+asyncpg
+
+# security
+pyjwt
+passlib
+
+# open-street-map
+pygeotile

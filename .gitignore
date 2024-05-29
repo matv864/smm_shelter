@@ -1,14 +1,17 @@
+# github
+.github/
+
+
+# virtual environment
 .venv
-.env
 pyvenv.cfg
 venv
-*.lock
-.DS_Store
+
+# cache
 __pycache__/
-bin/
-include/
-lib/
-lib64/
-python3.11/
-pets_media/
+*.lock
 .pytest_cache/
+
+
+# no personal info
+# .env 

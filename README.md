@@ -1,38 +1,58 @@
-# SMM_SHELTER
-_**big network of our small friends who needs family**_
-
-![Docker Badge](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge)
-![PostgreSQL Badge](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge)
-![SQLAlchemy Badge](https://img.shields.io/badge/SQLAlchemy-D71F00?logo=sqlalchemy&logoColor=fff&style=for-the-badge)
+# weather_api
+![Python Badge](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff&style=for-the-badge)
 ![FastAPI Badge](https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=fff&style=for-the-badge)
-![React Badge](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=000&style=for-the-badge)
-![Static Badge](https://img.shields.io/badge/figma-F56E25?style=for-the-badge&logo=figma&logoColor=white&link=https%3A%2F%2Fwww.figma.com%2F)
+![Swagger Badge](https://img.shields.io/badge/Swagger-85EA2D?logo=swagger&logoColor=000&style=for-the-badge)
+![SQLAlchemy Badge](https://img.shields.io/badge/SQLAlchemy-D71F00?logo=sqlalchemy&logoColor=fff&style=for-the-badge)
+![PostgreSQL Badge](https://img.shields.io/badge/PostgreSQL-4169E1?logo=postgresql&logoColor=fff&style=for-the-badge)
+![Docker Badge](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=fff&style=for-the-badge)
+
+# postman
+https://winter-moon-653730.postman.co/workspace/f2b7b8af-7bb7-4a7f-8d6c-73d6cd457634
+
+# фичи
+у меня есть интерактивная карта по эндпоинту 
+http://0.0.0.0:8080/map/
 
 
-***we create site where any shelter for pets without home can find family to him faster.***
+# проблемы
+не работают куки, 
+вставьте, пожалуйста, вручную
 
----
-
-# Table of contents
-- [SMM\_SHELTER](#smm_shelter)
-- [Table of contents](#table-of-contents)
-- [Background](#background)
-- [Quick install](#quick-install)
-- [About the developers](#about-the-developers)
-
----
-
-# Background
-I wanted to close my educational practice but now I think it is can become very usefull project
-
----
-
-# Quick install
-```bash
-docker-compose up
+poi в добавленных методах воспринимается в формате
+```json
+...
+"osmData": {
+    "updatePOI": "bool"
+}
+...
+```
+но я не понял как принимать именно в таком виде, поэтому сделал альтернативу, не уступающая
+...
+```json
+"poi": "bool"
+...
 ```
 
+убрал авторизацию, потому что здесь фронтенд не может с помощью fetch получать и отправлять куки
 
----
+не успеваю занести методы фронта в постман, но в свагере всё есть
 
-# About the developers
+
+# связь с участником
+tg: t.me/matv864
+
+# как запускать
+```docker-compose up```
+или
+```docker compose up```
+
+# некоторые данные
+бэкенд - 0.0.0.0:8002, 0.0.0.0:8002/docs
+фронтенд - 0.0.0.0:8080, 0.0.0.0:8080/docs
+
+
+
+# дополнительная информация
+Участник предоставляет Организатору разрешение на использование, модификацию, публикацию проекта и дальнейшее распространение, включая право на внесение изменений, дополнений, предисловий, комментариев и любых других переработок.
+Участник гарантирует, что проект не нарушает действующее законодательство, не содержит информации, дискредитирующей лиц или продукты, не вызывает судебных исков или претензий, не нарушает прав и интересов третьих лиц, соответствует общественным интересам, принципам гуманности и морали. Участник подтверждает, что все используемые в проекте материалы и данные являются его собственностью или использованы с разрешения правообладателей, что не ограничивает использование проекта Организатором в полном объеме.
+Участник подтверждает, что передача исключительных прав на проект, созданный в рамках конкурса, не нарушает права третьих лиц и что все материалы проекта могут быть использованы Организатором без каких-либо ограничений.
