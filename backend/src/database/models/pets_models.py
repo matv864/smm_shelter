@@ -43,4 +43,4 @@ class Images(Base):
         default=uuid.uuid4
     )
     path: Mapped[str] = mapped_column(nullable=False)
-    parent_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets.id"))
+    pets_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets.id"))
