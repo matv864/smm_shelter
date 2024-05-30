@@ -26,8 +26,8 @@ SET default_table_access_method = heap;
 
 CREATE TABLE public.image (
     id uuid NOT NULL,
-    path character varying NOT NULL,
-    parent_id uuid NOT NULL
+    filename character varying NOT NULL,
+    pets_id uuid NOT NULL
 );
 
 
@@ -68,22 +68,20 @@ ALTER TABLE public.pets_type OWNER TO postgres;
 -- Data for Name: image; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.image (id, path, parent_id) VALUES ('8d883f63-d47d-47c7-b265-6d04be668765', 'собакен в полный рост', '29d176b7-a94f-4a92-ac52-cfe6c302c82e');
-INSERT INTO public.image (id, path, parent_id) VALUES ('1c6086f3-957b-478f-926a-e3c96607d3e9', 'собакен лежит', '29d176b7-a94f-4a92-ac52-cfe6c302c82e');
 
 
 --
 -- Data for Name: pets; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pets (id, status, type_id, date_birth, litter_box, vaccinated, castrated, description) VALUES ('29d176b7-a94f-4a92-ac52-cfe6c302c82e', 'в приюте', '08118767-fe63-48bb-9548-74da14eab996', '1000-01-01 00:00:00', true, true, true, 'собакен');
+INSERT INTO public.pets (id, status, type_id, date_birth, litter_box, vaccinated, castrated, description) VALUES ('bebadf93-42eb-4df9-bb95-6964225cbb96', 'cwwecew', '63852362-7d6a-4451-a42d-8750c7ec8ac9', '1111-01-01 00:00:00', true, true, true, NULL);
 
 
 --
 -- Data for Name: pets_type; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pets_type (id, name, description) VALUES ('08118767-fe63-48bb-9548-74da14eab996', 'собака', '-----');
+INSERT INTO public.pets_type (id, name, description) VALUES ('63852362-7d6a-4451-a42d-8750c7ec8ac9', 'pesel', NULL);
 
 
 --
@@ -111,11 +109,11 @@ ALTER TABLE ONLY public.pets_type
 
 
 --
--- Name: image image_parent_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: image image_pets_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
 ALTER TABLE ONLY public.image
-    ADD CONSTRAINT image_parent_id_fkey FOREIGN KEY (parent_id) REFERENCES public.pets(id);
+    ADD CONSTRAINT image_pets_id_fkey FOREIGN KEY (pets_id) REFERENCES public.pets(id);
 
 
 --

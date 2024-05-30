@@ -1,3 +1,10 @@
-# from pydantic import BaseModel
+from typing import Optional
+import uuid
 
-# from src.security_module import Secret_schema
+from pydantic import BaseModel
+
+
+class Images_record_schema(BaseModel):
+    id: Optional[uuid.UUID] = None
+    filename: str
+    pets_id: uuid.UUID

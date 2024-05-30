@@ -12,6 +12,7 @@ class Pets(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(
         primary_key=True,
+        unique=True,
         default=uuid.uuid4
     )
     status: Mapped[str] = mapped_column(nullable=False)
@@ -29,6 +30,7 @@ class Pets_type(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(
         primary_key=True,
+        unique=True,
         default=uuid.uuid4
     )
     name: Mapped[str] = mapped_column(nullable=False)
@@ -40,7 +42,8 @@ class Images(Base):
 
     id: Mapped[uuid.UUID] = mapped_column(
         primary_key=True,
+        unique=True,
         default=uuid.uuid4
     )
-    path: Mapped[str] = mapped_column(nullable=False)
+    filename: Mapped[str] = mapped_column(nullable=False)
     pets_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets.id"))

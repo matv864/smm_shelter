@@ -17,3 +17,6 @@ passlib
 
 # open-street-map
 pygeotile
+
+# async files
+aiofiles
