@@ -3,31 +3,39 @@ version: "2.27"
 name: smm_shelter
 
 services:
-#   frontend:
-#     container_name: frontend
-#     restart: always
-#     build: frontend
-#     environment:
-#       - BACKEND_LINK=0.0.0.0:8002
-#     ports:
-#       - 8080:8080
-#     depends_on:
-#       - backend
-
-
-  # backend:
-  #   container_name: backend
+  # admin_panel:
+  #   container_name: admin_panel
   #   restart: always
-  #   build: backend
-  #   environment:
-  #     - POSTGRES_WEATHER_NAME_SERVICE=postgres-pets-service
-  #     - POSTGRES_WEATHER_DB=pets-service
-  #     - POSTGRES_USER=postgres
-  #     - POSTGRES_PASSWORD=postgres
-  #   depends_on:
-  #     - postgres-pets-service
+  #   build: admin_panel
+  #   # environment:
+  #   #   - BACKEND_LINK=0.0.0.0:8002
   #   ports:
-  #     - 8002:8000
+  #     - 8080:8080
+  #   # depends_on:
+  #   #   - backend
+
+  frontend:
+    container_name: frontend
+    restart: always
+    build: frontend
+    depends_on:
+      - backend
+    ports:
+      - 8080:8080
+
+  backend:
+    container_name: backend
+    restart: always
+    build: backend
+    environment:
+      - POSTGRES_NAME_SERVICE=postgres-pets-service
+      - POSTGRES_DB=pets-service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    depends_on:
+      - postgres-pets-service
+    ports:
+      - 8002:8000
 
 
   postgres-pets-service:
@@ -39,7 +47,21 @@ services:
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
-    ports:
-      - 5432:5433
-    command: 
-      - -p 5433
+    # ports:
+    #   - 5432:5433
+    # command: 
+    #   - -p 5433
+
+  # nginx:
+  #   image: nginx:1.25.4
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/mime.types:/etc/nginx/mime.types
+  #     # - web:/app/dist
+  #     # - ./frontend/src/assets/images/tempory-assets:/app/dist/src/assets/images/tempory-assets
+  #   ports:
+  #     - 80:80
+  #   depends_on:
+  #     - event-service
+  #     - auth-service
+  #     - backend

@@ -1,0 +1,7 @@
+# telegram API
+pyTelegramBotAPI
+# aiogram
+
+# httpx
+
+# python-dotenv

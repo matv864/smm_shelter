@@ -15,6 +15,7 @@ class Pets(Base):
         unique=True,
         default=uuid.uuid4
     )
+    name: Mapped[str] = mapped_column(nullable=False)
     status: Mapped[str] = mapped_column(nullable=False)
     type_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets_type.id"))
     date_birth: Mapped[datetime.datetime] = mapped_column(nullable=True)

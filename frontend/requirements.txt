@@ -1,0 +1,6 @@
+# web app 
+fastapi
+uvicorn
+
+# render templates
+jinja2

@@ -1,0 +1,12 @@
+.venv
+.env
+pyvenv.cfg
+venv
+*.lock
+.DS_Store
+__pycache__/
+bin/
+include/
+lib/
+lib64/
+python3.11/
