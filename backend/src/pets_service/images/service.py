@@ -12,6 +12,9 @@ from .schemas import Images_record_schema
 
 images_crud = My_crud(Images)
 
+path_to_pets_storage = "/storage/pets_images/"
+path_to_pets_image = "/storage/pets_images/{}"
+
 
 class Images_service:
     async def add_images(
@@ -31,7 +34,7 @@ class Images_service:
             )
 
             async with aiofiles.open(
-                f"storage/pets_images/{image_record.id}", 'wb'
+                path_to_pets_image.format(image_record.id), 'wb'
             ) as out_file:
                 while content := await image.read(1024):
                     await out_file.write(content)
@@ -46,8 +49,7 @@ class Images_service:
         )
 
     async def get_file_image(self, images_id: uuid.UUID):
-        path_to_image = f"storage/pets_images/{images_id}"
-        if not os.path.exists(path_to_image):
+        if not os.path.exists(path_to_pets_storage):
             return "no exists"
 
         image_record: Images_record_schema = await images_crud.get(
@@ -55,7 +57,7 @@ class Images_service:
             Output_model=Images_record_schema
         )
         return FileResponse(
-            path=path_to_image,
+            path=path_to_pets_storage,
             filename=image_record.filename,
             media_type='multipart/form-data'
         )
@@ -75,6 +77,6 @@ class Images_service:
         return await images_crud.remove([Images.id == images_id])
 
     async def delete_file(self, images_id: uuid.UUID):
-        path_to_image = f"storage/pets_images/{images_id}"
+        path_to_image = path_to_pets_image.format(images_id)
         if os.path.exists(path_to_image):
             os.remove(path_to_image)
