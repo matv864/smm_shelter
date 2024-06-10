@@ -7,11 +7,17 @@
 pyvenv.cfg
 venv
 
+node_modules/
+
+
 # cache
 __pycache__/
 *.lock
 .pytest_cache/
 
+package-lock.json
+dist/
 
-# no personal info
-# .env 
+
+# files only for dev
+frontend/__trash
