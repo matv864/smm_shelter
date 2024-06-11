@@ -54,6 +54,7 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/mime.types:/etc/nginx/mime.types
       - web:/app/dist
+      - ./assets:/app/dist/assets
       - ./storage:/storage
     ports:
       - 8888:8888
