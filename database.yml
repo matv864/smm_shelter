@@ -1,0 +1,21 @@
+version: "2.27"
+
+name: smm_shelter
+
+services:
+  postgres-pets-service:
+    container_name: postgres-pets-service
+    restart: always
+    image: postgres:16
+    volumes:
+      - ./dump/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
+    environment:
+      - POSTGRES_DB=pets-service
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - 5432:5433
+    command: 
+      - -p 5433
+
+
+

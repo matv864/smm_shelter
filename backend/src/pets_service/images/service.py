@@ -15,6 +15,11 @@ images_crud = My_crud(Images)
 path_to_pets_storage = "/storage/pets_images/"
 path_to_pets_image = "/storage/pets_images/{}"
 
+# only for dev
+# full_path = "/home/username/it/prog/smm_shelter"
+# path_to_pets_storage = full_path + path_to_pets_storage
+# path_to_pets_image = full_path + path_to_pets_image
+
 
 class Images_service:
     async def add_images(
@@ -22,6 +27,7 @@ class Images_service:
         images: list[UploadFile],
         pets_id: uuid.UUID
     ):
+        print(os.listdir("/"))
         result_records = []
 
         for image in images:

@@ -8,6 +8,10 @@ server:
 	make delete_compose
 	docker compose -f server.yml up
 
+database:
+	make delete_compose
+	docker compose -f database.yml up
+
 full_clean:
 	docker container prune -f
 	docker rmi smm_shelter-frontend

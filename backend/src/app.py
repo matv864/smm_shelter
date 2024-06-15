@@ -7,7 +7,7 @@ from src.pets_service.router import main_pets_router
 
 app = FastAPI(
     title="backend",
-    lifespan=lifespan
+    # lifespan=lifespan
 )
 
 app.add_middleware(

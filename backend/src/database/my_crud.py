@@ -1,9 +1,22 @@
+from fastapi.exceptions import HTTPException
+
 from sqlalchemy import insert, select, exists, update, delete
 from sqlalchemy.orm import selectinload
+from sqlalchemy.exc import IntegrityError
 
 from src.database.core import async_session_maker
 
-# from src.database.models import Pets
+
+def exception_wrapper(func):
+    async def wrapper(*args, **kwargs):
+        try:
+            return await func(*args, **kwargs)
+        except IntegrityError:
+            raise HTTPException(status_code=400, detail="bad foreign object")
+        except Exception as e:
+            error_text = f"{type(e)} - {str(e)}"
+            raise HTTPException(status_code=400, detail=error_text)
+    return wrapper
 
 
 class My_crud:
@@ -15,6 +28,7 @@ class My_crud:
         self.Main_model = Main_model
         self.fields_to_join = fields_to_join
 
+    @exception_wrapper
     async def create(
         self,
         record,
@@ -34,6 +48,7 @@ class My_crud:
             return output_record
         return
 
+    @exception_wrapper
     async def exist(
         self,
         filters
@@ -49,6 +64,7 @@ class My_crud:
             query_executed = await session.execute(query)
             return query_executed.scalar()
 
+    @exception_wrapper
     async def get(
         self,
         filters=[],
@@ -94,6 +110,7 @@ class My_crud:
                 return None
             return Output_model(**result_object.__dict__)
 
+    @exception_wrapper
     async def patch(
         self,
         filters,
@@ -125,6 +142,7 @@ class My_crud:
             return output_record
         return
 
+    @exception_wrapper
     async def remove(
         self,
         filters

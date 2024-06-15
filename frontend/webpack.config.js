@@ -1,8 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/App.js',
   module: {
     rules: [
       { test: /\.svg$/, use: 'svg-inline-loader' },
@@ -14,8 +13,5 @@ module.exports = {
     path: path.resolve(__dirname, '/app/dist'),
     filename: 'bundle.js',
   },
-  plugins: [
-    new HtmlWebpackPlugin()
-  ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
 };
