@@ -13,19 +13,21 @@
   </head>
   <body>
     <header class="header">
-      <div class="header-container">
+      <div>
         <img src="/assets/images/logo.svg" alt="logo" />
-        <nav>
+      </div>
+      <div class="header-container">
+        <div>
           <ul class="navbar">
             <li class="nav-item">О нас</li>
             <li class="nav-item">Как нам помочь</li>
-            <li class="nav-item">Мероприятия</li>
+            <a href="/assets/our-pets.html"><li class="nav-item">Мероприятия</li></a>
             <li class="nav-item">Наши любимцы</li>
             <li class="nav-item">Помощь вашим животным</li>
             <li class="nav-item">Правила</li>
             <li class="nav-item">Контакты</li>
           </ul>
-        </nav>
+        </div>
 
         <div class="menu">
           <input type="checkbox" id="burger-checkbox" class="burger-checkbox" />
@@ -57,7 +59,7 @@
         <div class="aboutUs-container">
           <img src="/assets/images/img-dog-1.png" alt="img-dog-1" />
           <p class="text-start">
-            <span class="text-bold">Приют для животных</span> — это место, где
+            <span class="text-bold">Фонд для животных</span> — это место, где
             содержат бездомных, потерянных или брошенных собак и кошек. Основные
             функции приюта: оперативная помощь животным, долгосрочная забота,
             поиск нового дома или хозяина. В мире существуют приюты двух типов:
@@ -67,15 +69,17 @@
           </p>
         </div>
       </section>
-      <section class="marginSection helpUs">
-        <h1>Как нам помочь?</h1>
-        <div class="blocks-container">
-          <div class="block">Сделать так</div>
-          <div class="block">Сделать так</div>
-          <div class="block">Сделать так</div>
-          <div class="block">Сделать так</div>
-        </div>
-      </section>
+      <div class="section-wrapper">
+        <section class="marginSection helpUs">
+          <h1>Как нам помочь?</h1>
+          <div class="blocks-container">
+            <div class="block">Сделать так</div>
+            <div class="block">Сделать так</div>
+            <div class="block">Сделать так</div>
+            <div class="block">Сделать так</div>
+          </div>
+        </section>
+      </div>
       <section class="marginSection events">
         <div class="events-title-container">
           <h1>Мероприятия</h1>
@@ -107,7 +111,7 @@
             Все животные <span class="light-color">ждут своих хозяев!</span>
           </h1>
           <p>
-            Приют для животных — это место, где содержат бездомных, потерянных
+            Фонд для животных — это место, где содержат бездомных, потерянных
             или брошенных собак и кошек.
           </p>
           <div class="twoButtons">
@@ -115,7 +119,10 @@
             <button class="transparent btn">Хочу приехать</button>
           </div>
         </div>
-        <img src="/assets/images/img-animal-waiting.png" alt="img-animal-waiting" />
+        <img
+          src="/assets/images/img-animal-waiting.png"
+          alt="img-animal-waiting"
+        />
       </section>
       <section class="marginSection helpingAnimals">
         <div class="events-title-container">
@@ -167,41 +174,44 @@
         </div>
       </section>
       <section class="marginSection rules">
-        <h1>Правила</h1>
+        <h1>Что делать, если я нашел животное?</h1>
         <div class="rules-container">
-          <p class="numbered-paragraph">
+          <p class="numbered-paragraph grid-item-1">
             <span class="number">1.</span>
             <span class="text-of-rules"
-              >Соблюдайте требования Федерального закона «Об ответственном
-              обращении с животными».</span
+              >Определите, нужна ли медицинская помощь  животному.
+              Если оно ранено, накормите его и 
+              отвезите в ветеринарную клинику.</span
             >
           </p>
-          <p class="numbered-paragraph">
+          <p class="numbered-paragraph grid-item-2">
             <span class="number">2.</span>
             <span class="text-of-rules"
-              >Обеспечьте комфортные условия содержания животных: температуру,
-              влажность, освещение.</span
+              >Если животное не ранено, накормите его.
+              Можнодать кошке сухой или влажный корм, мясо или 
+              мясные субпродукты, а собаке — корм, консервы,
+              мясо с крупами или рыбу. Не забудьте про воду.</span
             >
           </p>
-          <p class="numbered-paragraph">
+          <p class="numbered-paragraph grid-item-3">
             <span class="number">3.</span>
             <span class="text-of-rules"
-              >Обустройте ветеринарный пункт, карантинное помещение и стационар
-              для лечения животных.</span
+              >Проверьте животное на наличие чипа. Если найдёте код,
+              свяжитесь с хозяином через  ветеринарную клинику.</span
             >
           </p>
-          <p class="numbered-paragraph">
+          <p class="numbered-paragraph grid-item-4">
             <span class="number">4.</span>
             <span class="text-of-rules"
-              >Проводите осмотр животных, их маркирование, стерилизацию и
-              вакцинацию.</span
+              >Проверьте животное в ветклинике на наличие 
+              инфекций и сделайте необходимые прививки.</span
             >
           </p>
-          <p class="numbered-paragraph">
+          <p class="numbered-paragraph grid-item-5">
             <span class="number">5.</span>
             <span class="text-of-rules"
-              >Обеспечьте уход за животными, кормление, поение, выгул и уборку
-              помещений приюта.</span
+              >Если не удалось найти хозяина, помогите 
+              животному найти временный дом или  обратитесь в нащ фонд.</span
             >
           </p>
         </div>
@@ -210,23 +220,25 @@
     <footer class="footer">
       <div class="footer-container">
         <div class="footer-block-item">
-          <h1>zooprinm125</h1>
-          <p>Приют для животных</p>
+          <img src="/assets/images/logo.svg" alt="logo" />
+          <p>Фонд для животных</p>
           <p>Политика конфиденцильности</p>
         </div>
-        <div>
+        <div class="adress">
           <p>Адрес приюта <br />г. Москва ул.Оружейная 45</p>
           <p>Почта <br />info@mail.ru</p>
           <p>Социальные сети</p>
-          <img src="" alt="telegram" />
-          <img src="" alt="whatsapp" />
+          <div class="footer-logos">
+            <img src="/assets/images/TG-logo.png" alt="telegram" />
+            <img src="/assets/images/WA-logo.png" alt="whatsapp" />
+          </div>
         </div>
         <div>
           <h1>+7 (500) 500-50-50</h1>
           <p>Круглосуточно</p>
         </div>
         <div>
-          <p>дизайн</p>
+          <p>Дизайн</p>
           <p>Разработчик</p>
         </div>
       </div>

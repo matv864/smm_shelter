@@ -1,8 +1,11 @@
-from typing import Optional
+from typing import Optional, List
 import uuid
 import datetime
 
 from pydantic import BaseModel
+
+
+from src.pets_service.images.schemas import Images_record_schema
 
 
 class Pets_insert_schema(BaseModel):
@@ -29,12 +32,19 @@ class Pets_patch_schema(BaseModel):
 
 class Pets_output_schema(BaseModel):
     id: uuid.UUID
-    name: str
+
     status: str
+
+    name: str
+    gender: str
+
     type_id: uuid.UUID
+
     date_birth: Optional[datetime.datetime]
-    litter_box: Optional[bool]
-    vaccinated: Optional[bool]
-    castrated: Optional[bool]
-    description: Optional[str]
-    images: list
+    age: int
+
+    personality: str
+    appearance: str
+    health: str
+
+    images: List["Images_record_schema"]

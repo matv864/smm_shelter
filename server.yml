@@ -15,13 +15,13 @@ services:
   #   #   - backend
 
 
-  frontend:
-    container_name: frontend
-    restart: always
-    build: ./frontend
-    volumes:
-      - web:/app/dist
-      - ./storage:/storage
+  # frontend:
+  #   container_name: frontend
+  #   restart: always
+  #   build: ./frontend
+  #   volumes:
+  #     - web:/app/dist
+  #     - ./storage:/storage
 
   backend:
     container_name: backend
@@ -60,7 +60,7 @@ services:
       - 8888:8888
     depends_on:
       - backend
-      - frontend
+      # - frontend
   
 
 volumes:

@@ -16,9 +16,9 @@ path_to_pets_storage = "/storage/pets_images/"
 path_to_pets_image = "/storage/pets_images/{}"
 
 # only for dev
-# full_path = "/home/username/it/prog/smm_shelter"
-# path_to_pets_storage = full_path + path_to_pets_storage
-# path_to_pets_image = full_path + path_to_pets_image
+full_path = "/home/username/it/prog/smm_shelter"
+path_to_pets_storage = full_path + path_to_pets_storage
+path_to_pets_image = full_path + path_to_pets_image
 
 
 class Images_service:
@@ -27,7 +27,6 @@ class Images_service:
         images: list[UploadFile],
         pets_id: uuid.UUID
     ):
-        print(os.listdir("/"))
         result_records = []
 
         for image in images:
@@ -38,9 +37,10 @@ class Images_service:
                 ),
                 Output_model=Images_record_schema
             )
-
+            extension = image_record.filename.split(".")[-1]
+            image_name = f"{image_record.id}.{extension}"
             async with aiofiles.open(
-                path_to_pets_image.format(image_record.id), 'wb'
+                path_to_pets_image.format(image_name), 'wb'
             ) as out_file:
                 while content := await image.read(1024):
                     await out_file.write(content)

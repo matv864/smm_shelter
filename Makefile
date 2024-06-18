@@ -14,6 +14,5 @@ database:
 
 full_clean:
 	docker container prune -f
-	docker rmi smm_shelter-frontend
 	docker builder prune -a
 	docker volume prune -a 

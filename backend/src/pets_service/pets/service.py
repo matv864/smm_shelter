@@ -20,16 +20,16 @@ class Pets_service:
         payload.date_birth = payload.date_birth.replace(tzinfo=None)
         return await pets_crud.create(
             record=payload,
-            Output_model=Pets_output_schema
+            Output_model=dict
         )
 
     async def get_all_pets_records(self):
-        return await pets_crud.get(multi=True, Output_model=Pets_output_schema)
+        return await pets_crud.get(multi=True, Output_model=dict)
 
     async def get_pets_record(self, pets_id: uuid.UUID):
         return await pets_crud.get(
             filters=[Pets.id == pets_id],
-            Output_model=Pets_output_schema
+            Output_model=dict
         )
 
     async def patch_pets_record(
@@ -41,7 +41,7 @@ class Pets_service:
         return await pets_crud.patch(
             filters=[Pets.id == pets_id],
             new_data=payload.model_dump(exclude_none=True),
-            Output_model=Pets_output_schema
+            Output_model=dict
         )
 
     async def delete_pets_record(self, pets_id):

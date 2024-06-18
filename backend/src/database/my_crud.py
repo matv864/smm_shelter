@@ -101,6 +101,10 @@ class My_crud:
 
             if multi:
                 result_objects = query_executed.scalars().all()
+                # return [
+                #     dict(**result_object.__dict__)
+                #     for result_object in result_objects
+                # ]
                 return [
                     Output_model(**result_object.__dict__)
                     for result_object in result_objects
