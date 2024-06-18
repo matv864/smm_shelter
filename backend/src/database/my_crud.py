@@ -71,7 +71,7 @@ class My_crud:
         Output_model=dict,
         where_filters=dict(),
         offset=0,
-        limit=10,
+        limit=100,
         order_by=None,
         multi=False
     ):

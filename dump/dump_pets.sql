@@ -144,6 +144,42 @@ INSERT INTO public.image (id, filename, pets_id) VALUES ('9686a335-9fec-43db-93a
 INSERT INTO public.image (id, filename, pets_id) VALUES ('709426e1-79e2-4b21-8171-b3eff3c7770c', 'Buran_3.JPG', 'a6155c48-0970-4a6a-ac42-5164461e706b');
 INSERT INTO public.image (id, filename, pets_id) VALUES ('961781ca-5c5a-4708-b928-f3bfc9062de6', 'Buran_4.JPG', 'a6155c48-0970-4a6a-ac42-5164461e706b');
 INSERT INTO public.image (id, filename, pets_id) VALUES ('ff67c4c0-e0e4-4504-9fc0-184366b46a56', 'Buran_5.JPG', 'a6155c48-0970-4a6a-ac42-5164461e706b');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('9445dc24-184b-43f8-a45e-5e00d99b8feb', 'Sobak_1.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('4d4f9bb3-c287-454e-b66c-75aded20f376', 'Sobak_2.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('7920bc47-91f5-4ba6-8ca4-09fcc5ef98ee', 'Sobak_3.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('b6758075-6188-4023-9b14-be45055f5cef', 'Sobak_4.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('d02cf8b0-921e-44d9-9ab3-fdcc99ae00c3', 'Sobak_5.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('b96d874a-1024-45eb-8fa4-9465a3402b79', 'Sobak_6.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('cbd83f3f-5955-42aa-ab89-91e1283b1eef', 'Sobak_7.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('485be4b7-c0ac-400c-8510-7123f35dd998', 'Sobak_8.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('d8b02fd1-fa64-457b-9bd1-b5739896d575', 'Sobak_9.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('f1f8ff89-871c-4502-874e-a7038b02f535', 'Sobak_10.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('6e57924a-c1fe-4acb-ab2b-8fcfa9371852', 'Sobak_12.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('8d0c26f6-5cf1-4d3b-9f4f-8c69300661e8', 'Sobak_13.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('92612ad8-f627-4451-9dc1-75a978f83750', 'Sobak_14.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('4576f098-423b-40dc-9c2c-de65ae09959e', 'Sobak_15.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('d7462863-b2b0-44f2-ba95-f3d967234adf', 'Sobak_16.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('a325feec-3bbf-4970-9c14-c61c0f954d4f', 'Sobak_17.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('501d3f2f-a1ce-48b4-adb7-068d117d8cf9', 'Sobak_18.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('f04365db-7c21-482d-af7b-fbc0734cc9f9', 'Sobak_19.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('abdf2766-3363-46fe-9407-bd5198624f7c', 'Sobak_20.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('1040f33b-5bba-4a19-bac3-233a9cc7193c', 'Sobak_21.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('aef8f3c4-f41a-46b0-816c-743e901e0342', 'Sobak_22.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('83dce2c2-b2ed-456b-a446-eb16d9fb0392', 'Sobak_23.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('b85dcc60-0be1-48e6-9c1c-51c4d18e89c8', 'Sobak_24.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('efbd700e-c5b4-4f15-b034-fb7a8e29df9f', 'Sobak_25.jpg', 'ae407015-9ae4-4489-9f70-e4ca285af209');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('df8f530d-94b5-4e9d-a989-446c83db6469', 'Mila_1.jpg', '67b15fe5-c9d1-47ac-8272-398bc4895b33');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('8be32bff-d40d-4aab-844c-23690d200d19', 'Mila_2.jpg', '67b15fe5-c9d1-47ac-8272-398bc4895b33');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('e957ae7c-8a42-46d8-af54-fba27d466fff', 'Viski_6 (1).jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('235066bc-c723-4095-9bbf-5e4887583234', 'Viski_1.jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('e3915a81-3ad3-4426-9345-597602683c0d', 'Viski_2.jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('de45cffa-ffb3-45a3-87e8-e964291f70ba', 'Viski_3.jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('b1b59dd8-ecc0-4476-827c-1cfe5a7b4be3', 'Viski_4.jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('6f86f995-7aab-4bb4-824a-a91097572e19', 'Viski_5.jpg', '9890957f-59e9-406c-90cf-602f279f4b15');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('49b79ea1-6d17-49f5-bb5b-59ae16f22208', 'Kasper_1.jpg', '2d370b50-52a5-4eb9-a9f7-5b5a712cfc8a');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('aa30c804-392c-4d45-9085-9486e0d38980', 'Kasper_2.jpg', '2d370b50-52a5-4eb9-a9f7-5b5a712cfc8a');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('4328cc3a-d07e-4bb9-ba84-39f9e84c50cc', 'Kasper_3.jpg', '2d370b50-52a5-4eb9-a9f7-5b5a712cfc8a');
+INSERT INTO public.image (id, filename, pets_id) VALUES ('a1b3c909-f4bc-4aef-ba9c-d11068286080', 'Kasper_4.jpg', '2d370b50-52a5-4eb9-a9f7-5b5a712cfc8a');
 
 
 --
