@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>ZooPrim</title>
     <link
       rel="stylesheet"
       href="/assets/styles/our-pets-styles.css"
@@ -14,8 +14,18 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
     />
+    <script type="text/javascript" src="/assets/scripts/fetch_requests.js"></script>
+    <script type="text/javascript" src="/assets/scripts/dom_list_pets.js"></script>
+    <script type="text/javascript" src="/assets/scripts/go_to_full_card.js"></script>
   </head>
+
   <body>
+    <script>
+      window.addEventListener('load', function () {
+        make_list_pets();
+      })
+    </script>
+
     <main>
       <section class="marginSection helpingAnimals">
         <div class="events-title-container">
@@ -24,46 +34,7 @@
             <img src="/assets/images/arrows.png" alt="arrows" />
           </div>
         </div>
-        <div class="blocks-container">
-          <div class="block-for-animalHelp">
-            <img
-              src="/assets/images/img-for-help-animals.png"
-              alt="img-for-help-animals"
-            />
-            <p class="event-title">Муня, девочка, 2,5 года</p>
-            <p class="event-title">
-              Собака — это домашнее животное с продолговатым поджарым телом,
-              длинным хвостом и круглой головой. У неё большие глаза
-              золотистого, зелёного или орехового цвета.
-            </p>
-            <button class="btn want-help-btn">Помочь</button>
-          </div>
-          <div class="block-for-animalHelp">
-            <img
-              src="/assets/images/img-for-help-animals.png"
-              alt="img-for-help-animals"
-            />
-            <p class="event-title">Муня, девочка, 2,5 года</p>
-            <p class="event-title">
-              Собака — это домашнее животное с продолговатым поджарым телом,
-              длинным хвостом и круглой головой. У неё большие глаза
-              золотистого, зелёного или орехового цвета.
-            </p>
-            <button class="btn want-help-btn">Помочь</button>
-          </div>
-          <div class="block-for-animalHelp">
-            <img
-              src="/assets/images/img-for-help-animals.png"
-              alt="img-for-help-animals"
-            />
-            <p class="event-title">Муня, девочка, 2,5 года</p>
-            <p class="event-title">
-              Собака — это домашнее животное с продолговатым поджарым телом,
-              длинным хвостом и круглой головой. У неё большие глаза
-              золотистого, зелёного или орехового цвета.
-            </p>
-            <button class="btn want-help-btn">Помочь</button>
-          </div>
+        <div class="blocks-container" id="main">
         </div>
       </section>
     </main>

@@ -6,7 +6,7 @@ body {
   font-family: "Roboto", sans-serif;
 }
 main {
-  width: 95%;
+  width: 97%;
   margin: auto;
   max-width: 1440px;
 }
@@ -38,10 +38,22 @@ h1 {
 }
 .blocks-container {
   display: flex;
+  flex-wrap: wrap;
   gap: 5%;
 }
+
+.self-description {
+  display: grid;
+  max-width: 25vw;
+}
+
+.back_button {
+  /* background-color: #f1309a; */
+  max-width: 10vw;
+}
+
 .block-for-animalHelp {
-  width: 35%;
+  width: 30%;
   min-width: 350px;
   background-color: #ffe1f2;
   border-radius: 24px;
@@ -49,7 +61,33 @@ h1 {
   flex-direction: column;
   align-items: center;
   padding: 40px;
+  margin: 40px;
 }
+
+.block-for-animalGreet {
+  width: 40%;
+  min-width: 20vw;
+  max-height: auto;
+  background-color: #ffe1f2;
+  border-radius: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  margin: 10px;
+}
+.photozone {
+  /* background-color: #580031; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0px;
+  width: 45vw;
+  max-width: 100%;
+  /* min-height: 20vh; */
+}
+
+
+
 .want-help-btn {
   width: 90%;
   min-width: 350px;
@@ -62,4 +100,20 @@ h1 {
   border: none;
   cursor: pointer;
   border-radius: 16px;
+}
+
+#main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.img_card {
+  max-width: 100%;
+  height: auto;
+}
+
+.img_photozone {
+  max-width: 100%;
+  height: auto;
 }

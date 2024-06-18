@@ -14,5 +14,5 @@ database:
 
 full_clean:
 	docker container prune -f
-	docker builder prune -a
-	docker volume prune -a 
+	docker builder prune -af
+	docker volume prune -af
