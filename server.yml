@@ -57,7 +57,7 @@ services:
       - ./assets:/app/dist/assets
       - ./storage:/storage
     ports:
-      - 8888:8888
+      - 80:80
     depends_on:
       - backend
       # - frontend
