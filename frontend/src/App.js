@@ -1,17 +1,26 @@
-class Hello extends React.Component {
-  render() {
-    return React.createElement('div', null, `Hello ${this.props.toWhat}`);
-  }
+import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from "./components/header/header.jsx";
+import Footer from "./components/footer/footer.jsx";
+import MainPage from "./pages/mainPage";
+import OurPets from "./pages/ourPets";
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Header />
+        <main>
+          <Routes>
+            <Route path="/" element={<MainPage />} />
+            <Route path="/our-pets" element={<OurPets />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  );
 }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(React.createElement(Hello, {toWhat: 'World'}, null));
-
-// class Hello extends React.Component {
-//   render() {
-//     return <div>Hello {this.props.toWhat}</div>;
-//   }
-// }
-
-// const root = ReactDOM.createRoot(document.getElementById('root'));
-// root.render(<Hello toWhat="World" />);
+export default App;

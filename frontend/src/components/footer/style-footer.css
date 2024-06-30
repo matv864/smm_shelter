@@ -1,0 +1,36 @@
+.footer {
+  background-color: #ffe1f2;
+  padding-top: 50px;
+  padding-bottom: 60px;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 95%;
+  margin: auto;
+  max-width: 1440px;
+}
+@media (max-width: 767px) {
+  .footer-container {
+    display: block;
+  }
+}
+.footer-block-item,
+.adress {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.adress img {
+  width: fit-content;
+}
+.footer-block-item img {
+  width: fit-content;
+}
+.footer-logos {
+  display: block;
+}
+.phone-number {
+  font-size: 32px;
+}
