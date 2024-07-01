@@ -1,3 +1,7 @@
+import "../../public/index.html";
+import "../../public/robots.txt";
+
+
 import React from "react";
 import { useNavigate } from "react-router-dom";
 // import ellipse5 from "../assets/images/Ellipse 5.svg";
