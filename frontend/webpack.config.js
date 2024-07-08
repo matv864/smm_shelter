@@ -1,16 +1,16 @@
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.js",
   output: {
     filename: "bundle.js",
-    path: path.resolve(__dirname, "/app/dist"),
-    // path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist"),
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: "babel-loader",
@@ -50,32 +50,20 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
       },
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]"
-            },
-          },
-        ],
-      },
-      {
-        test: /\.txt$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]"
-            },
-          },
-        ],
-      },
     ],
   },
   resolve: {
     extensions: [".js", ".jsx"],
   },
-  mode: process.env.NODE_ENV === 'production' ? 'production' : 'development'
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html", // Исходный шаблон HTML
+    }),
+  ],
+  mode: "development",
+  devServer: {
+    contentBase: path.resolve(__dirname, "dist"),
+    compress: true,
+    port: 9000,
+  },
 };
