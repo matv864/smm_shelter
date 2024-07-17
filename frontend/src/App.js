@@ -5,6 +5,7 @@ import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
 import MainPage from "./pages/mainPage";
 import OurPets from "./pages/ourPets";
+import TakeHome from "./pages/takeHome";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Routes>
             <Route path="/" element={<MainPage />} />
             <Route path="/our-pets" element={<OurPets />} />
+            <Route path="/take-home/:id" element={<TakeHome />} />
           </Routes>
         </main>
         <Footer />

@@ -1,0 +1,17 @@
+.flex {
+  display: flex;
+}
+.pet-photo {
+  width: 90%;
+  height: auto;
+}
+.pet-images {
+  width: 48%;
+}
+.pet-details {
+  display: flex;
+  justify-content: space-between;
+}
+.pet-info {
+  width: 48%;
+}

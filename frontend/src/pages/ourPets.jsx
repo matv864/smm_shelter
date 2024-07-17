@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import arrow_left from "../assets/images/arrow-left.png";
 import arrow_right from "../assets/images/arrow-right.png";
 import imgForHelpAnimals from "../assets/images/img-for-help-animals.png";
@@ -73,6 +74,12 @@ const OurPets = () => {
     };
   }, []);
 
+  const navigate = useNavigate();
+
+  const handleButtonClick = (id) => {
+    navigate(`/take-home/${id}`);
+  };
+
   return (
     <section className="marginSection helpingAnimals">
       <div className="events-title-container">
@@ -101,6 +108,12 @@ const OurPets = () => {
               </p>
               <p className="event-title">{post.appearance}</p>
               <button className="btn want-help-btn">Помочь</button>
+              <button
+                className="btn transparent want-help-btn"
+                onClick={() => handleButtonClick(post.id)}
+              >
+                Забрать
+              </button>
             </div>
           ))}
       </div>
