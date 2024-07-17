@@ -14,6 +14,11 @@
 .event-title {
   font-size: 18px;
 }
+.btn-arrow {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
 .block-for-animalHelp {
   width: 80%;
   background-color: #ffe1f2;
@@ -27,6 +32,11 @@
   .block-for-animalHelp {
     padding: 5%;
   }
+}
+.image-of-animal {
+  width: 90%;
+  height: auto;
+  border-radius: 15px;
 }
 .want-help-btn {
   width: 90%;
