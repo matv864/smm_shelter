@@ -55,39 +55,35 @@ const TakeHome = () => {
             ))}
         </div>
         <div className="pet-info">
-          <p>Статус: {pet.status}</p>
-          <div className="flex">
-            <p>Имя:</p>
-            <p>{pet.name}</p>
-          </div>
-          <div className="flex">
-            <p>Пол:</p>
-            <p>{pet.gender === "F" ? "Женский" : "Мужской"}</p>
-          </div>
-          <div className="flex">
-            <p>Возраст:</p>
-            <p>{pet.age} года</p>
-          </div>
-          <div className="flex">
-            <p>Порода:</p>
-            <p>{pet.breed}</p>
-          </div>
-          <div className="flex">
-            <p>Характер:</p>
-            <p>{pet.personality}</p>
-          </div>
-          <div className="flex">
-            <p>Описание внешности:</p>
-            <p>{pet.appearance}</p>
-          </div>
-          <div className="flex">
-            <p>Здоровье:</p>
-            <p>{pet.health}</p>
-          </div>
-          <div className="flex">
-            <p>Описание:</p>
-            <p>{pet.description}</p>
-          </div>
+          <p>
+            <span className="font-bold">Статус:</span> {pet.status}
+          </p>
+          <p>
+            <span className="font-bold">Имя:</span> {pet.name}
+          </p>
+          <p>
+            <span className="font-bold">Пол:</span>{" "}
+            {pet.gender === "F" ? "Женский" : "Мужской"}
+          </p>
+          <p>
+            <span className="font-bold">Возраст:</span> {pet.age} года
+          </p>
+          <p>
+            <span className="font-bold">Порода:</span> {pet.breed}
+          </p>
+          <p>
+            <span className="font-bold">Характер:</span> {pet.personality}
+          </p>
+          <p>
+            <span className="font-bold">Описание внешности:</span>{" "}
+            {pet.appearance}
+          </p>
+          <p>
+            <span className="font-bold">Здоровье:</span> {pet.health}
+          </p>
+          <p>
+            <span className="font-bold">Описание:</span> {pet.description}
+          </p>
           <button className="btn want-help-btn">Забрать</button>
         </div>
       </div>
