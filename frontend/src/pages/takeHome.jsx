@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import Morpher from "morpher-ru";
 import arrow_goBack from "../assets/images/arrow-goBack.png";
+import loadingGif from "../assets/images/Running_dog.gif";
 import "./style-takeHome.css";
 
 const TakeHome = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
-  const [genitiveName, setGenitiveName] = useState("");
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -16,14 +15,6 @@ const TakeHome = () => {
         const response = await fetch(`http://zooprim125.online/api/pets/${id}`);
         const data = await response.json();
         setPet(data);
-
-        if (data && data.name) {
-          const morpher = new Morpher();
-          const result = await morpher.decline(data.name, "genitive");
-          if (result && result.genitive) {
-            setGenitiveName(result.genitive);
-          }
-        }
       } catch (error) {
         console.error("Error fetching pet data:", error);
       }
@@ -33,7 +24,11 @@ const TakeHome = () => {
   }, [id]);
 
   if (!pet) {
-    return <div>Loading...</div>;
+    return (
+      <div className="loading-container">
+        <img src={loadingGif} alt="Loading..." />
+      </div>
+    );
   }
 
   const getImageLink = (imageSchema) => {
@@ -50,7 +45,7 @@ const TakeHome = () => {
         <button className="btn-arrow" onClick={() => navigate(-1)}>
           <img src={arrow_goBack} alt="arrow-go-back" />
         </button>
-        <p>Забрать {genitiveName}</p>
+        <p>Забрать</p>
       </div>
       <div className="pet-details">
         <div className="pet-images">
