@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import arrow_goBack from "../assets/images/arrow-goBack.png";
+import littleDogPaw from "../assets/images/little-dog-paw.png";
 import loadingGif from "../assets/images/Running_dog.gif";
 import "./style-takeHome.css";
 
@@ -93,22 +94,30 @@ const TakeHome = () => {
           </div>
         </div>
         <div className="pet-info">
-          <p>
-            <span className="font-bold">Статус:</span> {pet.status}
-          </p>
-          <p>
-            <span className="font-bold">Имя:</span> {pet.name}
-          </p>
-          <p>
-            <span className="font-bold">Пол:</span>{" "}
-            {pet.gender === "F" ? "Женский" : "Мужской"}
-          </p>
-          <p>
-            <span className="font-bold">Возраст:</span> {pet.age} года
-          </p>
-          <p>
-            <span className="font-bold">Порода:</span> {pet.breed}
-          </p>
+          <div className="main-info-container">
+            <p>
+              <img src={littleDogPaw} alt="dog-paw-img" />
+              <span className="font-bold"> Статус:</span> {pet.status}
+            </p>
+            <p>
+              <img src={littleDogPaw} alt="dog-paw-img" />
+              <span className="font-bold"> Имя:</span> {pet.name}
+            </p>
+            <p>
+              <img src={littleDogPaw} alt="dog-paw-img" />
+              <span className="font-bold"> Пол:</span>{" "}
+              {pet.gender === "F" ? "Женский" : "Мужской"}
+            </p>
+            <p>
+              <img src={littleDogPaw} alt="dog-paw-img" />
+              <span className="font-bold"> Возраст:</span> {pet.age} года
+            </p>
+            <p>
+              <img src={littleDogPaw} alt="dog-paw-img" />
+              <span className="font-bold"> Порода:</span> {pet.breed}
+            </p>
+          </div>
+
           <p>
             <span className="font-bold">Характер:</span> {pet.personality}
           </p>
