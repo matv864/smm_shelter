@@ -8,7 +8,7 @@ const TakeHome = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0); // Состояние для отслеживания активного индекса изображения
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -25,7 +25,7 @@ const TakeHome = () => {
   }, [id]);
 
   const handleImageClick = (index) => {
-    setActiveImageIndex(index); // Обработчик клика по меньшему изображению
+    setActiveImageIndex(index);
   };
 
   const handleNextImage = () => {
@@ -62,11 +62,11 @@ const TakeHome = () => {
         <button className="btn-arrow" onClick={() => navigate(-1)}>
           <img src={arrow_goBack} alt="arrow-go-back" />
         </button>
-        <p>Забрать {pet.genitiveName}</p>
+        <h2>{pet.name}</h2>
       </div>
       <div className="pet-details">
         <div className="pet-images">
-          <button className="btn-slider" onClick={handlePrevImage}>
+          <button className="btn-slider left-btn" onClick={handlePrevImage}>
             &lt;
           </button>
           <img
@@ -75,7 +75,7 @@ const TakeHome = () => {
             src={getImageLink(pet.images[activeImageIndex])}
             alt={pet.name}
           />
-          <button className="btn-slider" onClick={handleNextImage}>
+          <button className="btn-slider right-btn" onClick={handleNextImage}>
             &gt;
           </button>
           <div className="pet-thumbnails">
