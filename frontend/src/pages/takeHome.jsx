@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import arrow_goBack from "../assets/images/arrow-goBack.png";
 import littleDogPaw from "../assets/images/little-dog-paw.png";
@@ -10,6 +10,7 @@ const TakeHome = () => {
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const thumbnailsRef = useRef(null);
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -24,6 +25,19 @@ const TakeHome = () => {
 
     fetchPet();
   }, [id]);
+
+  useEffect(() => {
+    if (thumbnailsRef.current) {
+      const activeThumbnail = thumbnailsRef.current.children[activeImageIndex];
+      thumbnailsRef.current.scrollTo({
+        left:
+          activeThumbnail.offsetLeft -
+          thumbnailsRef.current.offsetWidth / 2 +
+          activeThumbnail.offsetWidth / 2,
+        behavior: "smooth",
+      });
+    }
+  }, [activeImageIndex]);
 
   const handleImageClick = (index) => {
     setActiveImageIndex(index);
@@ -79,18 +93,20 @@ const TakeHome = () => {
           <button className="btn-slider right-btn" onClick={handleNextImage}>
             &gt;
           </button>
-          <div className="pet-thumbnails">
-            {pet.images.map((image, index) => (
-              <img
-                className={`pet-thumbnail ${
-                  index === activeImageIndex ? "active" : ""
-                }`}
-                key={image.id}
-                src={getImageLink(image)}
-                alt={pet.name}
-                onClick={() => handleImageClick(index)}
-              />
-            ))}
+          <div className="pet-thumbnails-container">
+            <div className="pet-thumbnails" ref={thumbnailsRef}>
+              {pet.images.map((image, index) => (
+                <img
+                  className={`pet-thumbnail ${
+                    index === activeImageIndex ? "active" : ""
+                  }`}
+                  key={image.id}
+                  src={getImageLink(image)}
+                  alt={pet.name}
+                  onClick={() => handleImageClick(index)}
+                />
+              ))}
+            </div>
           </div>
         </div>
         <div className="pet-info">
