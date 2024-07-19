@@ -1,20 +1,53 @@
 .flex {
   display: flex;
 }
-.pet-photo {
-  width: 90%;
+.pet-photo-main {
+  width: 95%;
   height: auto;
 }
 .pet-images {
-  width: 48%;
+  width: 60%;
 }
 .pet-details {
   display: flex;
   justify-content: space-between;
 }
 .pet-info {
-  width: 48%;
+  width: 39%;
 }
 .font-bold {
   font-weight: bold;
+}
+
+.pet-thumbnail {
+  width: 10%;
+  height: 10%;
+  margin: 0 5px;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+.pet-thumbnails {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+.pet-thumbnail.active,
+.pet-thumbnail:hover {
+  opacity: 1;
+}
+.btn-slider {
+  background: none;
+  border: none;
+  font-size: 2em;
+  cursor: pointer;
+  user-select: none;
+}
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }

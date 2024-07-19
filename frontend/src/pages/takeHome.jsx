@@ -8,6 +8,7 @@ const TakeHome = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [pet, setPet] = useState(null);
+  const [activeImageIndex, setActiveImageIndex] = useState(0); // Состояние для отслеживания активного индекса изображения
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -23,13 +24,21 @@ const TakeHome = () => {
     fetchPet();
   }, [id]);
 
-  if (!pet) {
-    return (
-      <div className="loading-container">
-        <img src={loadingGif} alt="Loading..." />
-      </div>
+  const handleImageClick = (index) => {
+    setActiveImageIndex(index); // Обработчик клика по меньшему изображению
+  };
+
+  const handleNextImage = () => {
+    setActiveImageIndex((prevIndex) =>
+      prevIndex === pet.images.length - 1 ? 0 : prevIndex + 1
     );
-  }
+  };
+
+  const handlePrevImage = () => {
+    setActiveImageIndex((prevIndex) =>
+      prevIndex === 0 ? pet.images.length - 1 : prevIndex - 1
+    );
+  };
 
   const getImageLink = (imageSchema) => {
     let filename = imageSchema.filename.split(".");
@@ -39,25 +48,49 @@ const TakeHome = () => {
     return fullDatabaseFilename;
   };
 
+  if (!pet) {
+    return (
+      <div className="loading-container">
+        <img src={loadingGif} alt="Loading..." />
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex">
         <button className="btn-arrow" onClick={() => navigate(-1)}>
           <img src={arrow_goBack} alt="arrow-go-back" />
         </button>
-        <p>Забрать</p>
+        <p>Забрать {pet.genitiveName}</p>
       </div>
       <div className="pet-details">
         <div className="pet-images">
-          {pet.images &&
-            pet.images.map((image) => (
+          <button className="btn-slider" onClick={handlePrevImage}>
+            &lt;
+          </button>
+          <img
+            className="pet-photo-main"
+            key={pet.images[activeImageIndex].id}
+            src={getImageLink(pet.images[activeImageIndex])}
+            alt={pet.name}
+          />
+          <button className="btn-slider" onClick={handleNextImage}>
+            &gt;
+          </button>
+          <div className="pet-thumbnails">
+            {pet.images.map((image, index) => (
               <img
-                className="pet-photo"
+                className={`pet-thumbnail ${
+                  index === activeImageIndex ? "active" : ""
+                }`}
                 key={image.id}
                 src={getImageLink(image)}
                 alt={pet.name}
+                onClick={() => handleImageClick(index)}
               />
             ))}
+          </div>
         </div>
         <div className="pet-info">
           <p>
