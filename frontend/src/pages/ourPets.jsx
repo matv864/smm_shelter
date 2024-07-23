@@ -80,6 +80,10 @@ const OurPets = () => {
     navigate(`/take-home/${id}`);
   };
 
+  const handleButtonClickToHelp = () => {
+    navigate(`/form-for-help`);
+  };
+
   return (
     <section className="helpingAnimalsPage">
       <div className="events-title-container">
@@ -108,7 +112,12 @@ const OurPets = () => {
               </p>
               <p className="event-title">{post.appearance}</p>
               <div className="btns-container">
-                <button className="btn want-help-btn">Помочь</button>
+                <button
+                  className="btn want-help-btn"
+                  onClick={handleButtonClickToHelp}
+                >
+                  Помочь
+                </button>
                 <button
                   className="btn transparent want-help-btn"
                   onClick={() => handleButtonClick(post.id)}
