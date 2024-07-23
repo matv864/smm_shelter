@@ -127,7 +127,7 @@ const MainPage = () => {
           alt="img-animal-waiting"
         />
       </section>
-      <section className="marginSection helpingAnimals">
+      <section className="marginSection helpingAnimalsSection">
         <div className="events-title-container">
           <h1 className="title">Помощь вашим животным</h1>
           <div className="arrows">

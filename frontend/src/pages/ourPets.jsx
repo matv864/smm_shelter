@@ -17,7 +17,7 @@ const getImageLink = (imageSchema) => {
 const OurPets = () => {
   const [posts, setPosts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visiblePostsCount, setVisiblePostsCount] = useState(3); // Set initial visible posts count
+  const [visiblePostsCount, setVisiblePostsCount] = useState(3);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +62,7 @@ const OurPets = () => {
     const handleResize = () => {
       const containerWidth =
         document.querySelector(".blocks-container").offsetWidth;
-      const postWidth = 350;
+      const postWidth = 300;
       const visibleCount = Math.floor(containerWidth / postWidth);
       setVisiblePostsCount(visibleCount);
     };
@@ -81,9 +81,9 @@ const OurPets = () => {
   };
 
   return (
-    <section className="marginSection helpingAnimals">
+    <section className="helpingAnimalsPage">
       <div className="events-title-container">
-        <h1>Помощь вашим животным</h1>
+        <h1>Наши любимцы</h1>
         <div className="arrows">
           <button className="btn-arrow" onClick={handlePrevClick}>
             <img src={arrow_left} alt="left-arrow" />
@@ -107,13 +107,15 @@ const OurPets = () => {
                 {post.name}, {post.age} года
               </p>
               <p className="event-title">{post.appearance}</p>
-              <button className="btn want-help-btn">Помочь</button>
-              <button
-                className="btn transparent want-help-btn"
-                onClick={() => handleButtonClick(post.id)}
-              >
-                Забрать
-              </button>
+              <div className="btns-container">
+                <button className="btn want-help-btn">Помочь</button>
+                <button
+                  className="btn transparent want-help-btn"
+                  onClick={() => handleButtonClick(post.id)}
+                >
+                  Забрать
+                </button>
+              </div>
             </div>
           ))}
       </div>
