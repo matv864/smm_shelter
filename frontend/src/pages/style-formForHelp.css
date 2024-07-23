@@ -1,3 +1,7 @@
+.help-main-title {
+  width: 65%;
+  margin: auto;
+}
 .light-color {
   color: #58003180;
 }
@@ -28,7 +32,6 @@
   justify-content: space-between;
 }
 .choise-of-amount {
-  width: 100%;
   background-color: #ffe1f2;
   border-radius: 24px;
   display: grid;
@@ -57,17 +60,48 @@
 .other-amount-btn {
   grid-column: span 2;
 }
+.amount-input {
+  height: 55px;
+  color: #580031;
+  padding: 0;
+  font-size: 32px;
+  width: 100%;
+  border: none;
+  border-radius: 24px;
+  grid-column: span 2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-appearance: none; /* Safari, Chrome */
+  -moz-appearance: none; /* Firefox */
+  appearance: none; /* Standard */
+}
+.amount-input:focus-visible {
+  border: 2px solid #580031;
+  outline: #580031;
+}
+.amount-input::-webkit-outer-spin-button,
+.amount-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.amount-input[type="number"] {
+  -moz-appearance: textfield;
+}
 .toggle {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  align-items: center;
 }
 
 .toggle-switch {
   display: inline-block;
   border-radius: 16px;
   border: 2px solid #580031;
-  width: 52px;
-  height: 32px;
+  width: 50px;
+  height: 28px;
   position: relative;
   vertical-align: middle;
   transition: background 0.25s;
@@ -147,23 +181,48 @@
 .form-group input[type="checkbox"] {
   display: none;
 }
+.checkbox-label input.visually-hidden {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
 
 .checkbox-label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
-
-.checkbox-label::before {
-  content: "";
+.custom-checkbox {
+  position: relative;
   display: inline-block;
   width: 20px;
   height: 20px;
-  margin-right: 10px;
+  background: #580031;
   border: 2px solid #580031;
-  border-radius: 3px;
-  background-color: white;
-  transition: background-color 0.2s, border-color 0.2s;
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.custom-checkbox::after {
+  content: "\2714";
+  position: absolute;
+  color: white;
+  top: 0%;
+  left: 15%;
+  width: 10px;
+  height: 5px;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+.visually-hidden:checked + .custom-checkbox::after {
+  opacity: 1;
 }
 
 .form-group input[type="checkbox"]:checked + .checkbox-label::before {

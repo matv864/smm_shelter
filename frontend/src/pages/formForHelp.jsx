@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style-formForHelp.css";
 
 const FormHelpContainer = () => {
+  const [isOtherAmount, setIsOtherAmount] = useState(false);
+  const [otherAmount, setOtherAmount] = useState("");
+
+  const handleOtherAmountClick = () => {
+    setIsOtherAmount(true);
+  };
+
+  const handleOtherAmountChange = (event) => {
+    setOtherAmount(event.target.value);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Добавьте логику для обработки формы
+    console.log("Сумма пожертвования:", otherAmount);
+  };
+
   return (
     <div className="form-help-container">
-      <h1>
+      <h1 className="help-main-title">
         Вы ежедневно спасаете{" "}
         <span className="light-color">1000 животных!</span>
       </h1>
@@ -19,9 +36,23 @@ const FormHelpContainer = () => {
           <button className="amount-button">400 ₽</button>
           <button className="amount-button">600 ₽</button>
           <button className="amount-button">200 ₽</button>
-          <button className="amount-button other-amount-btn">
-            Другая сумма
-          </button>
+          {isOtherAmount ? (
+            <input
+              type="number"
+              className="amount-input"
+              placeholder="Введите сумму"
+              value={otherAmount}
+              onChange={handleOtherAmountChange}
+              autoFocus
+            />
+          ) : (
+            <button
+              className="amount-button other-amount-btn"
+              onClick={handleOtherAmountClick}
+            >
+              Другая сумма
+            </button>
+          )}
         </div>
         <label className="toggle">
           <input className="toggle-checkbox" type="checkbox" />
@@ -33,7 +64,7 @@ const FormHelpContainer = () => {
           чек пожертвования
         </p>
         <div className="form-container">
-          <form>
+          <form onSubmit={handleSubmit}>
             <div className="form-group">
               <input
                 type="text"
@@ -53,10 +84,17 @@ const FormHelpContainer = () => {
               />
             </div>
             <div className="form-group checkbox-group">
-              <label className="checkbox-label">
-                <input type="checkbox" id="privacy" name="privacy" required />Я
-                принимаю условия Политика конфиденциальности, Пользовательское
-                соглашение и Условия сотрудничества.
+              <label className="checkbox-label" htmlFor="privacy">
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  required
+                  className="visually-hidden"
+                />
+                <span className="custom-checkbox"></span>Я принимаю условия
+                Политика конфиденциальности, Пользовательское соглашение и
+                Условия сотрудничества.
               </label>
             </div>
             <button type="submit" className="btn btn-submit">
