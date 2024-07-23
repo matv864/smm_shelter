@@ -6,6 +6,7 @@ import Footer from "./components/footer/footer.jsx";
 import MainPage from "./pages/mainPage";
 import OurPets from "./pages/ourPets";
 import TakeHome from "./pages/takeHome";
+import FormHelp from "./pages/formForHelp";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path="/our-pets" element={<OurPets />} />
             <Route path="/take-home/:id" element={<TakeHome />} />
+            <Route path="/form-for-help" element={<FormHelp />} />
           </Routes>
         </main>
         <Footer />
