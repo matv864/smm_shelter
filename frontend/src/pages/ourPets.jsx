@@ -81,7 +81,7 @@ const OurPets = () => {
   };
 
   const handleButtonClickToHelp = () => {
-    navigate(`/form-for-help`);
+    navigate(`/contacts`);
   };
 
   return (

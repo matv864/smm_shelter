@@ -71,6 +71,10 @@ const TakeHome = () => {
     );
   }
 
+  const handleButtonClickToHelp = () => {
+    navigate(`/contacts`);
+  };
+
   return (
     <div>
       <div className="flex">
@@ -147,7 +151,12 @@ const TakeHome = () => {
           <p>
             <span className="font-bold">Описание:</span> {pet.description}
           </p>
-          <button className="btn want-help-btn">Забрать</button>
+          <button
+            className="btn want-help-btn"
+            onClick={handleButtonClickToHelp}
+          >
+            Забрать
+          </button>
         </div>
       </div>
     </div>

@@ -23,6 +23,10 @@ const MainPage = () => {
     navigate("/our-pets");
   };
 
+  const handleButtonClickForHelp = () => {
+    navigate("/contacts");
+  };
+
   return (
     <div>
       <section className="marginSection start">
@@ -51,7 +55,9 @@ const MainPage = () => {
             <p className="textAngst animal">Животным</p>
             <p className="textAngst need-home">Нужен дом</p>
           </div>
-          <button className="btn want-help">Хочу помочь</button>
+          <button className="btn want-help" onClick={handleButtonClickForHelp}>
+            Хочу помочь
+          </button>
         </div>
       </section>
       <section className="marginSection aboutUs">
