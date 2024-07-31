@@ -15,7 +15,6 @@ const FormHelpContainer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Добавьте логику для обработки формы
     console.log("Сумма пожертвования:", otherAmount);
   };
 
