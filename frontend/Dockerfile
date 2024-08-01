@@ -4,4 +4,5 @@ WORKDIR /frontend
 
 COPY . .
 
-RUN npm install && npm run build && rm -rf node_module
+RUN npm install
+CMD npm run start

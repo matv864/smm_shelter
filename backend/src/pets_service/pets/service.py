@@ -1,6 +1,6 @@
 import uuid
 
-from src.database.models import Pets
+from src.database.models import Pets, Pets_type
 from src.database.my_crud import My_crud
 
 from .schemas import (
@@ -18,18 +18,18 @@ pets_crud = My_crud(Pets, [Pets.images])
 class Pets_service:
     async def create_pets_record(self, payload: Pets_insert_schema):
         payload.date_birth = payload.date_birth.replace(tzinfo=None)
+        print(payload)
+        await My_crud(Pets_type).exist([Pets_type.id == payload.type_id])
         return await pets_crud.create(
-            record=payload,
-            Output_model=dict
+            record=payload
         )
 
     async def get_all_pets_records(self):
-        return await pets_crud.get(multi=True, Output_model=dict)
+        return await pets_crud.get(multi=True)
 
     async def get_pets_record(self, pets_id: uuid.UUID):
         return await pets_crud.get(
-            filters=[Pets.id == pets_id],
-            Output_model=dict
+            filters=[Pets.id == pets_id]
         )
 
     async def patch_pets_record(
@@ -40,8 +40,7 @@ class Pets_service:
         payload.date_birth = payload.date_birth.replace(tzinfo=None)
         return await pets_crud.patch(
             filters=[Pets.id == pets_id],
-            new_data=payload.model_dump(exclude_none=True),
-            Output_model=dict
+            new_data=payload.model_dump(exclude_none=True)
         )
 
     async def delete_pets_record(self, pets_id):
