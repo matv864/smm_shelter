@@ -3,6 +3,7 @@ from fastapi.exceptions import HTTPException
 from sqlalchemy import insert, select, exists, update, delete
 from sqlalchemy.orm import selectinload
 from sqlalchemy.exc import IntegrityError
+from sqlalchemy.sql import text
 
 from src.database.core import async_session_maker
 
@@ -11,7 +12,8 @@ def exception_wrapper(func):
     async def wrapper(*args, **kwargs):
         try:
             return await func(*args, **kwargs)
-        except IntegrityError:
+        except IntegrityError as e:
+            print(str(e))
             raise HTTPException(status_code=400, detail="bad foreign object")
         except Exception as e:
             error_text = f"{type(e)} - {str(e)}"
@@ -31,22 +33,17 @@ class My_crud:
     @exception_wrapper
     async def create(
         self,
-        record,
-        Output_model=None
+        record
     ):
         query_insert = insert(self.Main_model)
 
-        if Output_model:
-            query_insert = query_insert.returning(self.Main_model)
+        query_insert = query_insert.returning(self.Main_model)
 
         async with async_session_maker() as session:
             output_record = await session.execute(query_insert, [record])
             await session.commit()
 
-        if Output_model:
-            output_record = Output_model(**output_record.scalar().__dict__)
-            return output_record
-        return
+        return output_record.scalar()
 
     @exception_wrapper
     async def exist(
@@ -62,13 +59,12 @@ class My_crud:
 
         async with async_session_maker() as session:
             query_executed = await session.execute(query)
-            return query_executed.scalar()
+            return bool(query_executed.scalar())
 
     @exception_wrapper
     async def get(
         self,
         filters=[],
-        Output_model=dict,
         where_filters=dict(),
         offset=0,
         limit=100,
@@ -100,26 +96,15 @@ class My_crud:
             query_executed = await session.execute(query_search)
 
             if multi:
-                result_objects = query_executed.scalars().all()
-                # return [
-                #     dict(**result_object.__dict__)
-                #     for result_object in result_objects
-                # ]
-                return [
-                    Output_model(**result_object.__dict__)
-                    for result_object in result_objects
-                ]
-            result_object = query_executed.scalar_one_or_none()
-            if result_object is None:
-                return None
-            return Output_model(**result_object.__dict__)
+                return query_executed.scalars().all()
+
+            return query_executed.scalar_one_or_none()
 
     @exception_wrapper
     async def patch(
         self,
         filters,
-        new_data: dict,
-        Output_model=None
+        new_data: dict
     ):
         query_patch = update(self.Main_model)
 
@@ -134,17 +119,14 @@ class My_crud:
                 new_data.pop(key)
         query_patch = query_patch.values(**new_data)
 
-        if Output_model:
-            query_patch = query_patch.returning(self.Main_model)
+        query_patch = query_patch.returning(self.Main_model)
 
         async with async_session_maker() as session:
             output_record = await session.execute(query_patch)
             await session.commit()
 
-        if Output_model:
-            output_record = Output_model(**output_record.scalar().__dict__)
-            return output_record
-        return
+        return output_record.scalar()
+
 
     @exception_wrapper
     async def remove(

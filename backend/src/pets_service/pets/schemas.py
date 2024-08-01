@@ -11,8 +11,10 @@ from src.pets_service.images.schemas import Images_record_schema
 class Pets_insert_schema(BaseModel):
     name: str
     status: str
+    gender: str
     type_id: uuid.UUID
     date_birth: Optional[datetime.datetime] = None
+    age: Optional[int] = None
     litter_box: Optional[bool] = None
     vaccinated: Optional[bool] = None
     castrated: Optional[bool] = None
@@ -41,10 +43,10 @@ class Pets_output_schema(BaseModel):
     type_id: uuid.UUID
 
     date_birth: Optional[datetime.datetime]
-    age: int
+    age: Optional[int]
 
-    personality: str
-    appearance: str
-    health: str
+    personality: Optional[str]
+    appearance: Optional[str]
+    health: Optional[str]
 
     images: List["Images_record_schema"]
