@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import arrow_goBack from "../assets/images/arrow-goBack.png";
-import littleDogPaw from "../assets/images/little-dog-paw.png";
-import loadingGif from "../assets/images/Running_dog.gif";
+import arrow_goBack from "../../assets/images/arrow-goBack.png";
+import littleDogPaw from "../../assets/images/little-dog-paw.png";
+import loadingGif from "../../assets/images/Running_dog.gif";
+import { fetchPetDetails, getImageLink } from "./API-request";
 import "./style-takeHome.css";
 
 const TakeHome = () => {
@@ -15,8 +16,7 @@ const TakeHome = () => {
   useEffect(() => {
     const fetchPet = async () => {
       try {
-        const response = await fetch(`http://zooprim125.online/api/pets/${id}`);
-        const data = await response.json();
+        const data = await fetchPetDetails(id);
         setPet(data);
       } catch (error) {
         console.error("Error fetching pet data:", error);
@@ -53,14 +53,6 @@ const TakeHome = () => {
     setActiveImageIndex((prevIndex) =>
       prevIndex === 0 ? pet.images.length - 1 : prevIndex - 1
     );
-  };
-
-  const getImageLink = (imageSchema) => {
-    let filename = imageSchema.filename.split(".");
-    let extension = filename[filename.length - 1];
-    let databaseFilename = `${imageSchema.id}.${extension}`;
-    let fullDatabaseFilename = `http://zooprim125.online/storage/pets_images/${databaseFilename}`;
-    return fullDatabaseFilename;
   };
 
   if (!pet) {

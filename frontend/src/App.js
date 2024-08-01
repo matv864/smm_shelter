@@ -3,11 +3,11 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./components/header/header.jsx";
 import Footer from "./components/footer/footer.jsx";
-import MainPage from "./pages/mainPage";
-import OurPets from "./pages/ourPets";
-import TakeHome from "./pages/takeHome";
-import FormHelp from "./pages/formForHelp";
-import ContactsPage from "./pages/contactsPage";
+import MainPage from "./pages/mainPage/mainPage";
+import OurPets from "./pages/ourPets/ourPets";
+import TakeHome from "./pages/takeHome/takeHome";
+import FormHelp from "./pages/formForHelp/formForHelp";
+import ContactsPage from "./pages/contacts/contactsPage";
 
 function App() {
   return (
