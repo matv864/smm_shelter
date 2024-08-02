@@ -34,7 +34,7 @@ const MainPage = () => {
           </button>
         </div>
       </section>
-      <section className="marginSection aboutUs">
+      <section id="about-us" className="marginSection aboutUs">
         <h1 className="title">О нас</h1>
         <div className="aboutUs-container">
           <img className="img-aboutUs" src={imgDog1} alt="img-dog-1" />
@@ -50,7 +50,7 @@ const MainPage = () => {
         </div>
       </section>
       <div className="section-wrapper">
-        <section className="marginSection helpUs">
+        <section id="help-us" className="marginSection helpUs">
           <h1 className="title">Как нам помочь?</h1>
           <div className="blocks-container">
             <div className="block">Сделать так</div>
@@ -60,7 +60,7 @@ const MainPage = () => {
           </div>
         </section>
       </div>
-      {/* <section className="marginSection events">
+      {/* <section id="events" className="marginSection events">
         <div className="events-title-container">
           <h1 className="title">Мероприятия</h1>
           <div className="arrows">
@@ -85,7 +85,7 @@ const MainPage = () => {
           </div>
         </div>
       </section> */}
-      <section className="marginSection ourFreinds">
+      <section id="our-pets" className="marginSection ourFreinds">
         <div className="left-side-section">
           <h1 className="title font-size-64">
             Все животные <span className="light-color">ждут своих хозяев!</span>
@@ -107,7 +107,10 @@ const MainPage = () => {
           alt="img-animal-waiting"
         />
       </section>
-      <section className="marginSection helpingAnimalsSection">
+      <section
+        id="help-animals"
+        className="marginSection helpingAnimalsSection"
+      >
         <div className="events-title-container">
           <h1 className="title">Помощь вашим животным</h1>
           <div className="arrows">
@@ -159,7 +162,7 @@ const MainPage = () => {
           </div>
         </div>
       </section>
-      <section className="marginSection rules">
+      <section id="rules" className="marginSection rules">
         <h1 className="title">Что делать, если я нашел животное?</h1>
         <div className="rules-container">
           <p className="numbered-paragraph grid-item-1">

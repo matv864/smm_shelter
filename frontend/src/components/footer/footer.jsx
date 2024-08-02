@@ -7,7 +7,7 @@ import "./style-footer.css";
 const Footer = () => {
   return (
     <footer className="footer">
-      <div className="footer-container">
+      <div id="contacts" className="footer-container">
         <div className="footer-block-item">
           <img src={logo} alt="logo" />
           <p>Фонд для животных</p>

@@ -8,21 +8,29 @@
   max-width: 1440px;
   margin: auto;
 }
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
 @media (max-width: 767px) {
   .header {
     justify-content: space-between;
   }
 }
+.logo {
+  cursor: pointer;
+}
 .header-container {
   display: flex;
   align-items: center;
+  width: 100%;
+  justify-content: center;
 }
 .navbar {
   list-style-type: none;
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding-left: 100px;
+  gap: 30px;
 }
 @media (max-width: 767px) {
   .navbar {

@@ -6,18 +6,32 @@ const Header = () => {
   return (
     <header className="header">
       <div>
-        <img src={logo} alt="logo" />
+        <img className="logo" src={logo} alt="logo" />
       </div>
       <div className="header-container">
         <div>
           <ul className="navbar">
-            <li className="nav-item">О нас</li>
-            <li className="nav-item">Как нам помочь</li>
-            <li className="nav-item">Мероприятия</li>
-            <li className="nav-item">Наши любимцы</li>
-            <li className="nav-item">Помощь вашим животным</li>
-            <li className="nav-item">Правила</li>
-            <li className="nav-item">Контакты</li>
+            <li className="nav-item">
+              <a href="#about-us">О нас</a>
+            </li>
+            <li className="nav-item">
+              <a href="#help-us">Как нам помочь</a>
+            </li>
+            <li className="nav-item">
+              <a href="#events">Мероприятия</a>
+            </li>
+            <li className="nav-item">
+              <a href="#our-pets">Наши любимцы</a>
+            </li>
+            <li className="nav-item">
+              <a href="#help-animals">Помощь вашим животным</a>
+            </li>
+            <li className="nav-item">
+              <a href="#rules">Правила</a>
+            </li>
+            <li className="nav-item">
+              <a href="#contacts">Контакты</a>
+            </li>
           </ul>
         </div>
 
@@ -30,32 +44,32 @@ const Header = () => {
           <label htmlFor="burger-checkbox" className="burger"></label>
           <ul className="menu-list">
             <li>
-              <a href="#" className="menu-item">
+              <a href="#about-us" className="menu-item">
                 О нас
               </a>
             </li>
             <li>
-              <a href="#" className="menu-item">
+              <a href="#help-us" className="menu-item">
                 Как нам помочь
               </a>
             </li>
             <li>
-              <a href="#" className="menu-item">
+              <a href="#events" className="menu-item">
                 Мероприятия
               </a>
             </li>
             <li>
-              <a href="#" className="menu-item">
+              <a href="#our-pets" className="menu-item">
                 Наши любимцы
               </a>
             </li>
             <li>
-              <a href="#" className="menu-item">
-                Что делать, если я нашел животное
+              <a href="#help-animals" className="menu-item">
+                Помощь вашим животным
               </a>
             </li>
             <li>
-              <a href="#" className="menu-item">
+              <a href="#contacts" className="menu-item">
                 Контакты
               </a>
             </li>
