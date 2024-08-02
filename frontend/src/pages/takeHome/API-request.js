@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://zooprim125.online";
+const API_BASE_URL = "https://zooprim125.online";
 
 const getImageLink = (imageSchema) => {
   let filename = imageSchema.filename.split(".");
