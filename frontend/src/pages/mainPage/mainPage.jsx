@@ -20,8 +20,12 @@ const MainPage = () => {
 
   return (
     <div>
-      <section className="marginSection start">
+      <section className="start">
         <div className="paw-container">
+          <div className="text-animal-need-home-for-mobileVer">
+            <p className="textAngst animal">Животным</p>
+            <p className="textAngst need-home">Нужен дом</p>
+          </div>
           <div>
             <img src={singlePawImage} alt="singlePawImage" />
           </div>

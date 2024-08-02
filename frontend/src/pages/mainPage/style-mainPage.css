@@ -9,7 +9,7 @@
 }
 @media (max-width: 767px) {
   .start {
-    height: 80vh;
+    height: calc(100vh - 85px);
   }
 }
 .paw-container {
@@ -21,16 +21,23 @@
   width: 100%;
   height: auto;
 }
+.text-animal-need-home-for-mobileVer {
+  display: none;
+}
 @media (max-width: 767px) {
   .paw-container {
     position: relative;
     width: 100%;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
   }
   .text-animal-need-home {
-    position: absolute;
-    top: -31%;
-    left: 5%;
+    display: none;
+  }
+  .text-animal-need-home-for-mobileVer {
+    display: block;
   }
 }
 @font-face {
@@ -53,6 +60,7 @@
     font-size: 32px;
     line-height: 44px;
     margin: 0;
+    position: static;
   }
 }
 .animal {
@@ -72,6 +80,9 @@
   .need-home {
     left: 30vw;
     top: 35px;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
   }
 }
 .btn {
@@ -99,10 +110,10 @@
 }
 @media (max-width: 767px) {
   .want-help {
-    position: absolute;
-    top: 110%;
-    left: 5vw;
+    position: static;
     width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 .title {
