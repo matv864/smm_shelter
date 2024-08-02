@@ -13,16 +13,24 @@
     justify-content: space-between;
   }
 }
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+.logo {
+  cursor: pointer;
+}
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 .navbar {
   list-style-type: none;
   display: flex;
   align-items: center;
   gap: 15px;
-  padding-left: 100px;
 }
 @media (max-width: 767px) {
   .navbar {
