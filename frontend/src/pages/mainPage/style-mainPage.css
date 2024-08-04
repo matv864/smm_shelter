@@ -9,120 +9,42 @@
 }
 @media (max-width: 767px) {
   .start {
-    height: 80vh;
+    height: calc(100vh - 85px);
   }
-}
-.paw-and-dog {
-  width: 95vw;
-  height: auto;
 }
 .paw-container {
   position: relative;
   width: 100%;
   max-width: 1440px;
 }
-.paw1-container,
-.paw2-container,
-.paw3-container,
-.paw4-container,
-.pic1-container {
-  position: absolute;
-}
 .paw-container img {
   width: 100%;
   height: auto;
+}
+.text-animal-need-home-for-mobileVer {
+  display: none;
 }
 @media (max-width: 767px) {
   .paw-container {
     position: relative;
     width: 100%;
-    display: block;
-  }
-  .paw-and-dog {
-    position: absolute;
-    top: 135px;
-    width: 95vw;
-    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
   }
   .text-animal-need-home {
-    position: absolute;
-    top: -31%;
-    left: 5%;
+    display: none;
   }
-}
-.paw1-container {
-  top: 262px;
-  left: 9px;
-  width: 10%;
-  height: auto;
-}
-
-.paw2-container {
-  top: 77px;
-  left: 76px;
-  width: 10%;
-  height: auto;
-}
-
-.paw3-container {
-  top: 3px;
-  left: 253px;
-  width: 10%;
-  height: auto;
-}
-
-.paw4-container {
-  top: 50px;
-  left: 422px;
-  width: 10%;
-  height: auto;
-}
-
-.pic1-container {
-  top: 236px;
-  left: 158px;
-  width: 30%;
-  height: auto;
-}
-@media (max-width: 767px) {
-  .pic1-container {
-    width: 50%;
-    top: 23vh;
-    left: 27vw;
-  }
-  .paw1-container {
-    top: 50vh;
-    left: 1vw;
-    width: 20%;
-    height: auto;
-  }
-
-  .paw2-container {
-    top: 30vh;
-    left: 15vw;
-    width: 20%;
-    height: auto;
-  }
-
-  .paw3-container {
-    top: 2vh;
-    left: 40vw;
-    width: 20%;
-    height: auto;
-  }
-
-  .paw4-container {
-    top: 15vh;
-    left: 50vw;
-    width: 20%;
-    height: auto;
+  .text-animal-need-home-for-mobileVer {
+    display: block;
   }
 }
 @font-face {
   font-family: "Angst";
-  src: url("../fonts/AngstVF.woff2") format("woff2"),
-    url("../fonts/AngstVF.woff") format("woff"),
-    url("../fonts/AngstVF.ttf") format("truetype");
+  src: url("../../fonts/AngstVF.woff2") format("woff2"),
+    url("../../fonts/AngstVF.woff") format("woff"),
+    url("../../fonts/AngstVF.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -138,6 +60,7 @@
     font-size: 32px;
     line-height: 44px;
     margin: 0;
+    position: static;
   }
 }
 .animal {
@@ -157,6 +80,9 @@
   .need-home {
     left: 30vw;
     top: 35px;
+    display: flex;
+    justify-content: flex-end;
+    width: auto;
   }
 }
 .btn {
@@ -184,10 +110,10 @@
 }
 @media (max-width: 767px) {
   .want-help {
-    position: absolute;
-    top: 110%;
-    left: 5vw;
+    position: static;
     width: 85vw;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 .title {
@@ -246,7 +172,6 @@
 }
 .section-wrapper {
   background-color: #ffe1f2;
-  /* margin: 0 -5%; */
   border-radius: 24px;
 }
 .blocks-container {

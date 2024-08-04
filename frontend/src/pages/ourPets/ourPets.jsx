@@ -1,18 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import arrow_left from "../assets/images/arrow-left.png";
-import arrow_right from "../assets/images/arrow-right.png";
-import imgForHelpAnimals from "../assets/images/img-for-help-animals.png";
+import arrow_left from "../../assets/images/arrow-left.png";
+import arrow_right from "../../assets/images/arrow-right.png";
+import { fetchPetsList } from "./API-request";
 import "./style-ourPets.css";
-
-const getImageLink = (imageSchema) => {
-  let filename = imageSchema.filename.split(".");
-  let extension = filename[filename.length - 1];
-  let databaseFilename = `${imageSchema.id}.${extension}`;
-  let fullDatabaseFilename = `http://zooprim125.online/storage/pets_images/${databaseFilename}`;
-
-  return fullDatabaseFilename;
-};
 
 const OurPets = () => {
   const [posts, setPosts] = useState([]);
@@ -22,24 +13,8 @@ const OurPets = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://zooprim125.online/api/pets/list");
-        const data = await response.json();
-
-        if (!Array.isArray(data)) {
-          throw new Error("Fetched data is not an array");
-        }
-
-        const processedData = await Promise.all(
-          data.map(async (post) => {
-            if (post.images && post.images.length > 0) {
-              const firstImageLink = getImageLink(post.images[0]);
-              return { ...post, firstImageLink };
-            }
-            return { ...post, firstImageLink: imgForHelpAnimals };
-          })
-        );
-
-        setPosts(processedData);
+        const data = await fetchPetsList();
+        setPosts(data);
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
@@ -81,7 +56,7 @@ const OurPets = () => {
   };
 
   const handleButtonClickToHelp = () => {
-    navigate(`/form-for-help`);
+    navigate(`/contacts`);
   };
 
   return (

@@ -11,18 +11,32 @@
 @media (max-width: 767px) {
   .header {
     justify-content: space-between;
+    height: 85px;
   }
+}
+.header a {
+  text-decoration: none;
+  color: inherit;
+}
+.logo {
+  cursor: pointer;
 }
 .header-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+@media (max-width: 767px) {
+  .header-container {
+    justify-content: flex-end;
+  }
 }
 .navbar {
   list-style-type: none;
   display: flex;
   align-items: center;
   gap: 15px;
-  padding-left: 100px;
 }
 @media (max-width: 767px) {
   .navbar {
