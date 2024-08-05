@@ -19,8 +19,6 @@ services:
     container_name: frontend
     restart: always
     build: ./frontend
-    ports:
-      - 8003:3000
 
   backend:
     container_name: backend
@@ -35,8 +33,6 @@ services:
       - ./storage:/storage
     depends_on:
       - postgres-pets-service
-    ports:
-      - 8002:8002
 
 
   postgres-pets-service:
@@ -48,8 +44,19 @@ services:
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
+
+  nginx:
+    image: nginx:1.25.4
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - web:/app/dist
+      - ./storage:/storage
     ports:
-      - 8001:5432
+      - 8002:8002
+    depends_on:
+      - backend
+      - frontend
+  
 
 volumes:
   data:
