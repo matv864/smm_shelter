@@ -29,7 +29,9 @@
   width: fit-content;
 }
 .footer-logos {
-  display: block;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
 }
 .phone-number {
   font-size: 32px;

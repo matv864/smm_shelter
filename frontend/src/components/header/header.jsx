@@ -13,25 +13,25 @@ const Header = () => {
         <div>
           <ul className="navbar">
             <li className="nav-item">
-              <a href="#about-us">О нас</a>
+              <Link to="/#about-us">О нас</Link>
             </li>
             <li className="nav-item">
-              <a href="#help-us">Как нам помочь</a>
+              <Link to="/#help-us">Как нам помочь</Link>
             </li>
             <li className="nav-item">
-              <a href="#events">Мероприятия</a>
+              <Link to="#events">Мероприятия</Link>
             </li>
             <li className="nav-item">
-              <a href="#our-pets">Наши любимцы</a>
+              <Link to="/#our-pets">Наши любимцы</Link>
             </li>
             <li className="nav-item">
-              <a href="#help-animals">Помощь вашим животным</a>
+              <Link to="/#help-animals">Помощь вашим животным</Link>
             </li>
             <li className="nav-item">
-              <a href="#rules">Правила</a>
+              <Link to="/#rules">Правила</Link>
             </li>
             <li className="nav-item">
-              <a href="#contacts">Контакты</a>
+              <Link to="/#contacts">Контакты</Link>
             </li>
           </ul>
         </div>
@@ -45,34 +45,34 @@ const Header = () => {
           <label htmlFor="burger-checkbox" className="burger"></label>
           <ul className="menu-list">
             <li>
-              <a href="#about-us" className="menu-item">
+              <Link to="/#about-us" className="menu-item">
                 О нас
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#help-us" className="menu-item">
+              <Link to="/#help-us" className="menu-item">
                 Как нам помочь
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#events" className="menu-item">
+              <Link to="/#events" className="menu-item">
                 Мероприятия
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#our-pets" className="menu-item">
+              <Link to="/#our-pets" className="menu-item">
                 Наши любимцы
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#help-animals" className="menu-item">
+              <Link to="/#help-animals" className="menu-item">
                 Помощь вашим животным
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#contacts" className="menu-item">
+              <Link to="/#contacts" className="menu-item">
                 Контакты
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

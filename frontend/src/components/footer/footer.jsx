@@ -15,14 +15,14 @@ const Footer = () => {
         </div>
         <div className="address">
           <p>
-            Адрес приюта <br />
-            г. Москва ул.Оружейная 45
+            Адрес приюта: <br />
+            Приморский край
           </p>
           <p>
-            Почта <br />
-            info@mail.ru
+            Почта: <br />
+            zooprim125@mail.ru
           </p>
-          <p>Социальные сети</p>
+          <p>Социальные сети:</p>
           <div className="footer-logos">
             <img src={tgLogo} alt="telegram" />
             <img src={waLogo} alt="whatsapp" />

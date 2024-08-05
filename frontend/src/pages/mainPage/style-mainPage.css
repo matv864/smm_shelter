@@ -126,13 +126,15 @@
   .title {
     font-size: 20px;
     line-height: 23px;
+    margin: 0;
+    padding: 25px;
   }
 }
 .aboutUs {
   margin-top: 80px;
 }
 .img-aboutUs {
-  width: -webkit-fill-available;
+  width: 100%;
 }
 .aboutUs-container {
   display: flex;
@@ -270,6 +272,7 @@
 }
 .transparent {
   border: 1px solid #e5007e;
+  border-radius: 16px;
   color: #e5007e;
   background-color: transparent;
   width: 48%;
@@ -307,6 +310,10 @@
 .ourPets:active {
   background-color: #930453;
   transform: scale(0.95);
+}
+.btn-help-pet {
+  width: 100%;
+  height: 40px;
 }
 .light-color {
   color: #58003180;
