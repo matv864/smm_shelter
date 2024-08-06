@@ -64,7 +64,7 @@ const MainPage = () => {
           </div>
         </section>
       </div>
-      {/* <section className="marginSection events">
+      {/* <section id="events" className="marginSection events">
         <div className="events-title-container">
           <h1 className="title">Мероприятия</h1>
           <div className="arrows">
