@@ -8,7 +8,15 @@
 ![Nginx Badge](https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white)
 
 
+#### It's a website of shelter for homeless animals
+(t.me/zooprim125)
 
-# как запускать
-```docker-compose up```
-блять
+## the components of the site
+- frontend (HTML|CSS + React)
+- backend (FastApi + pydantic)
+- database (postgresSQL)
+- webserver (nginx)
+
+# how to run it?
+    install docker and 
+```docker compose up -d```
