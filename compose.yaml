@@ -3,7 +3,7 @@ version: "2.27"
 name: smm_shelter
 
 services:
-  # admin_panel:
+  # smm_shelter-admin_panel:
   #   container_name: admin_panel
   #   restart: always
   #   build: admin_panel
@@ -15,28 +15,28 @@ services:
   #   #   - backend
 
 
-  frontend:
-    container_name: frontend
+  smm_shelter-frontend:
+    container_name: smm_shelter-frontend
     restart: always
     build: ./frontend
 
-  backend:
-    container_name: backend
+  smm_shelter-backend:
+    container_name: smm_shelter-backend
     restart: always
     build: ./backend
     environment:
-      - POSTGRES_NAME_SERVICE=postgres-pets-service
+      - POSTGRES_NAME_SERVICE=smm_shelter-postgres
       - POSTGRES_DB=pets-service
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
     volumes:
       - ./storage:/storage
     depends_on:
-      - postgres-pets-service
+      - smm_shelter-postgres
 
 
-  postgres-pets-service:
-    container_name: postgres-pets-service
+  smm_shelter-postgres:
+    container_name: smm_shelter-postgres
     restart: always
     image: postgres:16
     volumes:
@@ -45,20 +45,14 @@ services:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust
 
-  nginx:
+  smm_shelter-nginx:
+    container_name: smm_shelter-nginx
     image: nginx:1.25.4
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-      - web:/app/dist
       - ./storage:/storage
     ports:
       - 8002:8002
     depends_on:
-      - backend
-      - frontend
-  
-
-volumes:
-  data:
-    driver: local
-  web:
+      - smm_shelter-backend
+      - smm_shelter-frontend
