@@ -18,7 +18,7 @@ jobs:
       #   run: |
       #     docker compose up
 
-      - name: executing remote ssh commands using ssh key
+      - name: 🚀 deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.HOST }}
