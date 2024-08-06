@@ -1,6 +1,6 @@
 name: Docker Compose Action
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -26,5 +26,8 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
           script: |
-            whoami
-            echo "YEAH BOY, matv864" >> /home/matv864/t
+            cd /home/matv864/smm_shelter
+            sudo git pull
+            sudo docker stop
+            sudo docker rm -f smm_shelter-backend smm_shelter-frontend smm_shelter-postgres smm_shelter-nginx
+            sudo docker compose up -d
