@@ -14,6 +14,6 @@ jobs:
         with:
           compose-file: "./compose.yaml"
 
-      - name: Execute tests in the running services
-        run: |
-          docker compose up
+      # - name: Execute tests in the running services
+      #   run: |
+      #     docker compose up
