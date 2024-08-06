@@ -102,7 +102,7 @@ const MainPage = () => {
             <button className="btn ourPets" onClick={handleButtonClick}>
               Наши любимцы
             </button>
-            <button className="transparent btn">Хочу приехать</button>
+            <button className="transparent">Хочу приехать</button>
           </div>
         </div>
         <img
@@ -134,7 +134,7 @@ const MainPage = () => {
               длинным хвостом и круглой головой. У неё большие глаза
               золотистого, зелёного или орехового цвета.
             </p>
-            <button className="btn want-help-btn">Помочь</button>
+            <button className="btn btn-help-pet">Помочь</button>
           </div>
           <div className="block-for-animalHelp">
             <img
@@ -148,7 +148,7 @@ const MainPage = () => {
               длинным хвостом и круглой головой. У неё большие глаза
               золотистого, зелёного или орехового цвета.
             </p>
-            <button className="btn want-help-btn">Помочь</button>
+            <button className="btn btn-help-pet">Помочь</button>
           </div>
           <div className="block-for-animalHelp">
             <img
@@ -162,7 +162,7 @@ const MainPage = () => {
               длинным хвостом и круглой головой. У неё большие глаза
               золотистого, зелёного или орехового цвета.
             </p>
-            <button className="btn want-help-btn">Помочь</button>
+            <button className="btn btn-help-pet">Помочь</button>
           </div>
         </div>
       </section>
