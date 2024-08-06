@@ -25,4 +25,6 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           key: ${{ secrets.KEY }}
-          script: whoami
+          script: |
+            whoami
+            echo "YEAH BOY, matv864" >> /home/matv864/t
