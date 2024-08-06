@@ -17,3 +17,11 @@ jobs:
       # - name: Execute tests in the running services
       #   run: |
       #     docker compose up
+
+      - name: executing remote ssh commands using ssh key
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          script: whoami
