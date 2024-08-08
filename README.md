@@ -10,6 +10,7 @@
 
 #### It's a website of shelter for homeless animals
 (t.me/zooprim125)
+(zooprim125.ru)
 
 ## the components of the site
 - frontend (HTML|CSS + React)
