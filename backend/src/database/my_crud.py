@@ -5,7 +5,7 @@ from sqlalchemy.orm import selectinload
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql import text
 
-from src.database.core import async_session_maker
+from src.database.engine import async_session_maker
 
 
 def exception_wrapper(func):
@@ -126,7 +126,6 @@ class My_crud:
             await session.commit()
 
         return output_record.scalar()
-
 
     @exception_wrapper
     async def remove(

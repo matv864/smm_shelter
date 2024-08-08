@@ -22,8 +22,8 @@ path_to_pets_image = full_path + path_to_pets_image
 
 
 class Images_service:
+    @staticmethod
     async def add_images(
-        self,
         images: list[UploadFile],
         pets_id: uuid.UUID
     ):
@@ -48,13 +48,15 @@ class Images_service:
             result_records.append(image_record.model_dump())
         return result_records
 
-    async def get_all_images_of_pet(self, pets_id: uuid.UUID):
+    @staticmethod
+    async def get_all_images_of_pet(pets_id: uuid.UUID):
         return await images_crud.get(
             filters=[Images.pets_id == pets_id],
             multi=True
         )
 
-    async def get_file_image(self, images_id: uuid.UUID):
+    @staticmethod
+    async def get_file_image(images_id: uuid.UUID):
         if not os.path.exists(path_to_pets_storage):
             return "no exists"
 

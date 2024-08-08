@@ -1,10 +1,12 @@
 import uuid
 import datetime
 
-from src.database.core import Base
+from sqlalchemy.ext.declarative import declarative_base
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
+Base = declarative_base()
 
 
 class Pets(Base):
@@ -15,10 +17,10 @@ class Pets(Base):
         unique=True,
         default=uuid.uuid4
     )
-    status: Mapped[str] = mapped_column(nullable=False)
+    status: Mapped[str]
 
-    name: Mapped[str] = mapped_column(nullable=False)
-    gender: Mapped[str] = mapped_column(nullable=False)
+    name: Mapped[str]
+    gender: Mapped[str]
 
     type_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets_type.id"))
 
@@ -43,7 +45,7 @@ class Pets_type(Base):
         unique=True,
         default=uuid.uuid4
     )
-    name: Mapped[str] = mapped_column(nullable=False)
+    name: Mapped[str]
     description: Mapped[str] = mapped_column(nullable=True)
 
 
@@ -55,5 +57,5 @@ class Images(Base):
         unique=True,
         default=uuid.uuid4
     )
-    filename: Mapped[str] = mapped_column(nullable=False)
+    filename: Mapped[str]
     pets_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("pets.id"))
