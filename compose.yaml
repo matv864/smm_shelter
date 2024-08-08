@@ -49,9 +49,7 @@ services:
     container_name: smm_shelter-nginx
     image: nginx:1.25.4
     volumes:
-      - ./nginx/hello.txt:/service/hello.txt
-      - ./nginx/robots.txt:/service/robots.txt
-      - ./nginx/sitemap.xml:/service/sitemap.xml
+      - ./nginx/service_for_website:/service
 
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./storage:/storage
