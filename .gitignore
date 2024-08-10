@@ -22,4 +22,4 @@ dist/
 
 
 # storage
-storage/
+storage/*
