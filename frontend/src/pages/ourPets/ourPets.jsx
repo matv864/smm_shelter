@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import arrow_left from "../../assets/images/arrow-left.png";
 import arrow_right from "../../assets/images/arrow-right.png";
 import { fetchPetsList } from "./API-request";
+import ImageWithPlaceholder from "../../components/ImageWithPlaceholder/ImageWithPlaceholder";
+import placeholderImage from "../../assets/images/placeholder-image.jpg";
 import "./style-ourPets.css";
 
 const OurPets = () => {
@@ -77,10 +79,11 @@ const OurPets = () => {
           .slice(currentIndex, currentIndex + visiblePostsCount)
           .map((post) => (
             <div key={post.id} className="block-for-animalHelp">
-              <img
+              <ImageWithPlaceholder
                 className="image-of-animal"
                 src={post.firstImageLink}
-                alt={post.name}
+                placeholder={placeholderImage}
+                alt="Sample Image"
               />
               <p className="event-title">
                 {post.name}, {post.age} года
