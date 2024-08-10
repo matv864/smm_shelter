@@ -64,8 +64,9 @@
   height: auto;
   border-radius: 15px;
 }
-.want-help-btn {
-  width: 90%;
+.our-pets-btn {
+  width: 100%;
   height: 35px;
   margin-top: 20px;
+  font-size: 16px;
 }

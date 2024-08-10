@@ -144,7 +144,7 @@ const TakeHome = () => {
             <span className="font-bold">Описание:</span> {pet.description}
           </p>
           <button
-            className="btn want-help-btn"
+            className="btn take-home-btn"
             onClick={handleButtonClickToHelp}
           >
             Забрать

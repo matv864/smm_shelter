@@ -91,13 +91,13 @@ const OurPets = () => {
               <p className="event-title">{post.appearance}</p>
               <div className="btns-container">
                 <button
-                  className="btn want-help-btn"
+                  className="btn our-pets-btn"
                   onClick={handleButtonClickToHelp}
                 >
                   Помочь
                 </button>
                 <button
-                  className="btn transparent want-help-btn"
+                  className="btn transparent our-pets-btn"
                   onClick={() => handleButtonClick(post.id)}
                 >
                   Забрать

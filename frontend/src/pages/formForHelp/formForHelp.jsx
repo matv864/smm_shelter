@@ -26,9 +26,11 @@ const FormHelpContainer = () => {
       </h1>
       <div className="form-for-donat">
         <div className="three-btns-group">
-          <button className="btn want-help-btn">Банковская карта</button>
-          <button className="btn want-help-btn">SMS</button>
-          <button className="btn want-help-btn">Реквизиты</button>
+          <button className="btn choose-payment-method-btn">
+            Банковская карта
+          </button>
+          <button className="btn choose-payment-method-btn">SMS</button>
+          <button className="btn choose-payment-method-btn">Реквизиты</button>
         </div>
         <div className="choise-of-amount">
           <button className="amount-button">200 ₽</button>
