@@ -186,10 +186,10 @@
   .blocks-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     padding-bottom: 20px;
-    gap: 5%;
     width: 95%;
+    height: 1600px;
     margin: auto;
   }
   .helpingAnimalsSection {
@@ -197,7 +197,6 @@
   }
 }
 .block {
-  height: 345px;
   width: 275px;
   border-radius: 24px;
   background-color: white;
@@ -207,6 +206,14 @@
     margin: auto;
     width: 90%;
   }
+}
+.help-us-count {
+  font-size: 80px;
+  color: #ffe1f2;
+  font-weight: bold;
+}
+.do-it-for-help {
+  margin-bottom: 200px;
 }
 .events-title-container {
   display: flex;

@@ -57,10 +57,22 @@ const MainPage = () => {
         <section id="help-us" className="marginSection helpUs">
           <h1 className="title">Как нам помочь?</h1>
           <div className="blocks-container">
-            <div className="block">Сделать так</div>
-            <div className="block">Сделать так</div>
-            <div className="block">Сделать так</div>
-            <div className="block">Сделать так</div>
+            <div className="block">
+              <div className="help-us-count">01</div>
+              <p className="do-it-for-help">Сделать так</p>
+            </div>
+            <div className="block">
+              <div className="help-us-count">02</div>
+              <p className="do-it-for-help">Сделать так</p>
+            </div>
+            <div className="block">
+              <div className="help-us-count">03</div>
+              <p className="do-it-for-help">Сделать так</p>
+            </div>
+            <div className="block">
+              <div className="help-us-count">04</div>
+              <p className="do-it-for-help">Сделать так</p>
+            </div>
           </div>
         </section>
       </div>

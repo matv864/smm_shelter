@@ -37,6 +37,9 @@
   .navbar {
     display: none;
   }
+  .header-container {
+    justify-content: flex-end;
+  }
 }
 .nav-item {
   cursor: pointer;
