@@ -22,7 +22,7 @@ jobs:
 
       - name: Execute tests in the running services
         run: |
-          apt-get install curl
+          sudo apt-get install curl
           curl localhost:8002
 
       - name: 🚀 deploy
