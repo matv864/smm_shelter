@@ -3,16 +3,10 @@ version: "2.27"
 name: smm_shelter
 
 services:
-  # smm_shelter-admin_panel:
-  #   container_name: admin_panel
-  #   restart: always
-  #   build: admin_panel
-  #   # environment:
-  #   #   - BACKEND_LINK=0.0.0.0:8002
-  #   ports:
-  #     - 8080:8080
-  #   # depends_on:
-  #   #   - backend
+  smm_shelter-admin_panel:
+    container_name: admin_panel
+    restart: always
+    build: admin_panel
 
 
   smm_shelter-frontend:

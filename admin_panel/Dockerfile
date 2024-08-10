@@ -4,6 +4,6 @@ WORKDIR /admin_panel
 
 COPY . .
 
-RUN pip install -r requirements.txt
+RUN pip install pyTelegramBotAPI
 
-CMD python bot.py
+CMD python src/bot.py
