@@ -34,6 +34,5 @@ jobs:
           script: |
             cd /home/matv864/smm_shelter
             sudo git pull
-            sudo docker stop
-            sudo docker rm -f smm_shelter-backend smm_shelter-frontend smm_shelter-postgres smm_shelter-nginx
+            sudo docker rm -f smm_shelter-backend smm_shelter-frontend smm_shelter-postgres smm_shelter-nginx smm_shelter-admin_panel
             sudo docker compose up -d
