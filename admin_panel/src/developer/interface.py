@@ -19,7 +19,7 @@ class Context:
 class Developer:
     def __init__(self):
 
-        self.__developer_username = os.getenv("developer_username")
+        self.__developer_username = os.getenv("DEVELOPER_USERNAME")
 
         self.white_user_list: List[str] = [self.__developer_username]
         self.contexts_of_admins: dict[str, Context] = dict()

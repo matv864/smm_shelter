@@ -4,7 +4,7 @@ name: smm_shelter
 
 services:
   smm_shelter-admin_panel:
-    container_name: admin_panel
+    container_name: smm_shelter-admin_panel
     restart: always
     build: admin_panel
 
@@ -52,3 +52,4 @@ services:
     depends_on:
       - smm_shelter-backend
       - smm_shelter-frontend
+      - smm_shelter-admin_panel

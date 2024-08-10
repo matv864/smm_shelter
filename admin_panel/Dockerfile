@@ -4,6 +4,6 @@ WORKDIR /admin_panel
 
 COPY . .
 
-RUN pip install pyTelegramBotAPI
+RUN make deps
 
-CMD python src/bot.py
+CMD make run
