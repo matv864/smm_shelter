@@ -6,14 +6,19 @@ from uuid import UUID
 
 class Context:
     def __init__(self):
-        self.mode: Optional[Literal["create", "edit", "add_photo"]] = None
-        self.record_id: Optional[UUID] = None
+        self.get_first_message: bool = False
+        self.mode: \
+            Literal["create", "edit", "delete", "add_photo", None] = None
+        self.record_uuid: Optional[UUID] = None
         self.data_of_record: dict[str, Any] = dict()
+        self.set_of_photo: list[Any] = []
 
     def drop(self) -> None:
+        self.get_first_message: bool = False
         self.mode = None
-        self.record_id = None
+        self.record_uuid = None
         self.data_of_record = None
+        self.set_of_photo: list[Any] = []
 
 
 class Developer:
