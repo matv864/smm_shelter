@@ -69,7 +69,7 @@ const TakeHome = () => {
 
   return (
     <div>
-      <div className="flex">
+      <div className="goBackBtn-and-petName">
         <button className="btn-arrow" onClick={() => navigate(-1)}>
           <img src={arrow_goBack} alt="arrow-go-back" />
         </button>

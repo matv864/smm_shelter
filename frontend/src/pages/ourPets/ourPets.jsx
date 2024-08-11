@@ -38,7 +38,7 @@ const OurPets = () => {
   useEffect(() => {
     const handleResize = () => {
       const containerWidth =
-        document.querySelector(".blocks-container").offsetWidth;
+        document.querySelector(".cards-container").offsetWidth;
       const postWidth = 300;
       const visibleCount = Math.floor(containerWidth / postWidth);
       setVisiblePostsCount(visibleCount);
@@ -74,7 +74,7 @@ const OurPets = () => {
           </button>
         </div>
       </div>
-      <div className="blocks-container">
+      <div className="cards-container">
         {posts
           .slice(currentIndex, currentIndex + visiblePostsCount)
           .map((post) => (

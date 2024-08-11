@@ -9,7 +9,7 @@
 }
 @media (max-width: 767px) {
   .start {
-    height: calc(100vh - 85px);
+    height: calc(100vh - 120px);
   }
 }
 .paw-container {

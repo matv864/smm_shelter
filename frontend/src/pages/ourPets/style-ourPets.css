@@ -28,6 +28,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 15px;
   }
 }
 .btn-arrow {
@@ -54,6 +55,17 @@
   .block-for-animalHelp {
     padding: 5%;
     width: 90%;
+  }
+}
+.cards-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+  .cards-container {
+    flex-wrap: wrap;
   }
 }
 .btns-container {
