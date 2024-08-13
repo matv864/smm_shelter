@@ -12,6 +12,7 @@ const TakeHome = () => {
   const [pet, setPet] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const thumbnailsRef = useRef(null);
+  const touchStartX = useRef(0); // Для хранения начальной координаты касания
 
   useEffect(() => {
     const fetchPet = async () => {
@@ -55,6 +56,24 @@ const TakeHome = () => {
     );
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX; // Сохраняем начальную точку касания
+  };
+
+  const handleTouchMove = (e) => {
+    const touchEndX = e.touches[0].clientX;
+    const diffX = touchStartX.current - touchEndX;
+
+    if (Math.abs(diffX) > 50) {
+      // Минимальная длина для распознавания свайпа
+      if (diffX > 0) {
+        handleNextImage(); // Свайп влево
+      } else {
+        handlePrevImage(); // Свайп вправо
+      }
+    }
+  };
+
   if (!pet) {
     return (
       <div className="loading-container">
@@ -85,6 +104,8 @@ const TakeHome = () => {
             key={pet.images[activeImageIndex].id}
             src={getImageLink(pet.images[activeImageIndex])}
             alt={pet.name}
+            onTouchStart={handleTouchStart} // Добавляем обработчики событий касания
+            onTouchMove={handleTouchMove}
           />
           <button className="btn-slider right-btn" onClick={handleNextImage}>
             &gt;

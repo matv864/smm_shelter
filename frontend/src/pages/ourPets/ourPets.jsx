@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import arrow_left from "../../assets/images/arrow-left.png";
 import arrow_right from "../../assets/images/arrow-right.png";
@@ -11,6 +11,7 @@ const OurPets = () => {
   const [posts, setPosts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visiblePostsCount, setVisiblePostsCount] = useState(3);
+  const touchStartX = useRef(0); // Используем useRef для хранения начальной координаты касания
 
   useEffect(() => {
     const fetchData = async () => {
@@ -61,6 +62,24 @@ const OurPets = () => {
     navigate(`/contacts`);
   };
 
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX; // Сохраняем начальную точку касания
+  };
+
+  const handleTouchMove = (e) => {
+    const touchEndX = e.touches[0].clientX;
+    const diffX = touchStartX.current - touchEndX;
+
+    if (Math.abs(diffX) > 50) {
+      // Минимальная длина для распознавания свайпа
+      if (diffX > 0) {
+        handleNextClick(); // Свайп влево
+      } else {
+        handlePrevClick(); // Свайп вправо
+      }
+    }
+  };
+
   return (
     <section className="helpingAnimalsPage">
       <div className="events-title-container">
@@ -74,7 +93,11 @@ const OurPets = () => {
           </button>
         </div>
       </div>
-      <div className="cards-container">
+      <div
+        className="cards-container"
+        onTouchStart={handleTouchStart} // Добавляем обработчики событий касания
+        onTouchMove={handleTouchMove}
+      >
         {posts
           .slice(currentIndex, currentIndex + visiblePostsCount)
           .map((post) => (
