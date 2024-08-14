@@ -22,7 +22,7 @@ const Header = () => {
               <Link to="#events">Мероприятия</Link>
             </li>
             <li className="nav-item">
-              <Link to="/#our-pets">Наши любимцы</Link>
+              <Link to="/our-pets">Наши любимцы</Link>
             </li>
             <li className="nav-item">
               <Link to="/#help-animals">Помощь вашим животным</Link>

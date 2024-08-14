@@ -24,8 +24,12 @@ const Footer = () => {
           </p>
           <p>Социальные сети:</p>
           <div className="footer-logos">
-            <img src={tgLogo} alt="telegram" />
-            <img src={waLogo} alt="whatsapp" />
+            <a href="https://t.me/zooprim125" target={"_blank"}>
+              <img src={tgLogo} alt="telegram" />
+            </a>
+            <a href="https://www.instagram.com/zooprim125" target={"_blank"}>
+              <img src={waLogo} alt="whatsapp" />
+            </a>
           </div>
         </div>
         <div>

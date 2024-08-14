@@ -1,5 +1,6 @@
-.flex {
+.goBackBtn-and-petName {
   display: flex;
+  align-items: center;
 }
 .pet-photo-main {
   width: 100%;
