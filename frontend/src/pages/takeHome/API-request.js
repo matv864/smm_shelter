@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://zooprim125.online";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const getImageLink = (imageSchema) => {
   let filename = imageSchema.filename.split(".");

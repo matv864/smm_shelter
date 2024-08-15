@@ -1,6 +1,15 @@
-const API_BASE_URL = "https://zooprim125.online";
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
+if (!API_BASE_URL) {
+  throw new Error("API_BASE_URL is not defined in environment variables.");
+}
 
 const getImageLink = (imageSchema) => {
+  if (!imageSchema.filename || !imageSchema.id) {
+    console.error("Invalid imageSchema:", imageSchema);
+    return "img-for-help-animals.png";
+  }
+
   let filename = imageSchema.filename.split(".");
   let extension = filename[filename.length - 1];
   let databaseFilename = `${imageSchema.id}.${extension}`;
@@ -12,6 +21,11 @@ const getImageLink = (imageSchema) => {
 const fetchPetsList = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/api/pets/list`);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
     const data = await response.json();
 
     if (!Array.isArray(data)) {
