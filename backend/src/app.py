@@ -3,13 +3,14 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from dotenv import load_dotenv
 
-from src.database import make_admin
+from src.database import make_admin, create_database
 from src.api.main_router import main_pets_router
 
 load_dotenv()
 
 app = FastAPI(title="backend")
 make_admin(app)
+create_database()
 
 
 app.add_middleware(

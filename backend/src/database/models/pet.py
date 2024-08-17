@@ -1,8 +1,9 @@
-import uuid
-import datetime
+from uuid import UUID, uuid4
+from datetime import date
 
 from sqladmin import ModelView
 
+from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from .base import Base
@@ -11,19 +12,23 @@ from .base import Base
 class Pet(Base):
     __tablename__ = "pet"
 
-    id: Mapped[uuid.UUID] = mapped_column(
+    id: Mapped[UUID] = mapped_column(
         primary_key=True,
         unique=True,
-        default=uuid.uuid4
+        default=uuid4
     )
-    status: Mapped[str]
+    status_id: Mapped[str] = mapped_column(ForeignKey("status.id"))
+    status = relationship("Status")
 
     name: Mapped[str]
-    gender: Mapped[str]
 
-    type_name: Mapped[str]
+    gender_id: Mapped[str] = mapped_column(ForeignKey("gender.id"))
+    gender = relationship("Gender")
 
-    date_birth: Mapped[datetime.datetime] = mapped_column(nullable=True)
+    type_id: Mapped[str] = mapped_column(ForeignKey("petType.id"))
+    type_name = relationship("PetType")
+
+    date_birth: Mapped[date] = mapped_column(nullable=True)
 
     breed: Mapped[str] = mapped_column(nullable=True)
     personality: Mapped[str] = mapped_column(nullable=True)
@@ -43,8 +48,11 @@ class Pet(Base):
 
 
 class PetAdmin(ModelView, model=Pet):
+    name = "pet"
+    name_plural = "pets"
+    icon = "fa-solid fa-paw"
+
     column_list = [
-        Pet.id,
         Pet.status,
         Pet.name,
         Pet.gender,
@@ -59,3 +67,5 @@ class PetAdmin(ModelView, model=Pet):
     form_excluded_columns = [
         Pet.image
     ]
+
+    column_searchable_list = [Pet.name]

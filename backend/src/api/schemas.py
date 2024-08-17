@@ -1,12 +1,12 @@
 from typing import Optional
-import uuid
+from uuid import UUID, uuid4
 import datetime
 
 from pydantic import BaseModel
 
 
 class Pet_schema(BaseModel):
-    id: uuid.UUID
+    id: UUID
     name: str
     gender: str
     status: str
