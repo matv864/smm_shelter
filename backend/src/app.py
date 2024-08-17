@@ -1,9 +1,16 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from src.pets_service.router import main_pets_router
+from dotenv import load_dotenv
+
+from src.database import make_admin
+from src.api.main_router import main_pets_router
+
+load_dotenv()
 
 app = FastAPI(title="backend")
+make_admin(app)
+
 
 app.add_middleware(
     CORSMiddleware,

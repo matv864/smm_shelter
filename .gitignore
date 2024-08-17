@@ -22,4 +22,8 @@ dist/
 
 
 # storage
+*.db
 storage/*
+
+# temporary files for development
+db.yaml

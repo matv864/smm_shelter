@@ -17,13 +17,13 @@ class Settings(BaseSettings):
 
     @cached_property
     def postgres_url(self):
-        if self.POSTGRES_HOST:
-            return f"postgresql+asyncpg://{self.POSTGRES_USER}:" + \
-                f"{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:" + \
-                f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
-        return f"postgresql+asyncpg://{self.POSTGRES_USER}:" + \
-            f"{self.POSTGRES_PASSWORD}@" + \
-            f"{self.POSTGRES_NAME_SERVICE}/{self.POSTGRES_DB}"
+        if self.POSTGRES_NAME_SERVICE:
+            return f"postgresql+psycopg2://{self.POSTGRES_USER}:" + \
+                f"{self.POSTGRES_PASSWORD}@" + \
+                f"{self.POSTGRES_NAME_SERVICE}/{self.POSTGRES_DB}"
+        return f"postgresql+psycopg2://{self.POSTGRES_USER}:" + \
+            f"{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:" + \
+            f"{self.POSTGRES_PORT}/{self.POSTGRES_DB}"
 
 
 @lru_cache
