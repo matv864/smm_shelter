@@ -94,6 +94,8 @@ ALTER TABLE public.status OWNER TO postgres;
 -- Data for Name: gender; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.gender (id, name) VALUES ('ef6f09c6-3dfc-4e07-918b-6686fe16c35d', 'мальчик');
+INSERT INTO public.gender (id, name) VALUES ('e9d62c72-e667-45c3-adc9-4ccaa7c6f1da', 'девочка');
 
 
 --
@@ -106,18 +108,24 @@ ALTER TABLE public.status OWNER TO postgres;
 -- Data for Name: pet; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.pet (id, status_id, name, gender_id, type_id, date_birth, breed, personality, appearance, health, description) VALUES ('bb6400c0-6825-486d-907d-57a8cb2c6b7f', 'b2079a7c-3eca-458a-82e6-926254804e15', '1', 'e9d62c72-e667-45c3-adc9-4ccaa7c6f1da', 'efb89c62-f0b6-4c45-9af2-1fd0977b8564', NULL, NULL, NULL, NULL, NULL, NULL);
 
 
 --
 -- Data for Name: petType; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public."petType" (id, name) VALUES ('97a0612f-df2e-47a8-80b6-7cab6b4bf3bf', 'кошка');
+INSERT INTO public."petType" (id, name) VALUES ('efb89c62-f0b6-4c45-9af2-1fd0977b8564', 'собака');
 
 
 --
 -- Data for Name: status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.status (id, name) VALUES ('b2079a7c-3eca-458a-82e6-926254804e15', 'в приюте');
+INSERT INTO public.status (id, name) VALUES ('a2f9542e-7573-43e9-a00f-dcaab2a1c4ca', 'забралти');
+INSERT INTO public.status (id, name) VALUES ('0bf86c16-e1cb-4b8b-90af-21ba07287b58', 'на лечении');
 
 
 --
