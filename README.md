@@ -14,7 +14,7 @@
 
 ## the components of the site
 - frontend (HTML|CSS + React)
-- backend (FastApi + pydantic)
+- backend (FastApi + sqlAlchemy + sqlAdmin)
 - database (postgresSQL)
 - webserver (nginx)
 
