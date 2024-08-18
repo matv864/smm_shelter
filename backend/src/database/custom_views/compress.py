@@ -37,7 +37,7 @@ async def compress_big_files():
 
 
 class CompressView(BaseView):
-    name = "Compress Images"
+    name = "сжатие изображений"
     icon = "fa-solid fa-dumbbell"
 
     @expose("/compress", methods=["GET"])
@@ -45,9 +45,8 @@ class CompressView(BaseView):
         counter_compressed_files = await compress_big_files()
         return await self.templates.TemplateResponse(
             request,
-            "message.html",
+            "compress.html",
             context={
-                "view_name": self.name,
-                "message": f"{counter_compressed_files} files is compessed"
+                "counter_compressed_files": str(counter_compressed_files)
             },
         )

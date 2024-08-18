@@ -23,8 +23,8 @@ class PetType(Base):
 
 
 class PetTypeAdmin(ModelView, model=PetType):
-    name = "type of pet"
-    name_plural = "types of pets"
+    name = "тип питомца"
+    name_plural = "типы питомцев"
     icon = "fa-solid fa-book"
 
     column_list = [

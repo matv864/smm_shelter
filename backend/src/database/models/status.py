@@ -23,8 +23,8 @@ class Status(Base):
 
 
 class StatusAdmin(ModelView, model=Status):
-    name = "status"
-    name_plural = "status"
+    name = "статус питомца"
+    name_plural = "статусы питомцев"
     icon = "fa-solid fa-house"
 
     column_list = [

@@ -15,6 +15,7 @@ services:
     environment:
       - POSTGRES_NAME_SERVICE=smm_shelter-postgres
     volumes:
+      - ./backup:/backup
       - ./storage:/storage
     depends_on:
       - smm_shelter-postgres
@@ -25,7 +26,7 @@ services:
     restart: always
     image: postgres:16
     volumes:
-      - ./dump/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
+      - ./backup/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
     environment:
       - POSTGRES_DB=pets-service
       - POSTGRES_HOST_AUTH_METHOD=trust

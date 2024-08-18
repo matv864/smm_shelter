@@ -48,8 +48,8 @@ class Pet(Base):
 
 
 class PetAdmin(ModelView, model=Pet):
-    name = "pet"
-    name_plural = "pets"
+    name = "питомец"
+    name_plural = "питомцы"
     icon = "fa-solid fa-paw"
 
     column_list = [

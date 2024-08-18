@@ -32,8 +32,8 @@ class Image(Base):
 
 
 class ImageAdmin(ModelView, model=Image):
-    name = "image"
-    name_plural = "images"
+    name = "изображение"
+    name_plural = "изображения"
     icon = "fa-solid fa-image"
 
     column_list = [
