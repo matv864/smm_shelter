@@ -45,8 +45,9 @@ class CompressView(BaseView):
         counter_compressed_files = await compress_big_files()
         return await self.templates.TemplateResponse(
             request,
-            "compress.html",
+            "message.html",
             context={
+                "view_name": self.name,
                 "message": f"{counter_compressed_files} files is compessed"
             },
         )
