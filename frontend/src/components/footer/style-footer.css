@@ -3,6 +3,10 @@
   padding-top: 50px;
   padding-bottom: 60px;
 }
+.footer a {
+  text-decoration: none;
+  color: #580031;
+}
 .footer-container {
   display: flex;
   justify-content: space-between;
@@ -35,4 +39,12 @@
 }
 .phone-number {
   font-size: 32px;
+}
+.dev-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dev-links a {
+  margin-bottom: 10px;
 }

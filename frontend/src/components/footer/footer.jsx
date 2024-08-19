@@ -36,9 +36,15 @@ const Footer = () => {
           <h1 className="phone-number">+7 (966) 287-51-91</h1>
           <p>Круглосуточно</p>
         </div>
-        <div>
-          <p>Дизайн</p>
-          <p>Разработчик</p>
+        <div className="dev-links">
+          <a href="https://www.behance.net/baa225bf">Дизайнер</a>
+          <a href="https://t.me/matv864">
+            Разработчики: <br /> Backend
+          </a>
+          <a href="https://t.me/arturdr45">Frontend</a>
+          <a href="https://www.figma.com/design/CaX0hdy3qJFHSeqpXsGCpn/landing?node-id=0-1&t=q8Ul7Icp0iOqcUw0-1">
+            Макет сайта
+          </a>
         </div>
       </div>
     </footer>
