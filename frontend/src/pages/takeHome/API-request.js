@@ -1,17 +1,15 @@
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const getImageLink = (imageSchema) => {
-  let filename = imageSchema.filename.split(".");
-  let extension = filename[filename.length - 1];
-  let databaseFilename = `${imageSchema.id}.${extension}`;
-  let fullDatabaseFilename = `${API_BASE_URL}/storage/pets_images/${databaseFilename}`;
+  let filename = imageSchema.filename;
+  let fullDatabaseFilename = `${API_BASE_URL}/storage/${filename}`;
 
   return fullDatabaseFilename;
 };
 
 const fetchPetsList = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/pets/list`);
+    const response = await fetch(`${API_BASE_URL}/pet/list`);
     const data = await response.json();
 
     if (!Array.isArray(data)) {
@@ -37,7 +35,7 @@ const fetchPetsList = async () => {
 
 const fetchPetDetails = async (id) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/pets/${id}`);
+    const response = await fetch(`${API_BASE_URL}/pet/${id}`);
     const data = await response.json();
     return data;
   } catch (error) {

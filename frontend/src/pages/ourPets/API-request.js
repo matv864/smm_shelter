@@ -10,17 +10,15 @@ const getImageLink = (imageSchema) => {
     return "img-for-help-animals.png";
   }
 
-  let filename = imageSchema.filename.split(".");
-  let extension = filename[filename.length - 1];
-  let databaseFilename = `${imageSchema.id}.${extension}`;
-  let fullDatabaseFilename = `${API_BASE_URL}/storage/pets_images/${databaseFilename}`;
+  let filename = imageSchema.filename;
+  let fullDatabaseFilename = `${API_BASE_URL}/storage/${filename}`;
 
   return fullDatabaseFilename;
 };
 
 const fetchPetsList = async () => {
   try {
-    const response = await fetch(`${API_BASE_URL}/api/pets/list`);
+    const response = await fetch(`${API_BASE_URL}/pet/list`);
 
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
