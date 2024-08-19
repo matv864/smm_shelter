@@ -26,6 +26,7 @@ class PetTypeAdmin(ModelView, model=PetType):
     name = "тип питомца"
     name_plural = "типы питомцев"
     icon = "fa-solid fa-book"
+    category = "база данных питомцев"
 
     column_list = [
         PetType.name

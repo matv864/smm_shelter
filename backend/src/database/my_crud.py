@@ -66,18 +66,22 @@ class My_crud:
     def get(
         self,
         filters=[],
+        join_fields=[],
         where_filters=dict(),
         offset=0,
         limit=100,
         order_by=None,
         multi=False
     ):
-        query_search: Select = select(self.Main_model).options(
+        query_search: Select = select(self.Main_model)
+        query_search = query_search.options(
             *[
                 selectinload(field)
                 for field in self.fields_to_join
             ],
         )
+        for join_field in join_fields:
+            query_search = query_search.join(join_field)
 
         for filter in filters:
             query_search = query_search.filter(filter)

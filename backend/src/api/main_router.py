@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Request, status
 
-from src.database import My_crud, Pet
+from src.database import My_crud
+from src.database import Pet
+
 from .schemas import Pet_schema
 
 main_pets_router = APIRouter()

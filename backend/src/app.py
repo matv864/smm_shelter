@@ -10,7 +10,6 @@ load_dotenv()
 
 app = FastAPI(title="backend")
 make_admin(app)
-
 unzip_storage()
 
 app.add_middleware(

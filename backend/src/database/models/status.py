@@ -26,6 +26,7 @@ class StatusAdmin(ModelView, model=Status):
     name = "статус питомца"
     name_plural = "статусы питомцев"
     icon = "fa-solid fa-house"
+    category = "база данных питомцев"
 
     column_list = [
         Status.name

@@ -55,11 +55,7 @@ CREATE TABLE public.pet (
     name character varying NOT NULL,
     gender_id uuid NOT NULL,
     type_id uuid NOT NULL,
-    date_birth date,
-    breed character varying,
-    personality character varying,
-    appearance character varying,
-    health character varying,
+    year_birth date,
     description character varying
 );
 
@@ -94,38 +90,40 @@ ALTER TABLE public.status OWNER TO postgres;
 -- Data for Name: gender; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.gender (id, name) VALUES ('ef6f09c6-3dfc-4e07-918b-6686fe16c35d', 'мальчик');
-INSERT INTO public.gender (id, name) VALUES ('e9d62c72-e667-45c3-adc9-4ccaa7c6f1da', 'девочка');
+INSERT INTO public.gender (id, name) VALUES ('b0959b0f-56a7-4928-bdb2-7f9eb70376cb', 'мальчик');
+INSERT INTO public.gender (id, name) VALUES ('dd1e7969-63f9-424b-a52f-ff809afae6a7', 'девочка');
 
 
 --
 -- Data for Name: image; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO public.image (id, filename, pet_id) VALUES ('3d427c8d-2711-4f72-b515-66611ac4b66a', '435474es-960.jpg', 'f16487cc-9e7d-460e-ada0-d6cbe7b1d308');
 
 
 --
 -- Data for Name: pet; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.pet (id, status_id, name, gender_id, type_id, date_birth, breed, personality, appearance, health, description) VALUES ('bb6400c0-6825-486d-907d-57a8cb2c6b7f', 'b2079a7c-3eca-458a-82e6-926254804e15', '1', 'e9d62c72-e667-45c3-adc9-4ccaa7c6f1da', 'efb89c62-f0b6-4c45-9af2-1fd0977b8564', NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO public.pet (id, status_id, name, gender_id, type_id, year_birth, description) VALUES ('f16487cc-9e7d-460e-ada0-d6cbe7b1d308', '467770e5-f3f2-409b-b5c7-884fc5ef7097', 'рэкс', 'b0959b0f-56a7-4928-bdb2-7f9eb70376cb', 'a96f3745-1b51-44a5-ab59-2013a8f43e86', '2024-08-20', 'большое описание');
 
 
 --
 -- Data for Name: petType; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public."petType" (id, name) VALUES ('97a0612f-df2e-47a8-80b6-7cab6b4bf3bf', 'кошка');
-INSERT INTO public."petType" (id, name) VALUES ('efb89c62-f0b6-4c45-9af2-1fd0977b8564', 'собака');
+INSERT INTO public."petType" (id, name) VALUES ('a96f3745-1b51-44a5-ab59-2013a8f43e86', 'кошка');
+INSERT INTO public."petType" (id, name) VALUES ('fef14746-5baa-422c-97d0-b37189d6619a', 'собака');
 
 
 --
 -- Data for Name: status; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.status (id, name) VALUES ('b2079a7c-3eca-458a-82e6-926254804e15', 'в приюте');
-INSERT INTO public.status (id, name) VALUES ('a2f9542e-7573-43e9-a00f-dcaab2a1c4ca', 'забралти');
-INSERT INTO public.status (id, name) VALUES ('0bf86c16-e1cb-4b8b-90af-21ba07287b58', 'на лечении');
+INSERT INTO public.status (id, name) VALUES ('467770e5-f3f2-409b-b5c7-884fc5ef7097', 'в добрых руках');
+INSERT INTO public.status (id, name) VALUES ('8720fbc5-41e5-4337-abf6-3ba438dd3bfb', 'в приюте');
+INSERT INTO public.status (id, name) VALUES ('c6b5b42a-7bf4-4393-8c08-0cf3c3a722c5', 'на передержке');
+INSERT INTO public.status (id, name) VALUES ('8b2c69ec-7361-482c-85c4-e85ddedcdcfa', 'на лечении');
 
 
 --

@@ -18,22 +18,17 @@ class Pet(Base):
         default=uuid4
     )
     status_id: Mapped[str] = mapped_column(ForeignKey("status.id"))
-    status = relationship("Status")
+    status = relationship("Status", lazy="selectin")
 
     name: Mapped[str]
 
     gender_id: Mapped[str] = mapped_column(ForeignKey("gender.id"))
-    gender = relationship("Gender")
+    gender = relationship("Gender", lazy="selectin")
 
     type_id: Mapped[str] = mapped_column(ForeignKey("petType.id"))
-    type_name = relationship("PetType")
+    type_name = relationship("PetType", lazy="selectin")
 
-    date_birth: Mapped[date] = mapped_column(nullable=True)
-
-    breed: Mapped[str] = mapped_column(nullable=True)
-    personality: Mapped[str] = mapped_column(nullable=True)
-    appearance: Mapped[str] = mapped_column(nullable=True)
-    health: Mapped[str] = mapped_column(nullable=True)
+    year_birth: Mapped[date] = mapped_column(nullable=True)
 
     description: Mapped[str] = mapped_column(nullable=True)
 
@@ -51,21 +46,16 @@ class PetAdmin(ModelView, model=Pet):
     name = "питомец"
     name_plural = "питомцы"
     icon = "fa-solid fa-paw"
+    category = "база данных питомцев"
 
     column_list = [
         Pet.status,
         Pet.name,
         Pet.gender,
         Pet.type_name,
-        Pet.date_birth,
-        Pet.breed,
-        Pet.personality,
-        Pet.appearance,
-        Pet.health,
         Pet.description
     ]
     form_excluded_columns = [
         Pet.image
     ]
-
     column_searchable_list = [Pet.name]

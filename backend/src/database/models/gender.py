@@ -26,6 +26,7 @@ class GenderAdmin(ModelView, model=Gender):
     name = "пол"
     name_plural = "пол"
     icon = "fa-solid fa-venus-mars"
+    category = "база данных питомцев"
 
     column_list = [
         Gender.name

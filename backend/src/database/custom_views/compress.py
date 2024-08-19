@@ -9,8 +9,13 @@ MAX_FILE_SIZE_KB = 2**10
 async def compress_big_files():
     counter_compressed_files = 0
     for filename in os.listdir(path='/storage'):
-        full_filename = f"/storage/{filename}"
 
+        # check to image
+        extension = filename.split(".")[-1]
+        if extension not in ["jpeg", "jpg", "png"]:
+            continue
+
+        full_filename = f"/storage/{filename}"
         file_size_kb = os.path.getsize(full_filename) // 2**10
         # // 2**10 is from B to KB
 
@@ -39,6 +44,7 @@ async def compress_big_files():
 class CompressView(BaseView):
     name = "сжатие изображений"
     icon = "fa-solid fa-dumbbell"
+    category = "база данных питомцев"
 
     @expose("/compress", methods=["GET"])
     async def compress_page(self, request):
