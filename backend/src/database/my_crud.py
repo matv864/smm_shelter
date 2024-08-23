@@ -7,13 +7,13 @@ from sqlalchemy.orm import selectinload
 
 from sqlalchemy.sql.selectable import Select
 
-from src.database.engine import session_maker
+from src.database.engine import async_session_maker
 
 
 def exception_wrapper(func):
-    def wrapper(*args, **kwargs):
+    async def wrapper(*args, **kwargs):
         try:
-            return func(*args, **kwargs)
+            return await func(*args, **kwargs)
         except Exception as e:
             logging.error("type of error is %s\ntext: ", type(e), str(e))
             raise HTTPException(status_code=400, detail=str(type(e)))
@@ -30,7 +30,7 @@ class My_crud:
         self.fields_to_join = fields_to_join
 
     @exception_wrapper
-    def create(
+    async def create(
         self,
         record
     ):
@@ -38,14 +38,14 @@ class My_crud:
 
         query_insert = query_insert.returning(self.Main_model)
 
-        with session_maker() as session:
-            output_record = session.execute(query_insert, [record])
-            session.commit()
+        async with async_session_maker() as session:
+            output_record = await session.execute(query_insert, [record])
+            await session.commit()
 
         return output_record.scalar()
 
     @exception_wrapper
-    def exist(
+    async def exist(
         self,
         filters
     ):
@@ -56,12 +56,12 @@ class My_crud:
 
         query = select(self.Main_model).where(exists_criteria)
 
-        with session_maker() as session:
-            query_executed = session.execute(query)
+        async with async_session_maker() as session:
+            query_executed = await session.execute(query)
             return bool(query_executed.scalar())
 
     @exception_wrapper
-    def get(
+    async def get(
         self,
         filters=[],
         join_fields=[],
@@ -95,8 +95,8 @@ class My_crud:
             if limit:
                 query_search = query_search.limit(limit)
 
-        with session_maker() as session:
-            query_executed = session.execute(query_search)
+        async with async_session_maker() as session:
+            query_executed = await session.execute(query_search)
 
             if multi:
                 return query_executed.scalars().all()
@@ -104,7 +104,7 @@ class My_crud:
             return query_executed.scalar_one_or_none()
 
     @exception_wrapper
-    def patch(
+    async def patch(
         self,
         filters,
         new_data: dict
@@ -124,14 +124,14 @@ class My_crud:
 
         query_patch = query_patch.returning(self.Main_model)
 
-        with session_maker() as session:
-            output_record = session.execute(query_patch)
-            session.commit()
+        async with async_session_maker() as session:
+            output_record = await session.execute(query_patch)
+            await session.commit()
 
         return output_record.scalar()
 
     @exception_wrapper
-    def remove(
+    async def remove(
         self,
         filters
     ):
@@ -140,6 +140,6 @@ class My_crud:
         for filter in filters:
             query_delete = query_delete.where(filter)
 
-        with session_maker() as session:
-            session.execute(query_delete)
-            session.commit()
+        async with async_session_maker() as session:
+            await session.execute(query_delete)
+            await session.commit()

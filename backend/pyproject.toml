@@ -21,7 +21,6 @@ bcrypt = "^4.2.0"
 python-dotenv = "^1.0.1"
 itsdangerous = "^2.2.0"
 pillow = "^10.4.0"
-psycopg2-binary = "^2.9.9"
 logging = "^0.4.9.6"
 
 [build-system]

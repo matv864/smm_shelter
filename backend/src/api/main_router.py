@@ -19,7 +19,7 @@ async def get_head(request: Request):
     status_code=status.HTTP_200_OK
 )
 async def all_pets(offset: int = 0, limit: int = 100):
-    return My_crud(Pet).get(
+    return await My_crud(Pet).get(
         offset=offset,
         limit=limit,
         multi=True
@@ -32,4 +32,4 @@ async def all_pets(offset: int = 0, limit: int = 100):
     status_code=status.HTTP_200_OK
 )
 async def get_pet(pets_id):
-    return My_crud(Pet).get(filters=[Pet.id == pets_id])
+    return await My_crud(Pet).get(filters=[Pet.id == pets_id])
