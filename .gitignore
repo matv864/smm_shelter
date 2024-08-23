@@ -25,6 +25,8 @@ dist/
 # storage
 *.db
 storage/*
+*.sql
+*.zip
 
 # trash of development
 db.yaml

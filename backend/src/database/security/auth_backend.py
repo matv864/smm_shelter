@@ -47,10 +47,7 @@ class AdminAuth(AuthenticationBackend):
         token = request.session.get("token")
 
         if not (token == random_hash):
-            logging.warning(
-                "user tried to authenticate with incorrect token\n" +
-                "his referer: %s\n"
-            )
+            logging.warning("user tried to authenticate with incorrect token")
             return False
 
         return True
