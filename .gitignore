@@ -25,5 +25,6 @@ dist/
 *.db
 storage/*
 
-# temporary files for development
+# trash of development
 db.yaml
+*.log

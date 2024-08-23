@@ -1,9 +1,10 @@
+import logging
+
 from fastapi.exceptions import HTTPException
 
 from sqlalchemy import insert, select, exists, update, delete
 from sqlalchemy.orm import selectinload
 
-from sqlalchemy.exc import IntegrityError
 from sqlalchemy.sql.selectable import Select
 
 from src.database.engine import session_maker
@@ -13,12 +14,9 @@ def exception_wrapper(func):
     def wrapper(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except IntegrityError as e:
-            print(str(e))
-            raise HTTPException(status_code=400, detail="bad foreign object")
         except Exception as e:
-            error_text = f"{type(e)} - {str(e)}"
-            raise HTTPException(status_code=400, detail=error_text)
+            logging.error("type of error is %s\ntext: ", type(e), str(e))
+            raise HTTPException(status_code=400, detail=str(type(e)))
     return wrapper
 
 

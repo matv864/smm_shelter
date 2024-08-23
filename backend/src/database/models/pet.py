@@ -5,6 +5,7 @@ from sqladmin import ModelView
 
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import Text
 
 from .base import Base
 
@@ -30,7 +31,7 @@ class Pet(Base):
 
     year_birth: Mapped[date] = mapped_column(nullable=True)
 
-    description: Mapped[str] = mapped_column(nullable=True)
+    description: Mapped[str] = mapped_column(Text, default="")
 
     image = relationship(
         "Image",
@@ -43,6 +44,8 @@ class Pet(Base):
 
 
 class PetAdmin(ModelView, model=Pet):
+    edit_template = "custom_edit.html"
+
     name = "питомец"
     name_plural = "питомцы"
     icon = "fa-solid fa-paw"

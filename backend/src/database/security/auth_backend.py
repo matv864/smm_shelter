@@ -1,6 +1,7 @@
 import os
 import string
 import random
+import logging
 
 from passlib.context import CryptContext
 
@@ -26,6 +27,12 @@ class AdminAuth(AuthenticationBackend):
             os.getenv("ADMIN_USERNAME") == username and
             pwd_context.verify(password, os.getenv("HASHED_PASSWORD"))
         ):
+            logging.warning(
+                "user entered incorrect data\n" +
+                "his login: %s\n his password: %s\n",
+                username,
+                password
+            )
             return False
 
         request.session.update({"token": random_hash})
@@ -40,6 +47,10 @@ class AdminAuth(AuthenticationBackend):
         token = request.session.get("token")
 
         if not (token == random_hash):
+            logging.warning(
+                "user tried to authenticate with incorrect token\n" +
+                "his referer: %s\n"
+            )
             return False
 
         return True
