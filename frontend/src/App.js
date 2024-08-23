@@ -13,6 +13,7 @@ import OurPets from "./pages/ourPets/ourPets";
 import TakeHome from "./pages/takeHome/takeHome";
 import FormHelp from "./pages/formForHelp/formForHelp";
 import ContactsPage from "./pages/contacts/contactsPage";
+import NotFound from "./pages/notFound/notFound";
 
 const ScrollToSection = () => {
   const { hash } = useLocation();
@@ -42,6 +43,7 @@ function App() {
             <Route path="/take-home/:id" element={<TakeHome />} />
             <Route path="/form-for-help" element={<FormHelp />} />
             <Route path="/contacts" element={<ContactsPage />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
