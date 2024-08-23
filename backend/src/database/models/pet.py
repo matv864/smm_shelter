@@ -15,7 +15,6 @@ class Pet(Base):
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        unique=True,
         default=uuid4
     )
     status_id: Mapped[str] = mapped_column(ForeignKey("status.id"))

@@ -12,7 +12,6 @@ class PetType(Base):
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        unique=True,
         default=uuid4
     )
 

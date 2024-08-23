@@ -22,6 +22,7 @@ python-dotenv = "^1.0.1"
 itsdangerous = "^2.2.0"
 pillow = "^10.4.0"
 logging = "^0.4.9.6"
+alembic = "^1.13.2"
 
 [build-system]
 requires = ["poetry-core"]
