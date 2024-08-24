@@ -14,8 +14,8 @@
 
 ## the components of the site
 - frontend (HTML|CSS + React)
-- backend (FastApi + sqlAlchemy + sqlAdmin)
-- database (postgresSQL)
+- backend (FastApi + sqlAlchemy + sqlAdmin + alembic)
+- database (postgreSQL)
 - webserver (nginx)
 
 # how to run it?
