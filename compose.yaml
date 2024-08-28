@@ -1,4 +1,4 @@
-version: "2.27"
+version: "2.29.1"
 
 name: smm_shelter
 
@@ -31,6 +31,7 @@ services:
       - POSTGRES_DB=pets-service
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
 
   smm_shelter-nginx:
     container_name: smm_shelter-nginx
