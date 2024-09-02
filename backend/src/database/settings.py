@@ -1,4 +1,4 @@
-import logging
+from dotenv import load_dotenv
 
 from functools import cached_property, lru_cache
 
@@ -6,13 +6,15 @@ from typing import Optional
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+load_dotenv()
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     POSTGRES_NAME_SERVICE: Optional[str] = None
     POSTGRES_HOST: Optional[str] = None
-    POSTGRES_PORT: int
+    POSTGRES_PORT: Optional[str] = None
     POSTGRES_DB: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
@@ -49,5 +51,4 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings():
-    logging.info("settings are created")
     return Settings()

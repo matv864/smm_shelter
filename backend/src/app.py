@@ -1,5 +1,3 @@
-import logging
-
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -9,10 +7,6 @@ from src.database import make_admin, unzip_storage
 from src.api.main_router import main_pets_router
 
 load_dotenv()
-
-logging.basicConfig(level=logging.WARNING, filename="py_log.log", filemode="w",
-                    format="%(asctime)s || %(levelname)s || %(message)s")
-
 
 app = FastAPI(title="backend")
 
@@ -28,5 +22,3 @@ app.add_middleware(
 )
 
 app.include_router(main_pets_router)
-
-logging.info("app is started")
