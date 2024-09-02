@@ -5,7 +5,7 @@ from sqlalchemy import pool
 
 from alembic import context
 
-from src.database import Pet  # noqa
+from src.database import Pet, News, Transaction  # noqa
 from src.database import Base
 from src.database import get_settings
 
