@@ -17,10 +17,7 @@ class News(Base):
         default=uuid4
     )
 
-    date_of_publication: Mapped[date] = mapped_column(
-        nullable=True,
-        default=date.today()
-    )
+    date_of_publication: Mapped[date] = mapped_column(default=date.today())
 
     title: Mapped[str]
     text: Mapped[str] = mapped_column(Text, default="")

@@ -1,4 +1,5 @@
 from uuid import UUID, uuid4
+from datetime import date
 
 from sqladmin import ModelView
 
@@ -21,6 +22,8 @@ class Transaction(Base):
         primary_key=True,
         default=uuid4
     )
+
+    date_of_payment: Mapped[date] = mapped_column(default=date.today())
 
     goal_id: Mapped[str] = mapped_column(ForeignKey("transactionGoal.id"))
     goal = relationship("TransactionGoal", lazy="selectin")
