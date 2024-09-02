@@ -1,3 +1,7 @@
+from typing import Optional
+from uuid import UUID
+from datetime import date
+
 from fastapi import APIRouter, Request, status
 
 from src.database import My_crud
@@ -69,8 +73,21 @@ async def get_news():
     response_model=list[ReportComment_schema],
     status_code=status.HTTP_200_OK
 )
-async def get_report_comments():
+async def get_report_comments(
+    reportType_id: Optional[UUID] = None,
+    start_date: Optional[date] = None,
+    finish_date: Optional[date] = None
+):
+    filters = []
+    if reportType_id:
+        filters.append(ReportComment.type_id == reportType_id)
+    if start_date:
+        filters.append(ReportComment.date >= start_date)
+    if finish_date:
+        filters.append(ReportComment.date <= finish_date)
+
     return await My_crud(ReportComment).get(
+        filters=filters,
         multi=True
     )
 
@@ -92,5 +109,17 @@ async def get_report_types():
     response_model=list[Transaction_schema],
     status_code=status.HTTP_200_OK
 )
-async def get_transactions():
-    return await My_crud(Transaction).get(multi=True)
+async def get_transactions(
+    start_date: Optional[date] = None,
+    finish_date: Optional[date] = None
+):
+    filters = []
+    if start_date:
+        filters.append(Transaction.date_of_payment >= start_date)
+    if finish_date:
+        filters.append(Transaction.date_of_payment <= finish_date)
+
+    return await My_crud(Transaction).get(
+        filters=filters,
+        multi=True
+    )
