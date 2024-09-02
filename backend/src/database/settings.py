@@ -44,7 +44,7 @@ class Settings(BaseSettings):
                 f"> {self.PATH_TO_SAVE_DUMP}"
         return "pg_dump --column-inserts " + \
             f"-U {self.POSTGRES_USER} " + \
-            f"-h {self.POSTGRES_NAME_SERVICE} -p 5432" + \
+            f"-h {self.POSTGRES_NAME_SERVICE} -p 5432 " + \
             f"{self.POSTGRES_DB} " + \
             f"> {self.PATH_TO_SAVE_DUMP}"
 
