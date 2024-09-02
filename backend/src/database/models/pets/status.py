@@ -30,3 +30,5 @@ class StatusAdmin(ModelView, model=Status):
     column_list = [
         Status.name
     ]
+
+    column_searchable_list = [Status.name]

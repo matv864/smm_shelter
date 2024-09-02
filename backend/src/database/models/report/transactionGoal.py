@@ -28,6 +28,7 @@ class TransactionGoalAdmin(ModelView, model=TransactionGoal):
     category = "отчёт"
 
     column_list = [
-        TransactionGoal.id,
         TransactionGoal.goal
     ]
+
+    column_searchable_list = [TransactionGoal.goal]

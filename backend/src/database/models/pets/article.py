@@ -38,9 +38,10 @@ class ArticleAdmin(ModelView, model=Article):
     category = "база данных питомцев"
 
     column_list = [
-        Article.id,
+        Article.pet_id,
         Article.date,
         Article.title,
         Article.text,
-        Article.pet_id
     ]
+
+    column_searchable_list = [Article.title]

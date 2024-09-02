@@ -37,7 +37,6 @@ class PetImageAdmin(ModelView, model=PetImage):
     category = "база данных питомцев"
 
     column_list = [
-        PetImage.id,
-        PetImage.filename,
-        PetImage.pet_id
+        PetImage.pet_id,
+        PetImage.filename
     ]

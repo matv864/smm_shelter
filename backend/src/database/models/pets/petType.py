@@ -30,3 +30,5 @@ class PetTypeAdmin(ModelView, model=PetType):
     column_list = [
         PetType.name
     ]
+
+    column_searchable_list = [PetType.name]

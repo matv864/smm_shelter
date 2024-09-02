@@ -36,8 +36,9 @@ class ReportCommentAdmin(ModelView, model=ReportComment):
     category = "отчёт"
 
     column_list = [
-        ReportComment.id,
         ReportComment.date,
-        ReportComment.text,
         ReportComment.type,
+        ReportComment.text
     ]
+
+    column_searchable_list = [ReportComment.text]

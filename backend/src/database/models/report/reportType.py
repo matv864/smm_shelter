@@ -28,6 +28,7 @@ class ReportTypeAdmin(ModelView, model=ReportType):
     category = "отчёт"
 
     column_list = [
-        ReportType.id,
         ReportType.type
     ]
+
+    column_searchable_list = [ReportType.type]

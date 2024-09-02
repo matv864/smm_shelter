@@ -30,3 +30,5 @@ class GenderAdmin(ModelView, model=Gender):
     column_list = [
         Gender.name
     ]
+
+    column_searchable_list = [Gender.name]

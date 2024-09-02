@@ -37,7 +37,6 @@ class NewsImageAdmin(ModelView, model=NewsImage):
     category = "новости"
 
     column_list = [
-        NewsImage.id,
-        NewsImage.filename,
-        NewsImage.news_id
+        NewsImage.news_id,
+        NewsImage.filename
     ]

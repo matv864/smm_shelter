@@ -26,6 +26,8 @@ def make_admin(app: FastAPI):
     admin = Admin(
         app,
         engine,
+        title="zooprim125",
+        logo_url="https://zooprim125.ru/favicon.ico",
         templates_dir="src/templates",
         authentication_backend=authentication_backend
     )

@@ -41,7 +41,6 @@ class NewsAdmin(ModelView, model=News):
     category = "новости"
 
     column_list = [
-        News.id,
         News.date_of_publication,
         News.title,
         News.text
@@ -49,4 +48,5 @@ class NewsAdmin(ModelView, model=News):
     form_excluded_columns = [
         News.newsImage
     ]
+
     column_searchable_list = [News.title]

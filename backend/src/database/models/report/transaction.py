@@ -49,10 +49,11 @@ class TransactionAdmin(ModelView, model=Transaction):
     category = "отчёт"
 
     column_list = [
-        Transaction.id,
         Transaction.goal,
         Transaction.amount,
         Transaction.sender_receiver,
         Transaction.comment,
         Transaction.cheque
     ]
+
+    column_searchable_list = [Transaction.comment]
