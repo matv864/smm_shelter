@@ -1,11 +1,10 @@
-import logging
+# TODO: make patch by normal way
 
 from fastapi.exceptions import HTTPException
 
 from sqlalchemy import insert, select, exists, update, delete
-from sqlalchemy.orm import selectinload
 
-from sqlalchemy.sql.selectable import Select
+from sqlalchemy.orm.decl_api import DeclarativeMeta
 
 from src.database.engine import async_session_maker
 
@@ -15,7 +14,6 @@ def exception_wrapper(func):
         try:
             return await func(*args, **kwargs)
         except Exception as e:
-            logging.error("type of error is %s\ntext: ", type(e), str(e))
             raise HTTPException(status_code=400, detail=str(type(e)))
     return wrapper
 
@@ -23,16 +21,14 @@ def exception_wrapper(func):
 class My_crud:
     def __init__(
         self,
-        Main_model: object,
-        fields_to_join: list[list] = []
+        Main_model: DeclarativeMeta
     ):
         self.Main_model = Main_model
-        self.fields_to_join = fields_to_join
 
     @exception_wrapper
     async def create(
         self,
-        record
+        record: dict
     ):
         query_insert = insert(self.Main_model)
 
@@ -47,7 +43,7 @@ class My_crud:
     @exception_wrapper
     async def exist(
         self,
-        filters
+        filters: list
     ):
         exists_criteria = exists()
 
@@ -64,28 +60,15 @@ class My_crud:
     async def get(
         self,
         filters=[],
-        join_fields=[],
-        where_filters=dict(),
         offset=0,
         limit=100,
         order_by=None,
         multi=False
     ):
-        query_search: Select = select(self.Main_model)
-        query_search = query_search.options(
-            *[
-                selectinload(field)
-                for field in self.fields_to_join
-            ],
-        )
-        for join_field in join_fields:
-            query_search = query_search.join(join_field)
+        query_search = select(self.Main_model)
 
         for filter in filters:
             query_search = query_search.filter(filter)
-
-        for where_filter in where_filters:
-            query_search = query_search.where(where_filter)
 
         if multi:
             if order_by:
@@ -106,7 +89,7 @@ class My_crud:
     @exception_wrapper
     async def patch(
         self,
-        filters,
+        filters: list,
         new_data: dict
     ):
         query_patch = update(self.Main_model)
@@ -114,12 +97,15 @@ class My_crud:
         for filter in filters:
             query_patch = query_patch.where(filter)
 
+        # WARNING: filter from pydantic's metadata
         keys = list(new_data.keys())
         for key in keys:
             if type(key) is str:
                 pass
             else:
                 new_data.pop(key)
+        # ----------------------------------------
+
         query_patch = query_patch.values(**new_data)
 
         query_patch = query_patch.returning(self.Main_model)
