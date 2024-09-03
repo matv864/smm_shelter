@@ -15,4 +15,22 @@ In addition, facilitate the use of the databaser, I created custom pages to comp
 I also created migrations from Alembic for easy working with the database.
 
 ## access to storage
-frontend can fetch image by requesting to <domain>/storage/<image_path>, which throw nginx walk to storage folder and fetch the required image
+frontend can fetch image by requesting to <domain>/<image_full_path>, which throw nginx walk to storage folder and fetch the required image
+
+
+## env file
+```
+# for connecting to postgres
+POSTGRES_NAME_SERVICE=smm_shelter-postgres
+POSTGRES_DB=pets-service
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+
+# paths to save backups of database and storage
+PATH_TO_SAVE_DUMP=/backup/dump_pets.sql
+PATH_TO_SAVE_BACKUP=/backup/storage.zip
+
+# login system of sqlAdmin
+ADMIN_USERNAME=
+HASHED_PASSWORD=
+```
