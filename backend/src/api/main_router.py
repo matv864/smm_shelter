@@ -34,7 +34,7 @@ async def get_head(request: Request):
     response_model=list[Pets_schema],
     status_code=status.HTTP_200_OK
 )
-async def all_pets(offset: int = 0, limit: int = 100):
+async def get_all_pets(offset: int = 0, limit: int = 100):
     return await My_crud(Pet).get(
         offset=offset,
         limit=limit,
@@ -59,8 +59,22 @@ async def get_pet(pets_id):
     response_model=list[News_schema],
     status_code=status.HTTP_200_OK
 )
-async def get_news():
+async def get_news(
+    start_date: Optional[date] = None,
+    finish_date: Optional[date] = None,
+    offset: int = 0,
+    limit: int = 100
+):
+    filters = []
+    if start_date:
+        filters.append(News.date_of_publication >= start_date)
+    if finish_date:
+        filters.append(News.date_of_publication <= finish_date)
+
     return await My_crud(News).get(
+        filters=filters,
+        offset=offset,
+        limit=limit,
         order_by=News.date_of_publication,
         multi=True
     )
