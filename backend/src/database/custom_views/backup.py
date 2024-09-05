@@ -2,6 +2,8 @@ import os
 
 from sqladmin import BaseView, expose
 
+from ..settings import get_settings
+
 
 async def clear_old_backup() -> int:
     '''
@@ -19,11 +21,19 @@ async def make_db_dump() -> int:
     else:
         return status of program
     '''
-    bash_command = "pg_dump -U postgres -h smm_shelter-postgres -p 5432 " + \
-        "--column-inserts pets-service > /backup/dump_pets.sql"
-    res = os.system(f'/bin/bash -c "{bash_command}"')
-    if res == 0:
-        db_dump_size_kb = os.path.getsize("/backup/dump_pets.sql") // 2**10
+    command_pg_dump = get_settings().command_pg_dump
+
+    bash_command = (
+        f'env PGPASSWORD={os.getenv("POSTGRES_PASSWORD")} ' +
+        f'/bin/bash -c "{command_pg_dump}"'
+    )
+    print(bash_command)
+    res = os.system(bash_command)
+
+    if os.path.isfile(os.getenv("PATH_TO_SAVE_DUMP")):
+        db_dump_size_kb = os.path.getsize(
+            os.getenv("PATH_TO_SAVE_DUMP")
+        ) // 2**10
         return db_dump_size_kb
     return -1 * res
 
@@ -35,10 +45,13 @@ async def make_storage_backup() -> int:
     else:
         return status of program
     '''
-    bash_command = "zip -r /backup/storage.zip /storage"
-    res = os.system(f'/bin/bash -c "{bash_command}"')
-    if res == 0:
-        storage_backup_size_kb = os.path.getsize("/backup/storage.zip") // 2**10
+    comand_storage_backup = \
+        f"zip -r {os.getenv("PATH_TO_SAVE_BACKUP")} /storage"
+    res = os.system(f'/bin/bash -c "{comand_storage_backup}"')
+    if os.path.isfile(os.getenv("PATH_TO_SAVE_BACKUP")):
+        storage_backup_size_kb = os.path.getsize(
+            os.getenv("PATH_TO_SAVE_BACKUP")
+        ) // 2**10
         return storage_backup_size_kb
     return -1 * res
 

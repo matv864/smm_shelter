@@ -4,7 +4,7 @@ from sqladmin import ModelView
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base import Base
+from ..base import Base
 
 
 class Status(Base):
@@ -12,7 +12,6 @@ class Status(Base):
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        unique=True,
         default=uuid4
     )
 
@@ -31,3 +30,5 @@ class StatusAdmin(ModelView, model=Status):
     column_list = [
         Status.name
     ]
+
+    column_searchable_list = [Status.name]

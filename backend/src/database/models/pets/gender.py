@@ -4,15 +4,14 @@ from sqladmin import ModelView
 
 from sqlalchemy.orm import Mapped, mapped_column
 
-from .base import Base
+from ..base import Base
 
 
-class PetType(Base):
-    __tablename__ = "petType"
+class Gender(Base):
+    __tablename__ = "gender"
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        unique=True,
         default=uuid4
     )
 
@@ -22,12 +21,14 @@ class PetType(Base):
         return f"{self.name}"
 
 
-class PetTypeAdmin(ModelView, model=PetType):
-    name = "тип питомца"
-    name_plural = "типы питомцев"
-    icon = "fa-solid fa-book"
+class GenderAdmin(ModelView, model=Gender):
+    name = "пол"
+    name_plural = "пол"
+    icon = "fa-solid fa-venus-mars"
     category = "база данных питомцев"
 
     column_list = [
-        PetType.name
+        Gender.name
     ]
+
+    column_searchable_list = [Gender.name]

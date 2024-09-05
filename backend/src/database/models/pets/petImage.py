@@ -8,45 +8,35 @@ from sqladmin import ModelView
 from fastapi_storages import FileSystemStorage
 from fastapi_storages.integrations.sqlalchemy import FileType
 
-from .base import Base
+from ..base import Base
 
 
-storage = FileSystemStorage(path="/storage")
+storage = FileSystemStorage(path="/storage/pets/photo")
 
 
-class Image(Base):
-    __tablename__ = "image"
+class PetImage(Base):
+    __tablename__ = "petImage"
 
     id: Mapped[UUID] = mapped_column(
         primary_key=True,
-        unique=True,
         default=uuid4
     )
     filename: Mapped[str] = mapped_column(FileType(storage=storage))
 
     pet_id = mapped_column(ForeignKey("pet.id"))
-    pet = relationship("Pet", back_populates="image", lazy="selectin")
+    pet = relationship("Pet", back_populates="petImage", lazy="selectin")
 
     def __str__(self):
         return f"{self.id}"
 
 
-class ImageAdmin(ModelView, model=Image):
+class PetImageAdmin(ModelView, model=PetImage):
     name = "изображение"
     name_plural = "изображения"
     icon = "fa-solid fa-image"
     category = "база данных питомцев"
 
     column_list = [
-        Image.id,
-        Image.filename,
-        Image.pet_id
+        PetImage.pet_id,
+        PetImage.filename
     ]
-
-    # # search by input name
-    #
-    # form_ajax_refs = {
-    #     "pet": {
-    #         "fields": ("name",)
-    #     }
-    # }

@@ -19,11 +19,15 @@ __pycache__/
 
 package-lock.json
 dist/
+*_.py
 
 
 # storage
 *.db
 storage/*
+*.sql
+*.zip
 
-# temporary files for development
+# trash of development
 db.yaml
+*.log

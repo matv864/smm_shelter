@@ -9,7 +9,9 @@ from src.api.main_router import main_pets_router
 load_dotenv()
 
 app = FastAPI(title="backend")
+
 make_admin(app)
+
 unzip_storage()
 
 app.add_middleware(
