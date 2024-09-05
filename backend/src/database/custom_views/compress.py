@@ -1,6 +1,6 @@
 import os
 import PIL
-from PIL import Image
+from PIL import Image, ImageOps
 from sqladmin import BaseView, expose
 
 
@@ -43,6 +43,7 @@ async def compress_big_files():
                 ),
                 PIL.Image.NEAREST
             )
+            pill_image = ImageOps.exif_transpose(pill_image)
             pill_image.save(
                 full_filename,
                 optimize=True,
