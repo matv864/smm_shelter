@@ -3,38 +3,50 @@ import PIL
 from PIL import Image
 from sqladmin import BaseView, expose
 
-MAX_FILE_SIZE_KB = 2**10
+
+FOLDER_PATH = "/storage/pets/photo"
+NEED_HEIGHT_OF_PHOTO_PX = 600
 
 
 async def compress_big_files():
+    '''
+    compression photo with changing sizes
+    new height is fixed (variable NEED_HEIGHT_OF_PHOTO_PX)
+    new width is counted by new height and ratio from old image
+    '''
     counter_compressed_files = 0
-    for filename in os.listdir(path='/storage'):
+
+    for filename in os.listdir(path=FOLDER_PATH):
 
         # check to image
         extension = filename.split(".")[-1]
-        if extension not in ["jpeg", "jpg", "png"]:
+        if extension.lower() not in ["jpeg", "jpg", "png"]:
             continue
 
-        full_filename = f"/storage/{filename}"
-        file_size_kb = os.path.getsize(full_filename) // 2**10
-        # // 2**10 is from B to KB
-
-        if file_size_kb <= MAX_FILE_SIZE_KB:
-            continue
-        if file_size_kb < 3*2**10:
-            need_quality = 50
-        else:
-            need_quality = 30
+        full_filename = f"{FOLDER_PATH}/{filename}"
 
         with Image.open(full_filename) as pill_image:
+            image_height = pill_image.height
+            image_width = pill_image.width
+
+            if image_height == NEED_HEIGHT_OF_PHOTO_PX:
+                break
+
+            ratio = image_height / image_width
+
+            new_image_width = int(NEED_HEIGHT_OF_PHOTO_PX / ratio)
+
             pill_image = pill_image.resize(
-                (pill_image.width, pill_image.height),
+                (
+                    new_image_width,
+                    NEED_HEIGHT_OF_PHOTO_PX
+                ),
                 PIL.Image.NEAREST
             )
             pill_image.save(
                 full_filename,
                 optimize=True,
-                quality=need_quality
+                compression='jpeg'
             )
         counter_compressed_files += 1
 
