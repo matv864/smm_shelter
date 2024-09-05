@@ -7,11 +7,18 @@ import ImageWithPlaceholder from "../../components/ImageWithPlaceholder/ImageWit
 import placeholderImage from "../../assets/images/placeholder-image.jpg";
 import "./style-ourPets.css";
 
+const calculateAge = (birthDate) => {
+  const birthYear = new Date(birthDate);
+  const ageDiff = new Date().getFullYear() - birthYear.getFullYear();
+  return ageDiff;
+};
+
 const OurPets = () => {
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
   const [posts, setPosts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visiblePostsCount, setVisiblePostsCount] = useState(3);
-  const touchStartX = useRef(0); // Используем useRef для хранения начальной координаты касания
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -63,7 +70,7 @@ const OurPets = () => {
   };
 
   const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX; // Сохраняем начальную точку касания
+    touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
@@ -71,11 +78,10 @@ const OurPets = () => {
     const diffX = touchStartX.current - touchEndX;
 
     if (Math.abs(diffX) > 50) {
-      // Минимальная длина для распознавания свайпа
       if (diffX > 0) {
-        handleNextClick(); // Свайп влево
+        handleNextClick();
       } else {
-        handlePrevClick(); // Свайп вправо
+        handlePrevClick();
       }
     }
   };
@@ -95,39 +101,47 @@ const OurPets = () => {
       </div>
       <div
         className="cards-container"
-        onTouchStart={handleTouchStart} // Добавляем обработчики событий касания
+        onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
       >
         {posts
           .slice(currentIndex, currentIndex + visiblePostsCount)
-          .map((post) => (
-            <div key={post.id} className="block-for-animalHelp">
-              <ImageWithPlaceholder
-                className="image-of-animal"
-                src={post.firstImageLink}
-                placeholder={placeholderImage}
-                alt="Sample Image"
-              />
-              <p className="event-title">
-                {post.name}, {post.age} года
-              </p>
-              <p className="event-title">{post.appearance}</p>
-              <div className="btns-container">
-                <button
-                  className="btn our-pets-btn"
-                  onClick={handleButtonClickToHelp}
-                >
-                  Помочь
-                </button>
-                <button
-                  className="btn transparent our-pets-btn"
-                  onClick={() => handleButtonClick(post.id)}
-                >
-                  Забрать
-                </button>
+          .map((post) => {
+            const imageUrl =
+              post.petImage.length > 0
+                ? `${API_BASE_URL}${post.petImage[0].filename}`
+                : placeholderImage;
+            const age = calculateAge(post.year_birth);
+
+            return (
+              <div key={post.id} className="block-for-animalHelp">
+                <ImageWithPlaceholder
+                  className="image-of-animal"
+                  src={imageUrl}
+                  placeholder={placeholderImage}
+                  alt={post.name}
+                />
+                <p className="event-title">
+                  {post.name}, {age} {age === 1 ? "год" : "лет"}
+                </p>
+                <p className="event-title">{post.description}</p>
+                <div className="btns-container">
+                  <button
+                    className="btn our-pets-btn"
+                    onClick={handleButtonClickToHelp}
+                  >
+                    Помочь
+                  </button>
+                  <button
+                    className="btn transparent our-pets-btn"
+                    onClick={() => handleButtonClick(post.id)}
+                  >
+                    Забрать
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
       </div>
     </section>
   );

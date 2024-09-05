@@ -12,13 +12,14 @@ const TakeHome = () => {
   const [pet, setPet] = useState(null);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const thumbnailsRef = useRef(null);
-  const touchStartX = useRef(0); // Для хранения начальной координаты касания
+  const touchStartX = useRef(0);
 
   useEffect(() => {
     const fetchPet = async () => {
       try {
         const data = await fetchPetDetails(id);
         setPet(data);
+        setActiveImageIndex(0);
       } catch (error) {
         console.error("Error fetching pet data:", error);
       }
@@ -28,7 +29,7 @@ const TakeHome = () => {
   }, [id]);
 
   useEffect(() => {
-    if (thumbnailsRef.current) {
+    if (thumbnailsRef.current && pet && pet.petImage[activeImageIndex]) {
       const activeThumbnail = thumbnailsRef.current.children[activeImageIndex];
       thumbnailsRef.current.scrollTo({
         left:
@@ -38,7 +39,7 @@ const TakeHome = () => {
         behavior: "smooth",
       });
     }
-  }, [activeImageIndex]);
+  }, [activeImageIndex, pet]);
 
   const handleImageClick = (index) => {
     setActiveImageIndex(index);
@@ -46,18 +47,18 @@ const TakeHome = () => {
 
   const handleNextImage = () => {
     setActiveImageIndex((prevIndex) =>
-      prevIndex === pet.images.length - 1 ? 0 : prevIndex + 1
+      prevIndex === pet.petImage.length - 1 ? 0 : prevIndex + 1
     );
   };
 
   const handlePrevImage = () => {
     setActiveImageIndex((prevIndex) =>
-      prevIndex === 0 ? pet.images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? pet.petImage.length - 1 : prevIndex - 1
     );
   };
 
   const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX; // Сохраняем начальную точку касания
+    touchStartX.current = e.touches[0].clientX;
   };
 
   const handleTouchMove = (e) => {
@@ -65,11 +66,10 @@ const TakeHome = () => {
     const diffX = touchStartX.current - touchEndX;
 
     if (Math.abs(diffX) > 50) {
-      // Минимальная длина для распознавания свайпа
       if (diffX > 0) {
-        handleNextImage(); // Свайп влево
+        handleNextImage();
       } else {
-        handlePrevImage(); // Свайп вправо
+        handlePrevImage();
       }
     }
   };
@@ -84,6 +84,12 @@ const TakeHome = () => {
 
   const handleButtonClickToHelp = () => {
     navigate(`/contacts`);
+  };
+
+  const calculateAge = (birthDate) => {
+    const birthYear = new Date(birthDate).getFullYear();
+    const currentYear = new Date().getFullYear();
+    return currentYear - birthYear;
   };
 
   return (
@@ -101,10 +107,9 @@ const TakeHome = () => {
           </button>
           <img
             className="pet-photo-main"
-            key={pet.images[activeImageIndex].id}
-            src={getImageLink(pet.images[activeImageIndex])}
+            src={getImageLink(pet.petImage[activeImageIndex])}
             alt={pet.name}
-            onTouchStart={handleTouchStart} // Добавляем обработчики событий касания
+            onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
           />
           <button className="btn-slider right-btn" onClick={handleNextImage}>
@@ -112,12 +117,12 @@ const TakeHome = () => {
           </button>
           <div className="pet-thumbnails-container">
             <div className="pet-thumbnails" ref={thumbnailsRef}>
-              {pet.images.map((image, index) => (
+              {pet.petImage.map((image, index) => (
                 <img
                   className={`pet-thumbnail ${
                     index === activeImageIndex ? "active" : ""
                   }`}
-                  key={image.id}
+                  key={image.filename}
                   src={getImageLink(image)}
                   alt={pet.name}
                   onClick={() => handleImageClick(index)}
@@ -130,7 +135,7 @@ const TakeHome = () => {
           <div className="main-info-container">
             <p>
               <img src={littleDogPaw} alt="dog-paw-img" />
-              <span className="font-bold"> Статус:</span> {pet.status}
+              <span className="font-bold"> Статус:</span> {pet.status.name}
             </p>
             <p>
               <img src={littleDogPaw} alt="dog-paw-img" />
@@ -138,29 +143,15 @@ const TakeHome = () => {
             </p>
             <p>
               <img src={littleDogPaw} alt="dog-paw-img" />
-              <span className="font-bold"> Пол:</span>{" "}
-              {pet.gender === "F" ? "Женский" : "Мужской"}
+              <span className="font-bold"> Пол:</span> {pet.gender.name}
             </p>
             <p>
               <img src={littleDogPaw} alt="dog-paw-img" />
-              <span className="font-bold"> Возраст:</span> {pet.age} года
-            </p>
-            <p>
-              <img src={littleDogPaw} alt="dog-paw-img" />
-              <span className="font-bold"> Порода:</span> {pet.breed}
+              <span className="font-bold"> Возраст:</span>{" "}
+              {calculateAge(pet.year_birth)} года
             </p>
           </div>
 
-          <p>
-            <span className="font-bold">Характер:</span> {pet.personality}
-          </p>
-          <p>
-            <span className="font-bold">Описание внешности:</span>{" "}
-            {pet.appearance}
-          </p>
-          <p>
-            <span className="font-bold">Здоровье:</span> {pet.health}
-          </p>
           <p>
             <span className="font-bold">Описание:</span> {pet.description}
           </p>

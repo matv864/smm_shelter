@@ -2,7 +2,7 @@ const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const getImageLink = (imageSchema) => {
   let filename = imageSchema.filename;
-  let fullDatabaseFilename = `${API_BASE_URL}/storage/${filename}`;
+  let fullDatabaseFilename = `${API_BASE_URL}${filename}`;
 
   return fullDatabaseFilename;
 };
