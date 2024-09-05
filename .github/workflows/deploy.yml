@@ -13,15 +13,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: ⛑️ checkout@4
-        uses: actions/checkout@v4
-
-      - name: 🛠️ run docker compose
-        uses: hoverkraft-tech/compose-action@v2.0.1
-        with:
-          compose-file: "./compose.yaml"
-
-
       - name: 🚀 deploy
         uses: appleboy/ssh-action@v1.0.3
         with:
