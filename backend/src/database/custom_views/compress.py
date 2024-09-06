@@ -30,7 +30,7 @@ async def compress_big_files():
             image_width = pill_image.width
 
             if image_height == NEED_HEIGHT_OF_PHOTO_PX:
-                break
+                continue
 
             ratio = image_height / image_width
 
