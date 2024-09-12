@@ -1,7 +1,9 @@
 import React from "react";
 import logo from "../../assets/images/logo.svg";
-import tgLogo from "../../assets/images/TG-logo.png";
-import waLogo from "../../assets/images/WA-logo.png";
+import tgLogo from "../../assets/images/logo-TG.svg";
+import waLogo from "../../assets/images/logo-WA.svg";
+import VKLogo from "../../assets/images/logo-VK.svg";
+import IGLogo from "../../assets/images/logo-IG.svg";
 import "./style-footer.css";
 
 const Footer = () => {
@@ -27,8 +29,14 @@ const Footer = () => {
             <a href="https://t.me/zooprim125" target={"_blank"}>
               <img src={tgLogo} alt="telegram" />
             </a>
-            <a href="https://www.instagram.com/zooprim125" target={"_blank"}>
+            <a href="https://wa.me/79662875191" target={"_blank"}>
               <img src={waLogo} alt="whatsapp" />
+            </a>
+            <a href="https://vk.com/zooprim125" target={"_blank"}>
+              <img src={VKLogo} alt="VKontakte" />
+            </a>
+            <a href="https://www.instagram.com/zooprim125/" target={"_blank"}>
+              <img src={IGLogo} alt="Instagram" />
             </a>
           </div>
         </div>
