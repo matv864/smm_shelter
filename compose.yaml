@@ -10,7 +10,7 @@ services:
 
   smm_shelter-backend:
     container_name: smm_shelter-backend
-    restart: always
+    # restart: always
     build: ./backend
     environment:
       - POSTGRES_NAME_SERVICE=smm_shelter-postgres

@@ -1,8 +1,11 @@
-FROM node:22 as build
+FROM node:22
 
 WORKDIR /frontend
 
-COPY . .
+COPY package.json package-lock.json .
 
 RUN npm install
+
+COPY . .
+
 CMD npm run start

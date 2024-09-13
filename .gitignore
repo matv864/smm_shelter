@@ -31,3 +31,4 @@ storage/*
 # trash of development
 db.yaml
 *.log
+.dockerignore

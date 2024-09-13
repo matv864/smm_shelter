@@ -1,10 +1,12 @@
 FROM fedora:latest
 
 WORKDIR /backend
-COPY . .
 
-RUN dnf install -y make python postgresql zip
-RUN python -m ensurepip
+RUN dnf install -y make python poetry postgresql zip
+
+COPY Makefile pyproject.toml README.md .
+
+COPY . .
 
 RUN make deps
 
