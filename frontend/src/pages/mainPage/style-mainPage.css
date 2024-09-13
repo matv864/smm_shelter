@@ -64,12 +64,12 @@
   }
 }
 .animal {
-  top: 200px;
+  top: 150px;
   left: 650px;
 }
 .need-home {
   top: 300px;
-  left: 900px;
+  left: 850px;
   width: max-content;
 }
 @media (max-width: 767px) {
