@@ -3,38 +3,34 @@ version: "2.29.1"
 name: smm_shelter
 
 services:
-  smm_shelter-frontend:
-    container_name: smm_shelter-frontend
+  frontend:
+    container_name: ss-frontend
     restart: always
     build: ./frontend
+    env_file: .env
 
-  smm_shelter-backend:
-    container_name: smm_shelter-backend
+  backend:
+    container_name: ss-backend
     # restart: always
     build: ./backend
-    environment:
-      - POSTGRES_NAME_SERVICE=smm_shelter-postgres
+    env_file: .env
     volumes:
       - ./backup:/backup
       - ./storage:/storage
     depends_on:
-      - smm_shelter-postgres
+      - database
 
 
-  smm_shelter-postgres:
-    container_name: smm_shelter-postgres
+  database:
+    container_name: ss-postgres
     restart: always
     image: postgres:16
     volumes:
       - ./backup/dump_pets.sql:/docker-entrypoint-initdb.d/dump_pets.sql
-    environment:
-      - POSTGRES_DB=pets-service
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+    env_file: .env
 
-  smm_shelter-nginx:
-    container_name: smm_shelter-nginx
+  nginx:
+    container_name: ss-nginx
     restart: always
     image: nginx:1.25.4
     volumes:
@@ -46,5 +42,5 @@ services:
       - 8002:3000
       - 8003:8000
     depends_on:
-      - smm_shelter-backend
-      - smm_shelter-frontend
+      - backend
+      - frontend

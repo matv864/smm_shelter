@@ -2,7 +2,7 @@ import os
 
 from sqladmin import BaseView, expose
 
-from ..settings import get_settings
+from src.settings import settings
 
 
 async def clear_old_backup() -> int:
@@ -21,18 +21,18 @@ async def make_db_dump() -> int:
     else:
         return status of program
     '''
-    command_pg_dump = get_settings().command_pg_dump
+    command_pg_dump = settings.command_pg_dump
 
     bash_command = (
-        f'env PGPASSWORD={os.getenv("POSTGRES_PASSWORD")} ' +
+        f'env PGPASSWORD={settings.POSTGRES_PASSWORD} ' +
         f'/bin/bash -c "{command_pg_dump}"'
     )
     print(bash_command)
     res = os.system(bash_command)
 
-    if os.path.isfile(os.getenv("PATH_TO_SAVE_DUMP")):
+    if os.path.isfile(settings.PATH_TO_SAVE_DUMP):
         db_dump_size_kb = os.path.getsize(
-            os.getenv("PATH_TO_SAVE_DUMP")
+            settings.PATH_TO_SAVE_DUMP
         ) // 2**10
         return db_dump_size_kb
     return -1 * res
@@ -46,11 +46,11 @@ async def make_storage_backup() -> int:
         return status of program
     '''
     comand_storage_backup = \
-        f"zip -r {os.getenv("PATH_TO_SAVE_BACKUP")} /storage"
+        f"zip -r {settings.PATH_TO_SAVE_BACKUP} /storage"
     res = os.system(f'/bin/bash -c "{comand_storage_backup}"')
-    if os.path.isfile(os.getenv("PATH_TO_SAVE_BACKUP")):
+    if os.path.isfile(settings.PATH_TO_SAVE_BACKUP):
         storage_backup_size_kb = os.path.getsize(
-            os.getenv("PATH_TO_SAVE_BACKUP")
+            settings.PATH_TO_SAVE_BACKUP
         ) // 2**10
         return storage_backup_size_kb
     return -1 * res

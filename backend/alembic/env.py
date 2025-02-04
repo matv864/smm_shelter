@@ -7,7 +7,8 @@ from alembic import context
 
 from src.database import Pet, News, Transaction  # noqa
 from src.database import Base
-from src.database import get_settings
+
+from src.settings import settings
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -19,7 +20,7 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 
-config.set_main_option("sqlalchemy.url", get_settings().postgres_url)
+config.set_main_option("sqlalchemy.url", settings.postgres_url)
 
 # add your model's MetaData object here
 # for 'autogenerate' support

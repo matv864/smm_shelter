@@ -1,13 +1,11 @@
-FROM fedora:latest
+FROM python:3.12
 
 WORKDIR /backend
 
-RUN dnf install -y make python poetry postgresql zip
-
-COPY Makefile pyproject.toml README.md .
-
-COPY . .
-
+RUN apt-get update && apt-get install make
+COPY Makefile requirements.lock pyproject.toml README.md /backend/
 RUN make deps
 
-CMD make run
+COPY . /backend/
+
+CMD ["make", "run"]

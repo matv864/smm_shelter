@@ -1,5 +1,6 @@
 deps:
-	poetry install
+	pip install uv
+	uv pip install --no-cache --system -r requirements.lock
 
 run:
-	poetry run fastapi dev src/app.py --host 0.0.0.0 --proxy-headers
+	fastapi run src/app.py --host 0.0.0.0 --reload

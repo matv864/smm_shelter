@@ -1,21 +1,20 @@
-import os
 import string
 import random
 import logging
 
-from passlib.context import CryptContext
-
+from bcrypt import hashpw, gensalt
 
 from sqladmin.authentication import AuthenticationBackend
 from starlette.requests import Request
 
+from src.settings import settings
 
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-random_hash = pwd_context.hash(''.join(random.SystemRandom().choice(
+random_password = ''.join(random.SystemRandom().choice(
     string.ascii_letters + string.digits) for _ in range(
         random.randint(1, 100)
     )
-))  # make random string and make hash from this string
+) # make random string and make hash from this string
+random_hash = hashpw(random_password.encode(), gensalt()).decode()
 
 
 class AdminAuth(AuthenticationBackend):
@@ -24,8 +23,8 @@ class AdminAuth(AuthenticationBackend):
         username, password = form["username"], form["password"]
 
         if not (
-            os.getenv("ADMIN_USERNAME") == username and
-            pwd_context.verify(password, os.getenv("HASHED_PASSWORD"))
+            settings.ADMIN_USERNAME == username and
+            password == settings.ADMIN_PASSWORD
         ):
             logging.warning(
                 "user entered incorrect data\n" +

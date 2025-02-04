@@ -1,21 +1,21 @@
-from dotenv import load_dotenv
-
-from functools import cached_property, lru_cache
+from functools import cached_property
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-
-load_dotenv()
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    POSTGRES_HOST: str = None
+    POSTGRES_HOST: str
     POSTGRES_DB: str
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
 
     PATH_TO_SAVE_DUMP: str
+    PATH_TO_SAVE_BACKUP: str
+
+    ADMIN_USERNAME: str
+    ADMIN_PASSWORD: str
 
     @cached_property
     def postgres_url(self):
@@ -33,6 +33,4 @@ class Settings(BaseSettings):
             f"> {self.PATH_TO_SAVE_DUMP}"
 
 
-@lru_cache
-def get_settings():
-    return Settings()
+settings = Settings()  # type: ignore
